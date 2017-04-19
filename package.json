@@ -1,0 +1,25 @@
+{
+  "name": "ld38",
+  "version": "1.0.0",
+  "description": "Lil' game created with phaser + typescript",
+  "main": "index.html",
+  "scripts": {
+    "dev": "webpack-dev-server --watch --content-base . -d --progress",
+    "build": "tsc && webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nidup/ldjam38"
+  },
+  "author": "Nicolas <nicolas@akeneo.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/nidup/ldjam38",
+  "devDependencies": {
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.2",
+    "typescript": "2.2.2"
+  },
+  "dependencies": {
+    "ts-loader": "^2.0.3"
+  }
+}
