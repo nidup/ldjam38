@@ -27,6 +27,6 @@ export class Terminal {
             return this.actionFactories[command.name](command.parameters);
         }
 
-        throw 'Unknown command "' + command.name + '".';
+        throw 'Unknown command "' + command.name + '" (type "help" for help).';
     }
 }
