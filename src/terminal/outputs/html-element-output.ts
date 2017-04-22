@@ -4,7 +4,7 @@ export class ShellOutput implements Output {
     constructor(private element: HTMLInputElement) { }
 
     write(data: string) {
-        this.out(data + '\n');
+        this.out('>>> ' + data + '\n');
     }
 
     error(mess: string) {
