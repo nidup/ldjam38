@@ -1,5 +1,6 @@
 
 import KeyboardSound from '../sounds/keyboard';
+import ComputerSound from '../sounds/computer';
 import Speaker from '../speaker';
 import Monitor from '../monitor';
 
@@ -17,6 +18,7 @@ export default class Preload extends Phaser.State {
         Speaker.loadAssets(this);
         Monitor.loadAssets(this);
         KeyboardSound.loadAssets(this);
+        ComputerSound.loadAssets(this);
     }
 
     public create ()
