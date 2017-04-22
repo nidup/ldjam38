@@ -26,5 +26,6 @@ export class ShellOutput implements Output {
 
     private out(data: string) {
         this.terminalElement.value = this.terminalElement.value + data
+        this.terminalElement.scrollTop = this.terminalElement.scrollHeight;
     }
 }
