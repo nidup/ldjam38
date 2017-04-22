@@ -1,5 +1,5 @@
-import { Action } from '../models/action';
-import { Command } from '../models/command';
+import { Action } from './action';
+import { Command } from './command';
 
 export class Terminal {
     actionFactories: ((parameters: string[])=>Action)[] = [];
@@ -11,7 +11,7 @@ export class Terminal {
     getAction(input: string) {
         const command = input
             .split(' ')
-            .reduce((command: Command, elem: string, idx: any) => {
+            .reduce((command: Command, elem: string, idx: number) => {
                 if (0 === idx) {
                     command.name = elem;
 
