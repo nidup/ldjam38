@@ -7,6 +7,8 @@ import { SandDesert } from '../biome/sand-desert';
 import { SnowyForest } from '../biome/snowy-forest';
 import { Tundra } from '../biome/tundra';
 
+import BoardFX from '../fx/board';
+
 import Shell from '../shell';
 import Speaker from '../speaker';
 import Monitor from '../monitor';
@@ -22,6 +24,8 @@ export default class Play extends Phaser.State {
 
     private dashboard: Dashboard;
     private keyboardSound: KeyboardSound;
+
+    private boardFX: BoardFX;
 
     public create()
     {
@@ -51,10 +55,16 @@ export default class Play extends Phaser.State {
         this.locations.push(new Tundra());
 
         this.add.image(0, 0, 'board');
+
+        this.boardFX = new BoardFX(this);
+        this.boardFX.display();
+
+        this.add.image(0, 0, 'board_top');
     }
 
     public update()
     {
+        this.boardFX.update();
     }
 
     public render()
