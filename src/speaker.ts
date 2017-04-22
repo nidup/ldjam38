@@ -1,12 +1,12 @@
 
 import Play from "./states/Play";
 import Preload from "./states/Preload";
-import {ShellOutput} from "./terminal/outputs/html-element-output";
+import {Output} from "./terminal/output";
 
 
 export default class Speaker {
 	private state: Play;
-	private output: ShellOutput;
+	private output: Output;
 
 	constructor(state: Play) {
 		this.state = state;
@@ -21,7 +21,7 @@ export default class Speaker {
 		this.state.sound.play(name);
 	}
 
-	setOutput (output: ShellOutput) {
+	setOutput (output: Output) {
 		this.output = output;
 		output.speaker = this;
 	}

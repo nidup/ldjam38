@@ -15,7 +15,7 @@ import Monitor from '../monitor';
 import Dashboard from '../dashboard';
 import KeyboardSound from '../sounds/keyboard';
 import ComputerSound from '../sounds/computer';
-import {ShellOutput} from "../terminal/outputs/html-element-output";
+import {Output} from "../terminal/output";
 
 export default class Play extends Phaser.State {
     currentLocation: Biome;
@@ -44,7 +44,7 @@ export default class Play extends Phaser.State {
             new Speaker(this),
             new Monitor(this)
         );
-        this.dashboard.setOutput(new ShellOutput());
+        this.dashboard.setOutput(new Output());
 
         this.computerSound = new ComputerSound(this);
         this.computerSound.playAllSequentially();

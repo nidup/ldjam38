@@ -1,6 +1,5 @@
 
 import { Terminal } from './terminal/terminal';
-import { ShellOutput } from './terminal/outputs/html-element-output';
 import { HelpActionFactory } from './terminal/actions/help';
 import { GotoActionFactory } from './terminal/actions/goto';
 import { SearchActionFactory } from './terminal/actions/search';
@@ -11,7 +10,7 @@ import {BuildActionFactory} from "./terminal/actions/build";
 import Play from "./states/Play";
 
 export default class Shell {
-    private output: ShellOutput;
+    private output: Output;
     private terminal: Terminal;
     private shellInput = null;
     private shellText = null;
@@ -43,7 +42,7 @@ export default class Shell {
         this.terminal.addActionFactory('build', BuildActionFactory);
     }
 
-    public setOutput(output: ShellOutput) {
+    public setOutput(output: Output) {
         this.output = output;
         this.output.terminalElement = this.shellText;
 
