@@ -1,5 +1,6 @@
 
 import Play from '../states/Play';
+import Preload from '../states/Preload';
 
 export default class KeyboardSound {
 	private state: Play;
@@ -13,6 +14,23 @@ export default class KeyboardSound {
 
 	constructor(state: Play) {
 		this.state = state;
+	}
+
+	static loadAssets(state: Preload) {
+        for (var i = 1; i <= KeyboardSound.numberEnter; i++) {
+            var j = ("00" + i).substr(-2, 2);
+            state.load.audio('keyboard/enter_' + j + '.wav', KeyboardSound.enterPath + j + '.wav')
+        }
+
+        for (var i = 1; i <= KeyboardSound.numberKey; i++) {
+            var j = ("00" + i).substr(-2, 2);
+            state.load.audio('keyboard/key_' + j + '.wav', KeyboardSound.keyPath + j + '.wav')
+        }
+
+        for (var i = 1; i <= KeyboardSound.numberSpace; i++) {
+            var j = ("00" + i).substr(-2, 2);
+            state.load.audio('keyboard/space_' + j + '.wav', KeyboardSound.spacePath + j + '.wav')
+        }
 	}
 
 	register() {
