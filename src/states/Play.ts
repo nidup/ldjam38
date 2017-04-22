@@ -17,7 +17,6 @@ export default class Play extends Phaser.State {
 
     public create()
     {
-
         if (this.debug) {
             this.game.time.advancedTiming = true
         }
@@ -26,7 +25,7 @@ export default class Play extends Phaser.State {
         this.briefingText.fixedToCamera = true;
 
         this.dashboard = new Dashboard(
-            new Shell(this.game),
+            new Shell(this),
             new Speaker(),
             new Monitor()
         );

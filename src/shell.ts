@@ -1,3 +1,4 @@
+import Play from './states/Play';
 import { Terminal } from './terminal/terminal';
 import { Output } from './terminal/output';
 import { HelpActionFactory } from './terminal/actions/help';
@@ -23,8 +24,8 @@ export default class Shell {
     private shellInput = null;
     private shellText = null;
 
-    constructor(game: Phaser.Game) {
-        let enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    constructor(state: Play) {
+        let enterKey = state.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         enterKey.onDown.add(() => {
             this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
 
@@ -32,7 +33,7 @@ export default class Shell {
 
             const output = new ShellOutput(this.shellText);
             try {
-                this.terminal.getAction(this.shellInput.value).execute(this, output);
+                this.terminal.getAction(this.shellInput.value).execute(state, output);
             } catch (e) {
                 output.error(e);
             }
