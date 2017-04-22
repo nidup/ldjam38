@@ -5,6 +5,7 @@ import { HelpActionFactory } from './terminal/actions/help';
 import { GotoActionFactory } from './terminal/actions/goto';
 import { SearchActionFactory } from './terminal/actions/search';
 import { WhereamiActionFactory } from './terminal/actions/whereami';
+import { EmailActionFactory } from './terminal/actions/email';
 
 export default class Shell {
     private terminal: Terminal;
@@ -45,5 +46,6 @@ export default class Shell {
         this.terminal.addActionFactory('goto', GotoActionFactory);
         this.terminal.addActionFactory('search', SearchActionFactory);
         this.terminal.addActionFactory('whereami', WhereamiActionFactory);
+        this.terminal.addActionFactory('email', EmailActionFactory);
     }
 }
