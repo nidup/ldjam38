@@ -16,6 +16,7 @@ class Goto implements Action {
         if (1 === destination.length) {
             state.currentLocation = destination[0];
             output.writeToTerminal('Moved to ' + state.currentLocation.type + '.');
+            output.writeToTerminal(state.currentLocation.description);
             return;
         }
         output.writeToTerminal('I don\'t know this place...');
