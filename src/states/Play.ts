@@ -14,6 +14,7 @@ import Speaker from '../speaker';
 import Monitor from '../monitor';
 import Dashboard from '../dashboard';
 import KeyboardSound from '../sounds/keyboard';
+import ComputerSound from '../sounds/computer';
 import {ShellOutput} from "../terminal/outputs/html-element-output";
 
 export default class Play extends Phaser.State {
@@ -25,6 +26,7 @@ export default class Play extends Phaser.State {
 
     private dashboard: Dashboard;
     private keyboardSound: KeyboardSound;
+    private computerSound: ComputerSound;
 
     private boardFX: BoardFX;
 
@@ -43,6 +45,9 @@ export default class Play extends Phaser.State {
             new Monitor(this)
         );
         this.dashboard.setOutput(new ShellOutput());
+
+        this.computerSound = new ComputerSound(this);
+        this.computerSound.playAllSequentially();
 
         this.keyboardSound = new KeyboardSound(this);
         this.keyboardSound.register();
