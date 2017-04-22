@@ -1,5 +1,11 @@
 import { Biome } from '../biome/biome';
+import { Grassland } from '../biome/grassland';
+import { Ocean } from '../biome/ocean';
+import { RainForest } from '../biome/rain-forest';
+import { RockyMountain } from '../biome/rocky-mountain';
+import { SandDesert } from '../biome/sand-desert';
 import { SnowyForest } from '../biome/snowy-forest';
+import { Tundra } from '../biome/tundra';
 
 import Shell from '../shell';
 import Speaker from '../speaker';
@@ -36,7 +42,13 @@ export default class Play extends Phaser.State {
         this.keyboardSound.register();
 
         // INIT LOCATIONS
+        this.locations.push(new Grassland());
+        this.locations.push(new Ocean());
+        this.locations.push(new RainForest());
+        this.locations.push(new RockyMountain());
+        this.locations.push(new SandDesert());
         this.locations.push(new SnowyForest());
+        this.locations.push(new Tundra());
 
         this.add.image(0, 0, 'board');
     }
