@@ -12,7 +12,7 @@ class SimpleGame extends Phaser.Game {
         super(
             720,
             405,
-            Phaser.CANVAS,
+            Phaser.WEBGL,
             "content",
             null
         );
