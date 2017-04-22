@@ -30,21 +30,21 @@ export default class Shell {
         document.body.appendChild(this.shellText);
 
         const output = new ShellOutput(this.shellText);
-        this.writeBootLines(output);
+        this.writeBootLines(output, () => {
+            let enterKey = state.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+            enterKey.onDown.add(() => {
+                this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
 
-        let enterKey = state.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-        enterKey.onDown.add(() => {
-            this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
+                this.shellText.scrollTop = this.shellText.scrollHeight;
 
-            this.shellText.scrollTop = this.shellText.scrollHeight;
-
-            try {
-                this.terminal.getAction(this.shellInput.value).execute(state, output);
-            } catch (e) {
-                output.error(e);
-            }
-            this.shellInput.value = '';
-        }, this);
+                try {
+                    this.terminal.getAction(this.shellInput.value).execute(state, output);
+                } catch (e) {
+                    output.error(e);
+                }
+                this.shellInput.value = '';
+            }, this);
+        });
 
         this.terminal = new Terminal();
         this.terminal.addActionFactory('help', HelpActionFactory);
@@ -54,7 +54,7 @@ export default class Shell {
         this.terminal.addActionFactory('email', EmailActionFactory);
     }
 
-    private writeBootLines(output: Output)
+    private writeBootLines(output: Output, callback)
     {
         let timeout = 1000;
         setTimeout(function(){ output.write('Boot...'); }, timeout*1);
@@ -64,6 +64,10 @@ export default class Shell {
         setTimeout(function(){ output.write('Ping ...'); }, timeout*7);
         setTimeout(function(){ output.write('Connection established.'); }, timeout*8);
         setTimeout(function(){ output.write('Hello operator, i\'m Herb-LB38, your recon rover.'); }, timeout*9);
-        setTimeout(function(){ output.write('Please let me know what to do.'); }, timeout*10);
+        setTimeout(function(){ 
+            output.write('Please let me know what to do.');
+            callback();
+        }, timeout*10);
+
     }
 }
