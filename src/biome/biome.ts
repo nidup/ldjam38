@@ -1,4 +1,4 @@
-import { Output } from '../terminal/output.ts';
+import { Output } from '../terminal/output';
 
 export interface Biome  {
     name: string;
