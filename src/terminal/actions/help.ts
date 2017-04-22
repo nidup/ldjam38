@@ -1,5 +1,6 @@
 import { Action } from '../action';
 import { Output } from '../output';
+import Play from '../../states/Play';
 
 class Help implements Action {
     name: string;
@@ -8,7 +9,7 @@ class Help implements Action {
         this.name = 'help';
     }
 
-    execute(output: Output) {
+    execute(state: Play, output: Output) {
         output.write('help       -- display helps');
     }
 }

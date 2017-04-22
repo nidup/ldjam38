@@ -6,7 +6,6 @@ import Menu from "./states/Menu";
 import Play from "./states/Play";
 
 class SimpleGame extends Phaser.Game {
-
     constructor()
     {
         super(
