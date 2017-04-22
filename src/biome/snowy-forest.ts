@@ -1,5 +1,5 @@
 import { Biome } from './biome';
-import { Output } from '../terminal/output.ts';
+import { Output } from '../terminal/output';
 
 export class SnowyForest implements Biome {
     public name: string = 'snowy-forest';
