@@ -55,13 +55,13 @@ export default class Play extends Phaser.State {
         this.keyboardSound.register();
 
         // INIT LOCATIONS
-        this.locations.push(new Grassland(this.dashboard));
-        this.locations.push(new Ocean(this.dashboard));
-        this.locations.push(new RainForest(this.dashboard));
-        this.locations.push(new RockyMountain(this.dashboard));
-        this.locations.push(new SandDesert(this.dashboard));
-        this.locations.push(new SnowyForest(this.dashboard));
-        this.locations.push(new Tundra(this.dashboard));
+        this.locations.push(new Grassland());
+        this.locations.push(new Ocean());
+        this.locations.push(new RainForest());
+        this.locations.push(new RockyMountain());
+        this.locations.push(new SandDesert());
+        this.locations.push(new SnowyForest());
+        this.locations.push(new Tundra());
 
         this.add.image(0, 0, 'board');
 

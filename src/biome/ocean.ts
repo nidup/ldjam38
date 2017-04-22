@@ -1,8 +1,8 @@
 
-import { Biome,BaseBiome } from './biome';
+import { Biome } from './biome';
 import { Output } from '../terminal/output';
 
-export class Ocean extends BaseBiome implements Biome {
+export class Ocean implements Biome {
     public name: string = 'ocean';
     public type: string = 'Ocean';
     public description: string = 'Well I can’t swim. Do you ?';
