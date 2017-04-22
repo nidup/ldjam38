@@ -19,6 +19,7 @@ export default class Shell {
         this.shellInput.setAttribute('type', 'text');
         this.shellInput.setAttribute('id', 'shellInput');
         document.body.appendChild(this.shellInput);
+        this.shellInput.setAttribute('disabled', true);
         this.shellInput.focus();
         this.shellInput.addEventListener("blur", (e) => {
             this.shellInput.focus();
@@ -26,7 +27,7 @@ export default class Shell {
 
         this.shellText = document.createElement("textarea");
         this.shellText.setAttribute('id', 'shellText');
-        this.shellText.setAttribute('disabled', 'disabled');
+        this.shellText.setAttribute('disabled', true);
         document.body.appendChild(this.shellText);
 
         const output = new ShellOutput(this.shellText);
@@ -44,6 +45,8 @@ export default class Shell {
                 }
                 this.shellInput.value = '';
             }, this);
+            this.shellInput.removeAttribute('disabled');
+            this.shellInput.focus();
         });
 
         this.terminal = new Terminal();
