@@ -54,8 +54,6 @@ export default class Shell {
                 }
                 this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
 
-                this.shellText.scrollTop = this.shellText.scrollHeight;
-
                 try {
                     this.terminal.getAction(this.shellInput.value).execute(this.state, this.output);
                 } catch (e) {
