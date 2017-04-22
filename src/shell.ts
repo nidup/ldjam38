@@ -7,6 +7,7 @@ import { SearchActionFactory } from './terminal/actions/search';
 import { WhereamiActionFactory } from './terminal/actions/whereami';
 import { EmailActionFactory } from './terminal/actions/email';
 import {Output} from "./terminal/output";
+import {BuildActionFactory} from "./terminal/actions/build";
 
 export default class Shell {
     private terminal: Terminal;
@@ -55,6 +56,7 @@ export default class Shell {
         this.terminal.addActionFactory('search', SearchActionFactory);
         this.terminal.addActionFactory('whereami', WhereamiActionFactory);
         this.terminal.addActionFactory('email', EmailActionFactory);
+        this.terminal.addActionFactory('build', BuildActionFactory);
     }
 
     private writeBootLines(output: Output, callback)
