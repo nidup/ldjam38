@@ -15,13 +15,13 @@ export class Ocean extends BaseBiome implements Biome {
         this.searchedCount++;
 
         if (this.searchedCount == 1) {
-            output.write("Don’t count on me to dip a wheel in the water.");
+            output.writeToTerminal("Don’t count on me to dip a wheel in the water.");
         }
         if (this.searchedCount == 2) {
-            output.write("More details");
+            output.writeToTerminal("More details");
         }
         if (this.searchedCount > 2) {
-            output.write("Full details");
+            output.writeToTerminal("Full details");
         }
     }
 }

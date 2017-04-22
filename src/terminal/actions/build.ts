@@ -12,7 +12,7 @@ class Build implements Action {
     }
 
     execute(state: Play, output: Output) {
-        output.write('I don\'t know how to build...');
+        output.writeToTerminal('I don\'t know how to build...');
     }
 }
 

@@ -1,4 +1,5 @@
 export interface Output {
-    write(data: string);
-    error(mess: string);
+    writeToTerminal(data: string, errored?: boolean);
+    playToSpeaker(data: string);
+    displayToMonitor(data: string);
 }

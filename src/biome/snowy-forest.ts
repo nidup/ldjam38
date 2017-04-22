@@ -15,19 +15,19 @@ export class SnowyForest extends BaseBiome implements Biome {
         this.searchedCount++;
 
         if (this.forestDestroyed) {
-            output.write("You recently destoyed forest, the ground " +
+            output.writeToTerminal("You recently destoyed forest, the ground " +
                 "is just full of dirt. Next time, think before " +
                 "cutting all the trees.")
         }
 
         if (this.searchedCount == 1) {
-            output.write("This forest is full of snow, you move some snow and find many vegetables.");
+            output.writeToTerminal("This forest is full of snow, you move some snow and find many vegetables.");
         }
         if (this.searchedCount == 2) {
-            output.write("More details");
+            output.writeToTerminal("More details");
         }
         if (this.searchedCount > 2) {
-            output.write("Full details");
+            output.writeToTerminal("Full details");
         }
     }
 }
