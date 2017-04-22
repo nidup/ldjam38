@@ -1,7 +1,8 @@
 import { Output } from './output';
+import Play from '../states/Play';
 
 export interface Action {
     name: string;
 
-    execute(output: Output);
+    execute(state: Play, output: Output);
 }

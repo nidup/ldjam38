@@ -1,5 +1,7 @@
 import { Action } from '../action';
 import { Output } from '../output';
+import Play from '../../states/Play';
+import { Biome } from '../../biome/biome';
 
 class Goto implements Action {
     name: string = 'goto';
@@ -9,8 +11,14 @@ class Goto implements Action {
         this.destination = destination;
     }
 
-    execute(output: Output) {
-        output.write('Going to ' + this.destination);
+    execute(state: Play, output: Output) {
+        const destination = state.locations.filter((location: Biome) => location.name === this.destination);
+        if (1 === destination.length) {
+            state.currentLocation = destination[0];
+            output.write('Moved to ' + state.currentLocation.type + '.');
+            return;
+        }
+        output.write('I don\'t know this place...');
     }
 }
 
