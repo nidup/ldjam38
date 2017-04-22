@@ -1,10 +1,12 @@
 import { Output } from '../output';
 import Monitor from "../../monitor";
+import Speaker from "../../speaker";
 
 export class ShellOutput implements Output {
 
     public terminalElement: HTMLInputElement
     public monitor: Monitor;
+    public speaker: Speaker;
 
     writeToTerminal(data: string, errored: boolean = false) {
         if (errored) {
@@ -15,7 +17,7 @@ export class ShellOutput implements Output {
     }
 
     playToSpeaker(data: string) {
-        throw 'not implemented yet';
+        this.speaker.playSound(data);
     }
 
     displayToMonitor(data: string) {

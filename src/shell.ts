@@ -50,6 +50,9 @@ export default class Shell {
         this.writeBootLines(this.output, () => {
             let enterKey = this.state.input.keyboard.addKey(Phaser.Keyboard.ENTER);
             enterKey.onDown.add(() => {
+                if (this.shellInput.value == "") {
+                    return;
+                }
                 this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
 
                 this.shellText.scrollTop = this.shellText.scrollHeight;
@@ -58,6 +61,7 @@ export default class Shell {
                     this.terminal.getAction(this.shellInput.value).execute(this.state, this.output);
                 } catch (e) {
                     this.output.writeToTerminal(e, true);
+                    this.output.playToSpeaker('notifications/error');
                 }
                 this.shellInput.value = '';
             }, this);

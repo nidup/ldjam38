@@ -23,5 +23,6 @@ export default class Speaker {
 
 	setOutput (output: ShellOutput) {
 		this.output = output;
+		output.speaker = this;
 	}
 }
