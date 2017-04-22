@@ -34,6 +34,9 @@ export default class Shell {
         this.shellInput.setAttribute('id', 'shellInput');
         document.body.appendChild(this.shellInput);
         this.shellInput.focus();
+        this.shellInput.addEventListener("blur", (e) => {
+            this.shellInput.focus();
+        }, true);
 
         this.shellText = document.createElement("textarea");
         this.shellText.setAttribute('id', 'shellText');

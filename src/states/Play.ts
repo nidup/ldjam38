@@ -21,7 +21,7 @@ export default class Play extends Phaser.State {
     private briefingText : Phaser.BitmapText;
 
     private dashboard: Dashboard;
-    private keyboardSound: KeyboardSound
+    private keyboardSound: KeyboardSound;
 
     public create()
     {
