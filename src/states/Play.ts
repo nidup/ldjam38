@@ -21,7 +21,7 @@ export default class Play extends Phaser.State {
             this.game.time.advancedTiming = true
         }
         this.game.stage.backgroundColor = '#000000';
-        this.briefingText = this.game.add.bitmapText(40, 40, 'carrier-command','Play Dat Game!', 10);
+        this.briefingText = this.game.add.bitmapText(40, 40, 'carrier-command','Game PLAY STATE.', 10);
         this.briefingText.fixedToCamera = true;
 
         this.dashboard = new Dashboard(
