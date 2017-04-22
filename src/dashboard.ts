@@ -4,8 +4,8 @@ import Monitor from './monitor';
 
 export default class Dashboard {
 	private shell: Shell;
-	private speaker: Speaker;
-	private monitor: Monitor;
+	public speaker: Speaker;
+	public monitor: Monitor;
 
 	constructor(shell: Shell, speaker: Speaker, monitor: Monitor) {
 		this.shell = shell;

@@ -1,10 +1,21 @@
 
-export default class Speaker {
-	constructor() {
+import Play from "./states/Play";
+import Preload from "./states/Preload";
 
+
+export default class Speaker {
+	private state: Play;
+
+	constructor(state: Play) {
+		this.state = state;
 	}
 
-	public playSound(name: string) {
+	static loadAssets (state: Preload) {
+        state.load.audio('notifications/error', 'assets/sounds/notifications/01.wav');
+        state.load.audio('notifications/01', 'assets/sounds/notifications/01.wav');
+	}
 
+	playSound(name: string) {
+		this.state.sound.play(name);
 	}
 }

@@ -1,8 +1,8 @@
 
-import { Biome } from './biome';
+import { Biome,BaseBiome } from './biome';
 import { Output } from '../terminal/output';
 
-export class Grassland implements Biome {
+export class Grassland extends BaseBiome implements Biome {
     public name: string = 'grassland';
     public type: string = 'Grassland';
     public description: string = 'What a beautiful place. The blue sky, the shiny sun, the soft wind… It is a call for meditation. 00001001010100101010101111';

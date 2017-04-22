@@ -1,7 +1,7 @@
-import { Biome } from './biome';
+import { Biome,BaseBiome } from './biome';
 import { Output } from '../terminal/output';
 
-export class SnowyForest implements Biome {
+export class SnowyForest extends BaseBiome implements Biome {
     public name: string = 'snowy-forest';
     public type: string = 'Snowy forest';
     public description: string = 'A snowy forest.';

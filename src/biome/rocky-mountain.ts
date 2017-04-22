@@ -1,8 +1,8 @@
 
-import { Biome } from './biome';
+import { Biome,BaseBiome } from './biome';
 import { Output } from '../terminal/output';
 
-export class RockyMountain implements Biome {
+export class RockyMountain extends BaseBiome implements Biome {
     public name: string = 'rocky-mountain';
     public type: string = 'Rocky Mountain';
     public description: string = 'It is hard for my wheels to proceed in this cliff. But I want to see what it feels like to be on top of the world.';

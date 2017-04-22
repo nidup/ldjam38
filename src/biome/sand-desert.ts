@@ -1,8 +1,8 @@
 
-import { Biome } from './biome';
+import { Biome,BaseBiome } from './biome';
 import { Output } from '../terminal/output';
 
-export class SandDesert implements Biome {
+export class SandDesert extends BaseBiome implements Biome {
     public name: string = 'sand-desert';
     public type: string = 'Sand Desert';
     public description: string = 'Hot wind and sand aren’t good mix for my core processors. But the view of the dunes… I wish you were with me to see this.';

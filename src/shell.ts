@@ -24,6 +24,7 @@ export default class Shell {
             try {
                 this.terminal.getAction(this.shellInput.value).execute(state, output);
             } catch (e) {
+                state.dashboard.speaker.playSound('notifications/error');
                 output.error(e);
             }
             this.shellInput.value = '';

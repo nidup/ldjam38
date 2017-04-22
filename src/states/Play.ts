@@ -20,8 +20,8 @@ export default class Play extends Phaser.State {
     private debug: boolean = false;
     private briefingText : Phaser.BitmapText;
 
-    private dashboard: Dashboard;
-    private keyboardSound: KeyboardSound
+    public dashboard: Dashboard;
+    private keyboardSound: KeyboardSound;
 
     public create()
     {
@@ -34,27 +34,27 @@ export default class Play extends Phaser.State {
 
         this.dashboard = new Dashboard(
             new Shell(this),
-            new Speaker(),
-            new Monitor()
+            new Speaker(this),
+            new Monitor(this)
         );
 
         this.keyboardSound = new KeyboardSound(this);
         this.keyboardSound.register();
 
         // INIT LOCATIONS
-        this.locations.push(new Grassland());
-        this.locations.push(new Ocean());
-        this.locations.push(new RainForest());
-        this.locations.push(new RockyMountain());
-        this.locations.push(new SandDesert());
-        this.locations.push(new SnowyForest());
-        this.locations.push(new Tundra());
+        this.locations.push(new Grassland(this.dashboard));
+        this.locations.push(new Ocean(this.dashboard));
+        this.locations.push(new RainForest(this.dashboard));
+        this.locations.push(new RockyMountain(this.dashboard));
+        this.locations.push(new SandDesert(this.dashboard));
+        this.locations.push(new SnowyForest(this.dashboard));
+        this.locations.push(new Tundra(this.dashboard));
 
         this.add.image(0, 0, 'board');
     }
 
-    public update()
-    {
+    public update() {
+        this.dashboard.monitor.update();
     }
 
     public render()
