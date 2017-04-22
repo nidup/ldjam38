@@ -5,6 +5,7 @@ import Shell from '../shell';
 import Speaker from '../speaker';
 import Monitor from '../monitor';
 import Dashboard from '../dashboard';
+import KeyboardSound from '../sounds/keyboard';
 
 export default class Play extends Phaser.State {
     currentLocation: Biome;
@@ -14,6 +15,7 @@ export default class Play extends Phaser.State {
     private briefingText : Phaser.BitmapText;
 
     private dashboard: Dashboard;
+    private keyboardSound: KeyboardSound
 
     public create()
     {
@@ -29,6 +31,9 @@ export default class Play extends Phaser.State {
             new Speaker(),
             new Monitor()
         );
+
+        this.keyboardSound = new KeyboardSound(this);
+        this.keyboardSound.register();
 
         // INIT LOCATIONS
         this.locations.push(new SnowyForest());

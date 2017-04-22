@@ -1,3 +1,4 @@
+import KeyboardSound from '../sounds/keyboard';
 
 export default class Preload extends Phaser.State {
 
@@ -9,19 +10,19 @@ export default class Preload extends Phaser.State {
 
         this.load.bitmapFont('carrier-command', 'assets/fonts/carrier_command.png', 'assets/fonts/carrier_command.xml');
 
-        for (var i = 1; i <= 8; i++) {
+        for (var i = 1; i <= KeyboardSound.numberEnter; i++) {
             var j = ("00" + i).substr(-2, 2);
-            this.load.audio('keyboard/enter_' + j + '.wav', 'assets/sounds/keyboard/enter_' + j + '.wav')
+            this.load.audio('keyboard/enter_' + j + '.wav', KeyboardSound.enterPath + j + '.wav')
         }
 
-        for (var i = 1; i <= 32; i++) {
+        for (var i = 1; i <= KeyboardSound.numberKey; i++) {
             var j = ("00" + i).substr(-2, 2);
-            this.load.audio('keyboard/key_' + j + '.wav', 'assets/sounds/keyboard/key_' + j + '.wav')
+            this.load.audio('keyboard/key_' + j + '.wav', KeyboardSound.keyPath + j + '.wav')
         }
 
-        for (var i = 1; i <= 8; i++) {
+        for (var i = 1; i <= KeyboardSound.numberSpace; i++) {
             var j = ("00" + i).substr(-2, 2);
-            this.load.audio('keyboard/space_' + j + '.wav', 'assets/sounds/keyboard/space_' + j + '.wav')
+            this.load.audio('keyboard/space_' + j + '.wav', KeyboardSound.spacePath + j + '.wav')
         }
     }
 
