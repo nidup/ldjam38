@@ -10,7 +10,7 @@ class Help implements Action {
     }
 
     execute(state: Play, output: Output) {
-        output.write('help       -- display helps');
+        output.writeToTerminal('help       -- display helps');
     }
 }
 

@@ -15,13 +15,13 @@ export class SandDesert extends BaseBiome implements Biome {
         this.searchedCount++;
 
         if (this.searchedCount == 1) {
-            output.write("This shape in the horizon is unusual in the desert relief.");
+            output.writeToTerminal("This shape in the horizon is unusual in the desert relief.");
         }
         if (this.searchedCount == 2) {
-            output.write("More details");
+            output.writeToTerminal("More details");
         }
         if (this.searchedCount > 2) {
-            output.write("Full details");
+            output.writeToTerminal("Full details");
         }
     }
 }

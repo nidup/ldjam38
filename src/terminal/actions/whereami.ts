@@ -9,10 +9,10 @@ class Whereami implements Action {
     execute(state: Play, output: Output) {
         const location = state.currentLocation;
         if (location) {
-            output.write(location.description);
+            output.writeToTerminal(location.description);
             return;
         }
-        output.write('I\'m nowhere...');
+        output.writeToTerminal('I\'m nowhere...');
     }
 }
 

@@ -15,13 +15,13 @@ export class Grassland extends BaseBiome implements Biome {
         this.searchedCount++;
 
         if (this.searchedCount == 1) {
-            output.write("It is a perfect place to build a little house, in this little prairie. I’ll send you the blue prints.");
+            output.writeToTerminal("It is a perfect place to build a little house, in this little prairie. I’ll send you the blue prints.");
         }
         if (this.searchedCount == 2) {
-            output.write("More details");
+            output.writeToTerminal("More details");
         }
         if (this.searchedCount > 2) {
-            output.write("Full details");
+            output.writeToTerminal("Full details");
         }
     }
 }

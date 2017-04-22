@@ -15,10 +15,10 @@ class Goto implements Action {
         const destination = state.locations.filter((location: Biome) => location.name === this.destination);
         if (1 === destination.length) {
             state.currentLocation = destination[0];
-            output.write('Moved to ' + state.currentLocation.type + '.');
+            output.writeToTerminal('Moved to ' + state.currentLocation.type + '.');
             return;
         }
-        output.write('I don\'t know this place...');
+        output.writeToTerminal('I don\'t know this place...');
     }
 }
 

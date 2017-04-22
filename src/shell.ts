@@ -1,4 +1,4 @@
-import Play from './states/Play';
+
 import { Terminal } from './terminal/terminal';
 import { ShellOutput } from './terminal/outputs/html-element-output';
 import { HelpActionFactory } from './terminal/actions/help';
@@ -8,13 +8,17 @@ import { WhereamiActionFactory } from './terminal/actions/whereami';
 import { EmailActionFactory } from './terminal/actions/email';
 import {Output} from "./terminal/output";
 import {BuildActionFactory} from "./terminal/actions/build";
+import Play from "./states/Play";
 
 export default class Shell {
+    private output: ShellOutput;
     private terminal: Terminal;
     private shellInput = null;
     private shellText = null;
+    private state : Play;
 
     constructor(state: Play) {
+        this.state = state;
         this.shellInput = document.createElement("input");
         this.shellInput.setAttribute('type', 'text');
         this.shellInput.setAttribute('id', 'shellInput');
@@ -30,25 +34,6 @@ export default class Shell {
         this.shellText.setAttribute('disabled', true);
         document.body.appendChild(this.shellText);
 
-        const output = new ShellOutput(this.shellText);
-        this.writeBootLines(output, () => {
-            let enterKey = state.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-            enterKey.onDown.add(() => {
-                this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
-
-                this.shellText.scrollTop = this.shellText.scrollHeight;
-
-                try {
-                    this.terminal.getAction(this.shellInput.value).execute(state, output);
-                } catch (e) {
-                    output.error(e);
-                }
-                this.shellInput.value = '';
-            }, this);
-            this.shellInput.removeAttribute('disabled');
-            this.shellInput.focus();
-        });
-
         this.terminal = new Terminal();
         this.terminal.addActionFactory('help', HelpActionFactory);
         this.terminal.addActionFactory('goto', GotoActionFactory);
@@ -58,18 +43,41 @@ export default class Shell {
         this.terminal.addActionFactory('build', BuildActionFactory);
     }
 
+    public setOutput(output: ShellOutput) {
+        this.output = output;
+        this.output.terminalElement = this.shellText;
+
+        this.writeBootLines(this.output, () => {
+            let enterKey = this.state.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+            enterKey.onDown.add(() => {
+                this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
+
+                this.shellText.scrollTop = this.shellText.scrollHeight;
+
+                try {
+                    this.terminal.getAction(this.shellInput.value).execute(this.state, this.output);
+                } catch (e) {
+                    this.output.writeToTerminal(e, true);
+                }
+                this.shellInput.value = '';
+            }, this);
+            this.shellInput.removeAttribute('disabled');
+            this.shellInput.focus();
+        });
+    }
+
     private writeBootLines(output: Output, callback)
     {
         let timeout = 1000;
-        setTimeout(function(){ output.write('Boot...'); }, timeout*1);
-        setTimeout(function(){ output.write('Connect to recon rover...'); }, timeout*2);
-        setTimeout(function(){ output.write('Ping ...'); }, timeout*3);
-        setTimeout(function(){ output.write('Ping ...'); }, timeout*5);
-        setTimeout(function(){ output.write('Ping ...'); }, timeout*7);
-        setTimeout(function(){ output.write('Connection established.'); }, timeout*8);
-        setTimeout(function(){ output.write('Hello operator, i\'m Herb-LB38, your recon rover.'); }, timeout*9);
+        setTimeout(function(){ output.writeToTerminal('Boot...'); }, timeout*1);
+        setTimeout(function(){ output.writeToTerminal('Connect to recon rover...'); }, timeout*2);
+        setTimeout(function(){ output.writeToTerminal('Ping ...'); }, timeout*3);
+        setTimeout(function(){ output.writeToTerminal('Ping ...'); }, timeout*5);
+        setTimeout(function(){ output.writeToTerminal('Ping ...'); }, timeout*7);
+        setTimeout(function(){ output.writeToTerminal('Connection established.'); }, timeout*8);
+        setTimeout(function(){ output.writeToTerminal('Hello operator, i\'m Herb-LB38, your recon rover.'); }, timeout*9);
         setTimeout(function(){
-            output.write('Please let me know what to do.');
+            output.writeToTerminal('Please let me know what to do.');
             callback();
         }, timeout*10);
 
