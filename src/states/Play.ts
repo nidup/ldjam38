@@ -46,7 +46,7 @@ export default class Play extends Phaser.State {
             new Speaker(this),
             new Monitor(this)
         );
-        this.dashboard.setOutput(new ShellOutput());
+        this.dashboard.setOutput(new Output());
 
         this.computerSound = new ComputerSound(this);
         this.computerSound.playAllSequentially();
