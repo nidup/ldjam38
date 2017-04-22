@@ -1,4 +1,3 @@
-export class Action {
+export interface Action {
     name: string;
-    parameters: string[] = [];
 }
