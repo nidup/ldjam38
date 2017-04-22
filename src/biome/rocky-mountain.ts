@@ -15,13 +15,13 @@ export class RockyMountain extends BaseBiome implements Biome {
         this.searchedCount++;
 
         if (this.searchedCount == 1) {
-            output.write("The wind is strong, but the view is clear. Really I wish you would be there with me.");
+            output.writeToTerminal("The wind is strong, but the view is clear. Really I wish you would be there with me.");
         }
         if (this.searchedCount == 2) {
-            output.write("More details");
+            output.writeToTerminal("More details");
         }
         if (this.searchedCount > 2) {
-            output.write("Full details");
+            output.writeToTerminal("Full details");
         }
     }
 }

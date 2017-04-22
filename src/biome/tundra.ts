@@ -15,13 +15,13 @@ export class Tundra extends BaseBiome implements Biome {
         this.searchedCount++;
 
         if (this.searchedCount == 1) {
-            output.write("This little plant is trapped in the frost.");
+            output.writeToTerminal("This little plant is trapped in the frost.");
         }
         if (this.searchedCount == 2) {
-            output.write("More details");
+            output.writeToTerminal("More details");
         }
         if (this.searchedCount > 2) {
-            output.write("Full details");
+            output.writeToTerminal("Full details");
         }
     }
 }

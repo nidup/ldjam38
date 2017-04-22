@@ -15,14 +15,14 @@ export class RainForest extends BaseBiome implements Biome {
         this.searchedCount++;
 
         if (this.searchedCount == 1) {
-            output.write("Like a feeling of being observed by some beasts. Did you hear that ?");
-            this.dashboard.monitor.showImage('scenes/01');
+            output.writeToTerminal("Like a feeling of being observed by some beasts. Did you hear that ?");
+            output.displayToMonitor('scenes/01');
         }
         if (this.searchedCount == 2) {
-            output.write("More details");
+            output.writeToTerminal("More details");
         }
         if (this.searchedCount > 2) {
-            output.write("Full details");
+            output.writeToTerminal("Full details");
         }
     }
 }

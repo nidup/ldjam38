@@ -1,10 +1,12 @@
 
 import Play from "./states/Play";
 import Preload from "./states/Preload";
+import {ShellOutput} from "./terminal/outputs/html-element-output";
 
 export default class Monitor {
 	private state: Play;
 	private currentImage: Phaser.Sprite;
+	private output: ShellOutput;
 
 	constructor(state: Play) {
 		this.state = state;
@@ -23,5 +25,10 @@ export default class Monitor {
 
 	update() {
 	    // this.state.game.add.sprite(80, 0, this.currentImage);
+	}
+
+	setOutput (output: ShellOutput) {
+		this.output = output;
+		output.monitor = this;
 	}
 }
