@@ -3,6 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>LDJAM 38</title>
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'VT323', monospace;
+            background: #000;
+        }
+
+        input[type="text"] {
+            font-family: 'VT323', monospace;
+            color: #1ec503;
+            position: absolute;
+            top: 300px;
+            left: 150px;
+            width: 300px;
+            background: transparent;
+            border: 0;
+            outline: 0;
+        }
+
+        textarea {
+            font-family: 'VT323', monospace;
+            color: #1ec503;
+            position: absolute;
+            top: 100px;
+            left: 150px;
+            width: 300px;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            height: 180px;
+            overflow-y: hidden;
+        }
+    </style>
 </head>
 <body>
 <div class="app">
@@ -10,5 +43,6 @@
 </div>
 <script type="text/javascript" src="lib/phaser.js"></script>
 <script type="text/javascript" src="build/bundle.js"></script>
+<script type="text/javascript" src="lib/phaser-input.js"></script>
 </body>
 </html>
