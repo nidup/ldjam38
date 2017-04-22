@@ -1,21 +1,10 @@
 import Play from './states/Play';
 import { Terminal } from './terminal/terminal';
-import { Output } from './terminal/output';
+import { ShellOutput } from './terminal/outputs/html-element-output';
 import { HelpActionFactory } from './terminal/actions/help';
 import { GotoActionFactory } from './terminal/actions/goto';
 import { SearchActionFactory } from './terminal/actions/search';
-
-class ShellOutput implements Output {
-    constructor(private element: HTMLInputElement) { }
-
-    write(data: string) {
-        this.element.value = this.element.value + '>>>' + data + '\n';
-    }
-
-    error(mess: string) {
-        this.element.value = this.element.value + '>>> ERROR: ' + mess + '\n';
-    }
-}
+import { WhereamiActionFactory } from './terminal/actions/whereami';
 
 export default class Shell {
     private terminal: Terminal;
@@ -55,5 +44,6 @@ export default class Shell {
         this.terminal.addActionFactory('help', HelpActionFactory);
         this.terminal.addActionFactory('goto', GotoActionFactory);
         this.terminal.addActionFactory('search', SearchActionFactory);
+        this.terminal.addActionFactory('whereami', WhereamiActionFactory);
     }
 }
