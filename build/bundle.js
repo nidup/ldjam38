@@ -86,6 +86,28 @@ class Grassland {
         this.searchedCount++;
         if (this.searchedCount == 1) {
             output.writeToTerminal("It is a perfect place to build a little house, in this little prairie. I’ll send you the blue prints.");
+            output.writeToTerminal("Uploading one photo...");
+            setTimeout(function () {
+                output.writeToTerminal('Uploading one photo (108): 3% ...');
+                output.displayToMonitor('scenes/grassland', 0.10);
+            }, 1000 * 1);
+            setTimeout(function () {
+                output.writeToTerminal('Uploading one photo (108): 21% ...');
+                output.displayToMonitor('scenes/grassland', 0.25);
+            }, 1000 * 2);
+            setTimeout(function () {
+                output.writeToTerminal('Uploading one photo (108): 48% ...');
+                output.displayToMonitor('scenes/grassland', 0.53);
+            }, 1000 * 3);
+            setTimeout(function () {
+                output.writeToTerminal('Uploading one photo (108): 79% ...');
+                output.displayToMonitor('scenes/grassland', 0.78);
+            }, 1000 * 4);
+            setTimeout(function () {
+                output.writeToTerminal('Uploading one photo (108): 100% ...');
+                output.displayToMonitor('scenes/grassland', 1);
+                output.writeToTerminal('Done.');
+            }, 1000 * 5);
         }
         if (this.searchedCount == 2) {
             output.writeToTerminal("More details");
@@ -100,38 +122,6 @@ exports.Grassland = Grassland;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-class Ocean {
-    constructor() {
-        this.name = 'ocean';
-        this.type = 'Ocean';
-        this.description = 'Well I can’t swim. Do you ?';
-        this.searched = false;
-        this.searchedCount = 0;
-    }
-    search(output) {
-        this.searched = true;
-        this.searchedCount++;
-        if (this.searchedCount == 1) {
-            output.writeToTerminal("Don’t count on me to dip a wheel in the water.");
-        }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
-        }
-    }
-}
-exports.Ocean = Ocean;
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -185,7 +175,7 @@ exports.RainForest = RainForest;
 
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -204,6 +194,27 @@ class RockyMountain {
         this.searchedCount++;
         if (this.searchedCount == 1) {
             output.writeToTerminal("The wind is strong, but the view is clear. Really I wish you would be there with me.");
+            setTimeout(function () {
+                output.writeToTerminal('Uploading one photo (78): 7% ...');
+                output.displayToMonitor('scenes/rocky-mountain', 0.10);
+            }, 1000 * 1);
+            setTimeout(function () {
+                output.writeToTerminal('Uploading one photo (78): 26% ...');
+                output.displayToMonitor('scenes/rocky-mountain', 0.25);
+            }, 1000 * 2);
+            setTimeout(function () {
+                output.writeToTerminal('Uploading one photo (78): 58% ...');
+                output.displayToMonitor('scenes/rocky-mountain', 0.53);
+            }, 1000 * 3);
+            setTimeout(function () {
+                output.writeToTerminal('Uploading one photo (78): 81% ...');
+                output.displayToMonitor('scenes/rocky-mountain', 0.78);
+            }, 1000 * 4);
+            setTimeout(function () {
+                output.writeToTerminal('Uploading one photo (78): 100% ...');
+                output.displayToMonitor('scenes/rocky-mountain', 1);
+                output.writeToTerminal('Done.');
+            }, 1000 * 5);
         }
         if (this.searchedCount == 2) {
             output.writeToTerminal("More details");
@@ -217,7 +228,7 @@ exports.RockyMountain = RockyMountain;
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -246,6 +257,38 @@ class SandDesert {
     }
 }
 exports.SandDesert = SandDesert;
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+class SeaShore {
+    constructor() {
+        this.name = 'sea-shore';
+        this.type = 'Sea Shore';
+        this.description = 'Well I can’t swim. Do you ?';
+        this.searched = false;
+        this.searchedCount = 0;
+    }
+    search(output) {
+        this.searched = true;
+        this.searchedCount++;
+        if (this.searchedCount == 1) {
+            output.writeToTerminal("Don’t count on me to dip a wheel in the water.");
+        }
+        if (this.searchedCount == 2) {
+            output.writeToTerminal("More details");
+        }
+        if (this.searchedCount > 2) {
+            output.writeToTerminal("Full details");
+        }
+    }
+}
+exports.SeaShore = SeaShore;
 
 
 /***/ }),
@@ -343,6 +386,8 @@ class Monitor {
     }
     static loadAssets(state) {
         state.load.image('scenes/rain-forest', 'assets/images/scenes/rain-forest.png');
+        state.load.image('scenes/rocky-mountain', 'assets/images/scenes/rocky-mountain.png');
+        state.load.image('scenes/grassland', 'assets/images/scenes/grassland.png');
     }
     showImage(name, opacity) {
         if (this.currentImage) {
@@ -610,11 +655,11 @@ exports.default = Menu;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const grassland_1 = __webpack_require__(0);
-const ocean_1 = __webpack_require__(1);
-const rain_forest_1 = __webpack_require__(2);
-const rocky_mountain_1 = __webpack_require__(3);
-const sand_desert_1 = __webpack_require__(4);
-const snowy_forest_1 = __webpack_require__(18);
+const sea_shore_1 = __webpack_require__(4);
+const rain_forest_1 = __webpack_require__(1);
+const rocky_mountain_1 = __webpack_require__(2);
+const sand_desert_1 = __webpack_require__(3);
+const ice_field_1 = __webpack_require__(18);
 const tundra_1 = __webpack_require__(5);
 const board_1 = __webpack_require__(20);
 const shell_1 = __webpack_require__(21);
@@ -650,11 +695,11 @@ class Play extends Phaser.State {
         this.keyboardSound.register();
         // INIT LOCATIONS
         this.locations.push(new grassland_1.Grassland());
-        this.locations.push(new ocean_1.Ocean());
+        this.locations.push(new sea_shore_1.SeaShore());
         this.locations.push(new rain_forest_1.RainForest());
         this.locations.push(new rocky_mountain_1.RockyMountain());
         this.locations.push(new sand_desert_1.SandDesert());
-        this.locations.push(new snowy_forest_1.SnowyForest());
+        this.locations.push(new ice_field_1.IceField());
         this.locations.push(new tundra_1.Tundra());
         this.background = this.game.add.group();
         var board = this.background.create(0, 0, 'board');
@@ -784,11 +829,11 @@ window.onload = () => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-class SnowyForest {
+class IceField {
     constructor() {
-        this.name = 'snowy-forest';
-        this.type = 'Snowy forest';
-        this.description = 'A snowy forest.';
+        this.name = 'ice-field';
+        this.type = 'Ice field';
+        this.description = 'An ice field.';
         this.searched = false;
         this.searchedCount = 0;
         this.forestDestroyed = false;
@@ -812,7 +857,7 @@ class SnowyForest {
         }
     }
 }
-exports.SnowyForest = SnowyForest;
+exports.IceField = IceField;
 
 
 /***/ }),
@@ -1019,11 +1064,11 @@ exports.default = Shell;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const tundra_1 = __webpack_require__(5);
-const sand_desert_1 = __webpack_require__(4);
-const rocky_mountain_1 = __webpack_require__(3);
+const sand_desert_1 = __webpack_require__(3);
+const rocky_mountain_1 = __webpack_require__(2);
 const grassland_1 = __webpack_require__(0);
-const ocean_1 = __webpack_require__(1);
-const rain_forest_1 = __webpack_require__(2);
+const sea_shore_1 = __webpack_require__(4);
+const rain_forest_1 = __webpack_require__(1);
 class Build {
     constructor(module) {
         this.name = 'build';
@@ -1105,16 +1150,16 @@ class Build {
                     }
                     throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
                 case 'energy':
-                    if (state.currentLocation instanceof ocean_1.Ocean || state.currentLocation instanceof sand_desert_1.SandDesert || state.currentLocation instanceof rain_forest_1.RainForest) {
+                    if (state.currentLocation instanceof sea_shore_1.SeaShore || state.currentLocation instanceof sand_desert_1.SandDesert || state.currentLocation instanceof rain_forest_1.RainForest) {
                         const installedModule = state.installedModules.find((installed) => installed.name === that.module);
                         if (undefined !== installedModule) {
                             throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
                         }
                         let type = '';
-                        if (state.currentLocation instanceof ocean_1.Ocean) {
+                        if (state.currentLocation instanceof sea_shore_1.SeaShore) {
                             type = 'wind turbines';
                         }
-                        else if (state.currentLocation instanceof ocean_1.Ocean) {
+                        else if (state.currentLocation instanceof sea_shore_1.SeaShore) {
                             type = "solar panels";
                         }
                         else {
