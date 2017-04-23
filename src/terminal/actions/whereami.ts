@@ -8,16 +8,16 @@ class Whereami implements Action {
     execute(state: Play, output: Output) {
         const currentLocation = state.currentLocation;
 
-        if (currentLocation == null) {
+        if (!state.isRoverLanded) {
             output.writeToTerminal('[x] Docked in the pod');
             return;
         }
 
         for (let location of state.locations) {
-           if (currentLocation.type == location.type) {
-                output.writeToTerminal('[x]' + location.type);
+           if (currentLocation && currentLocation.type == location.type) {
+                output.writeToTerminal('[x] ' + location.name);
             } else {
-                output.writeToTerminal('[ ] ' + location.type);
+                output.writeToTerminal('[ ] ' + location.name);
             }
         }
     }

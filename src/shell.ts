@@ -5,6 +5,7 @@ import { GotoActionFactory } from './terminal/actions/goto';
 import { SearchActionFactory } from './terminal/actions/search';
 import { WhereamiActionFactory } from './terminal/actions/whereami';
 import { EmailActionFactory } from './terminal/actions/email';
+import { UndockActionFactory } from './terminal/actions/undock';
 import {Output} from "./terminal/output";
 import {BuildActionFactory} from "./terminal/actions/build";
 import Play from "./states/Play";
@@ -40,6 +41,7 @@ export default class Shell {
         this.terminal.addActionFactory('whereami', WhereamiActionFactory);
         this.terminal.addActionFactory('email', EmailActionFactory);
         this.terminal.addActionFactory('build', BuildActionFactory);
+        this.terminal.addActionFactory('undock', UndockActionFactory);
     }
 
     public setOutput(output: Output) {
