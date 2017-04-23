@@ -7,10 +7,11 @@ export default class Leds {
     private state: Play;
     private output: Output;
 
-    private led1X = 497;
-    private led2X = 517;
-    private led3X = 537;
-    private led4X = 557;
+    private ledY = 96 * 1.5;
+    private led1X = 497 * 1.5;
+    private led2X = 517 * 1.5;
+    private led3X = 537 * 1.5;
+    private led4X = 557 * 1.5;
 
     constructor(state: Play) {
         this.state = state;
@@ -39,10 +40,10 @@ export default class Leds {
     }
 
     displayLeds() {
-        this.state.foreground.create(this.led1X, 96, 'leds/off');
-        this.state.foreground.create(this.led2X, 96, 'leds/off');
-        this.state.foreground.create(this.led3X, 96, 'leds/off');
-        this.state.foreground.create(this.led4X, 96, 'leds/off');
+        this.state.foreground.create(this.led1X, this.ledY, 'leds/off');
+        this.state.foreground.create(this.led2X, this.ledY, 'leds/off');
+        this.state.foreground.create(this.led3X, this.ledY, 'leds/off');
+        this.state.foreground.create(this.led4X, this.ledY, 'leds/off');
     }
 
     setOutput (output: Output) {
