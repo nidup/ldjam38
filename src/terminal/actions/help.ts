@@ -20,7 +20,7 @@ class Help implements Action {
             setTimeout(function(){ output.writeToTerminal('undock             -- undock rover from pod'); }, timeout*5);
             setTimeout(function(){ output.writeToTerminal('whereami           -- current/known locations'); }, timeout*6);
             setTimeout(function(){ output.writeToTerminal('archive ls, show   -- browse archives'); }, timeout*7);
-            setTimeout(function(){ output.writeToTerminal('explore            -- analysis of current location'); resolve(); }, timeout*8);
+            setTimeout(function(){ output.writeToTerminal('explore            -- explore current location'); resolve(); }, timeout*8);
         });
     }
 }
