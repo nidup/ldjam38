@@ -2,7 +2,7 @@
 import { Terminal } from './terminal/terminal';
 import { HelpActionFactory } from './terminal/actions/help';
 import { GotoActionFactory } from './terminal/actions/goto';
-import { SearchActionFactory } from './terminal/actions/search';
+import { ExploreActionFactory } from './terminal/actions/explore';
 import { WhereamiActionFactory } from './terminal/actions/whereami';
 import { UndockActionFactory } from './terminal/actions/undock';
 import { ArchiveActionFactory } from './terminal/actions/archive';
@@ -47,7 +47,7 @@ export default class Shell {
         this.terminal = new Terminal();
         this.terminal.addActionFactory('help', HelpActionFactory);
         this.terminal.addActionFactory('goto', GotoActionFactory);
-        this.terminal.addActionFactory('search', SearchActionFactory);
+        this.terminal.addActionFactory('explore', ExploreActionFactory);
         this.terminal.addActionFactory('whereami', WhereamiActionFactory);
         this.terminal.addActionFactory('inbox', InboxActionFactory);
         this.terminal.addActionFactory('build', BuildActionFactory);

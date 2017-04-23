@@ -3,13 +3,13 @@ import { Output } from '../output';
 import Play from '../../states/Play';
 import { GatheredData } from '../../gathered-data';
 
-export class Search implements Action {
-    name: string = 'search';
+export class Explore implements Action {
+    name: string = 'explore';
 
     execute(state: Play, output: Output) {
         return new Promise((resolve) => {
             if (state.isRoverLanded == false) {
-                output.writeToTerminal('I can\'t search. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
+                output.writeToTerminal('I can\'t explore. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
                 resolve();
                 return;
             }
@@ -36,6 +36,6 @@ export class Search implements Action {
     }
 }
 
-export function SearchActionFactory(parameters: string[]) {
-    return new Search();
+export function ExploreActionFactory(parameters: string[]) {
+    return new Explore();
 }
