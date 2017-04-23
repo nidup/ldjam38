@@ -7,11 +7,11 @@ export default class Leds {
     private state: Play;
     private output: Output;
 
-    private ledY = 96 * 1.5;
-    private led1X = 497 * 1.5;
-    private led2X = 517 * 1.5;
-    private led3X = 537 * 1.5;
-    private led4X = 557 * 1.5;
+    private ledY = 91 * 1.5;
+    private led1X = 495 * 1.5;
+    private led2X = 520 * 1.5;
+    private led3X = 542 * 1.5;
+    private led4X = 566 * 1.5;
 
     constructor(state: Play) {
         this.state = state;
