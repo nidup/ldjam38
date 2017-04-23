@@ -15,6 +15,7 @@ export default class Speaker {
 	static loadAssets (state: Preload) {
         state.load.audio('notifications/error', 'assets/sounds/notifications/01.wav');
         state.load.audio('notifications/01', 'assets/sounds/notifications/01.wav');
+        state.load.audio('notifications/success', 'assets/sounds/notifications/success.wav');
 	}
 
 	playSound(name: string) {

@@ -1,12 +1,14 @@
 
 import Monitor from "../monitor";
 import Speaker from "../speaker";
+import Leds from "../leds";
 
 export class Output {
 
     public terminalElement: HTMLInputElement
     public monitor: Monitor;
     public speaker: Speaker;
+    public leds: Leds;
 
     writeToTerminal(data: string, errored: boolean = false) {
         if (errored) {
@@ -22,6 +24,10 @@ export class Output {
 
     displayToMonitor(data: string, opacity: number) {
         this.monitor.showImage(data, opacity);
+    }
+
+    turnOnLed(position: number) {
+        this.leds.turnOnLed(position);
     }
 
     private out(data: string) {

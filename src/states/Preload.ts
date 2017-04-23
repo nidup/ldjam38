@@ -4,6 +4,7 @@ import ComputerSound from '../sounds/computer';
 import SpaceshipSound from '../sounds/spaceship';
 import Speaker from '../speaker';
 import Monitor from '../monitor';
+import Leds from '../leds';
 
 export default class Preload extends Phaser.State {
 
@@ -16,6 +17,7 @@ export default class Preload extends Phaser.State {
 
         Speaker.loadAssets(this);
         Monitor.loadAssets(this);
+        Leds.loadAssets(this);
         KeyboardSound.loadAssets(this);
         ComputerSound.loadAssets(this);
         SpaceshipSound.loadAssets(this);
