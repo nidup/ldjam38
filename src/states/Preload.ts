@@ -14,8 +14,6 @@ export default class Preload extends Phaser.State {
         this.load.image('board', 'assets/images/board.png');
         this.load.image('board_top', 'assets/images/board_top.png');
 
-        this.load.bitmapFont('carrier-command', 'assets/fonts/carrier_command.png', 'assets/fonts/carrier_command.xml');
-
         Speaker.loadAssets(this);
         Monitor.loadAssets(this);
         KeyboardSound.loadAssets(this);

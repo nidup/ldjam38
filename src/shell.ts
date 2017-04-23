@@ -53,6 +53,8 @@ export default class Shell {
         this.writeBootLines(this.output, () => {
             let enterKey = this.state.input.keyboard.addKey(Phaser.Keyboard.ENTER);
             enterKey.onDown.add(() => {
+                this.shellInput.value = this.shellInput.value.substring(2);
+
                 if (this.shellInput.value == "") {
                     return;
                 }
@@ -64,7 +66,7 @@ export default class Shell {
                     this.output.writeToTerminal(e, true);
                     this.output.playToSpeaker('notifications/error');
                 }
-                this.shellInput.value = '';
+                this.shellInput.value = '$ ';
             }, this);
             this.shellInput.removeAttribute('disabled');
             this.shellInput.focus();
@@ -74,17 +76,24 @@ export default class Shell {
     private writeBootLines(output: Output, callback)
     {
         let timeout = 1000;
-        setTimeout(function(){ output.writeToTerminal('Boot...'); }, timeout*1);
-        setTimeout(function(){ output.writeToTerminal('Connect to recon rover...'); }, timeout*2);
-        setTimeout(function(){ output.writeToTerminal('Ping ...'); }, timeout*3);
-        setTimeout(function(){ output.writeToTerminal('Ping ...'); }, timeout*5);
-        setTimeout(function(){ output.writeToTerminal('Ping ...'); }, timeout*7);
-        setTimeout(function(){ output.writeToTerminal('Connection established.'); }, timeout*8);
-        setTimeout(function(){ output.writeToTerminal('Hello operator, i\'m VJ-Net38, your recon rover.'); }, timeout*9);
+        setTimeout(function(){ output.writeToTerminal('Booting computer...'); }, timeout*2);
         setTimeout(function(){
-            output.writeToTerminal('Please let me know what to do.');
+            output.writeToTerminal("______         _  _____  _____  _____  _____ ");
+            output.writeToTerminal("| ___ \\       | |/ __  \\|  _  ||  _  ||  _  |");
+            output.writeToTerminal("| |_/ /__   __| |`' / /'| |/' || |/' || |/' |");
+            output.writeToTerminal("|  __/ _ \\ / _` |  / /  |  /| ||  /| ||  /| |");
+            output.writeToTerminal("| | | (_) | (_| |./ /___\\ |_/ /\\ |_/ /\\ |_/ /");
+            output.writeToTerminal("\\_|  \\___/ \\__,_|\\_____/ \\___/  \\___/  \\___/ ");
+        }, timeout*3);
+        setTimeout(function(){ output.writeToTerminal(':: Loading kernel...'); }, timeout*5);
+        setTimeout(function(){ output.writeToTerminal(':: Loading external modules...'); }, timeout*8);
+        setTimeout(function(){ output.writeToTerminal(':: Checking for system integrity...'); }, timeout*13);
+        setTimeout(function(){ output.writeToTerminal(':: Warming up RAM module...'); }, timeout*17);
+        setTimeout(function(){
+            output.writeToTerminal('Welcome again agent XD6001.');
+            output.writeToTerminal('You\'ve got a new message! (type `inbox`)');
+            this.shellInput.value = '$ ';
             callback();
-        }, timeout*10);
-
+          }, timeout*18);
     }
 }

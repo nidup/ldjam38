@@ -31,6 +31,19 @@ class Undock implements Action {
             state.currentLocation = state.locations.find((location) => location.name === 'snowy-forest');
 
         }, 28000);
+        setTimeout(() => {
+            output.writeToTerminal('Boot...');
+            output.writeToTerminal('Connect to recon rover...');
+        }, 28500);
+        setTimeout(() => {
+            output.writeToTerminal('Ping...');
+        }, 29000);
+        setTimeout(() => {
+            output.writeToTerminal('Connection established.');
+        }, 30000);
+        setTimeout(() => {
+            output.writeToTerminal('Hello operator, i\'m VJ-Net38, your recon rover.');
+        }, 31000);
     }
 }
 
