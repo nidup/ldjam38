@@ -1,6 +1,6 @@
 import { Biome } from './biome';
 import { Output } from '../terminal/output';
-import { ImageFile } from '../gathered-data';
+import {ImageFile, SoundFile} from '../gathered-data';
 
 export class RainForest implements Biome {
     public name: string = 'rain-forest';
@@ -35,7 +35,7 @@ export class RainForest implements Biome {
                 output.playCapture('capture/rain-forest');
 
                 output.writeToTerminal('What a packed forest, maybe I could find a clearing to send you a picture.', false, true);
-                break;
+                return new SoundFile('rain-forest.pcm', 'capture/rain-forest');
             case 2:
                 output.writeToTerminal('Uploading one photo...');
                 setTimeout(function(){

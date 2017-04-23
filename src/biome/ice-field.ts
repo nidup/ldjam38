@@ -1,5 +1,6 @@
 import { Biome } from './biome';
 import { Output } from '../terminal/output';
+import {ImageFile, SoundFile} from "../gathered-data";
 
 export class IceField implements Biome {
     public name: string = 'ice-field';
@@ -35,7 +36,7 @@ export class IceField implements Biome {
                     output.displayToMonitor('scenes/ice-field', 1);
                     output.writeToTerminal('Done.');
                 }, 1000*5);
-                break;
+                return new ImageFile('ice-field.jpg', 'scenes/ice-field');
 
             case 2:
                 setTimeout(function(){
@@ -57,7 +58,7 @@ export class IceField implements Biome {
                 output.playCapture('capture/ice-field');
 
                 output.writeToTerminal("My instruments are going crazy.", false, true);
-                break;
+                return new SoundFile('ice-field.pcm', 'capture/ice-field');
 
             case 3:
                 output.writeToTerminal("It’s getting really cold down here, I can’t wear mittens!", false, true);
