@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,6 +73,30 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+class SoundFile {
+    constructor(name, path) {
+        this.name = name;
+        this.path = path;
+    }
+}
+exports.SoundFile = SoundFile;
+class ImageFile {
+    constructor(name, path) {
+        this.name = name;
+        this.path = path;
+    }
+}
+exports.ImageFile = ImageFile;
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const gathered_data_1 = __webpack_require__(0);
 class Grassland {
     constructor() {
         this.name = 'grassland';
@@ -86,7 +110,6 @@ class Grassland {
         this.searchedCount++;
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal('It is a perfect place to build a little house, in this giant prairie. I’ll send you the blueprints.');
                 output.writeToTerminal("Uploading one photo...");
                 setTimeout(function () {
                     output.writeToTerminal('Uploading one photo (108): 3% ...');
@@ -109,28 +132,49 @@ class Grassland {
                     output.displayToMonitor('scenes/grassland', 1);
                     output.writeToTerminal('Done.');
                 }, 1000 * 5);
-                break;
+                return new gathered_data_1.ImageFile('grassland.jpg', 'scenes/grassland');
             case 2:
-                output.writeToTerminal('I have just seen a weird ball of fur jumping around.');
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200 * 5);
+                output.playCapture('capture/grassland');
+                output.writeToTerminal('It is a perfect place to build a little house, in this giant prairie. I’ll send you the blueprints.', false, true);
+                break;
+            case 3:
+                output.writeToTerminal('I have just seen a weird ball of fur jumping around.', false, true);
                 break;
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
     build(output) {
-        output.writeToTerminal('I had some problems during the installation, I patched it, I really hope it will hold. Would be a shame call it wasteland...');
+        output.writeToTerminal('I had some problems during the installation, I patched it, I really hope it will hold. Would be a shame call it wasteland...', false, true);
     }
 }
 exports.Grassland = Grassland;
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const gathered_data_1 = __webpack_require__(0);
 class RainForest {
     constructor() {
         this.name = 'rain-forest';
@@ -144,7 +188,24 @@ class RainForest {
         this.searchedCount++;
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal('What a packed forest, maybe I could find a clearing to send you a picture.');
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200 * 5);
+                output.playCapture('capture/rain-forest');
+                output.writeToTerminal('What a packed forest, maybe I could find a clearing to send you a picture.', false, true);
                 break;
             case 2:
                 output.writeToTerminal('Uploading one photo...');
@@ -169,23 +230,23 @@ class RainForest {
                     output.displayToMonitor('scenes/rain-forest', 1);
                     output.writeToTerminal('Done.');
                 }, 1000 * 5);
-                break;
+                return new gathered_data_1.ImageFile('rain-forest.jpg', 'scenes/rain-forest');
             case 3:
-                output.writeToTerminal('Like a feeling of being observed by some beasts. Did you hear that ?');
+                output.writeToTerminal('Like a feeling of being observed by some beasts. Did you hear that ?', false, true);
                 break;
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
     build(output) {
-        output.writeToTerminal('I had to cut down all the trees... the place is sadly silent now. All I can hear is my engine.');
+        output.writeToTerminal('I had to cut down all the trees... the place is sadly silent now. All I can hear is my engine.', false, true);
     }
 }
 exports.RainForest = RainForest;
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -204,7 +265,6 @@ class RockyMountain {
         this.searchedCount++;
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal('The wind is strong, but the view is clear. Really I wish you would be there with me.');
                 setTimeout(function () {
                     output.writeToTerminal('Uploading one photo (78): 7% ...');
                     output.displayToMonitor('scenes/rocky-mountain', 0.10);
@@ -228,24 +288,44 @@ class RockyMountain {
                 }, 1000 * 5);
                 break;
             case 2:
-                output.writeToTerminal('I feel I’m closer to you. What a beautiful world.');
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200 * 5);
+                output.playCapture('capture/rocky-mountain');
+                output.writeToTerminal('The wind is strong, but the view is clear. Really I wish you would be there with me.', false, true);
                 break;
             case 3:
-                output.writeToTerminal('Hola dere tütü, hola dero');
+                output.writeToTerminal('I feel I’m closer to you. What a beautiful world.', false, true);
+                break;
+            case 4:
+                output.writeToTerminal('Hola dere tütü, hola dero', false, true);
                 break;
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
     build(output) {
-        output.writeToTerminal('The signal is much better now.');
+        output.writeToTerminal('The signal is much better now.', false, true);
     }
 }
 exports.RockyMountain = RockyMountain;
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -264,7 +344,6 @@ class SandDesert {
         this.searchedCount++;
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal("This shape in the horizon is unusual in the desert relief.");
                 setTimeout(function () {
                     output.writeToTerminal('Uploading one photo (137): 9% ...');
                     output.displayToMonitor('scenes/sand-desert', 0.10);
@@ -288,21 +367,41 @@ class SandDesert {
                 }, 1000 * 5);
                 break;
             case 2:
-                output.writeToTerminal('The more I follow this shape, the further it looks..');
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200 * 5);
+                output.playCapture('capture/sand-desert');
+                output.writeToTerminal("This shape in the horizon is unusual in the desert relief.", false, true);
+                break;
+            case 3:
+                output.writeToTerminal('The more I follow this shape, the further it looks..', false, true);
                 break;
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
     build(output) {
-        output.writeToTerminal('I have terraformed a lot of dunes, it now looks like a giant beach.');
+        output.writeToTerminal('I have terraformed a lot of dunes, it now looks like a giant beach.', false, true);
     }
 }
 exports.SandDesert = SandDesert;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -321,7 +420,6 @@ class SeaShore {
         this.searchedCount++;
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal('There is powerful wind on this wide white sand beach, I\'m struggling to stand on my wheels.');
                 output.writeToTerminal("Uploading one photo...");
                 setTimeout(function () {
                     output.writeToTerminal('Uploading one photo (109): 5% ...');
@@ -346,24 +444,44 @@ class SeaShore {
                 }, 1000 * 5);
                 break;
             case 2:
-                output.writeToTerminal('Don’t count on me to dip a wheel in the water.');
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200 * 5);
+                output.playCapture('capture/sea-shore');
+                output.writeToTerminal('There is powerful wind on this wide white sand beach, I\'m struggling to stand on my wheels.', false, true);
                 break;
             case 3:
-                output.writeToTerminal('I’m starting to have sand in my pipes...');
+                output.writeToTerminal('Don’t count on me to dip a wheel in the water.', false, true);
+                break;
+            case 4:
+                output.writeToTerminal('I’m starting to have sand in my pipes...', false, true);
                 break;
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
     build(output) {
-        output.writeToTerminal('Not an easy job, but it’s working.');
+        output.writeToTerminal('Not an easy job, but it’s working.', false, true);
     }
 }
 exports.SeaShore = SeaShore;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -382,7 +500,6 @@ class Tundra {
         this.searchedCount++;
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal("This little plant is trapped in the frost.");
                 setTimeout(function () {
                     output.writeToTerminal('Uploading one photo (183): 5% ...');
                     output.displayToMonitor('scenes/toundra', 0.10);
@@ -406,21 +523,41 @@ class Tundra {
                 }, 1000 * 5);
                 break;
             case 2:
-                output.writeToTerminal('The topographic analysis indicates a rich underground, it must be at least a million years old.');
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200 * 5);
+                output.playCapture('capture/tundra');
+                output.writeToTerminal("A little plant is trapped in the frost.", false, true);
+                break;
+            case 3:
+                output.writeToTerminal('The topographic analysis indicates a rich underground, it must be at least a million years old.', false, true);
                 break;
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
     build(output) {
-        output.writeToTerminal('Pipeline network is finished. Should we talk about this last remaining bolt?..');
+        output.writeToTerminal('Pipeline network is finished. Should we talk about this last remaining bolt?..', false, true);
     }
 }
 exports.Tundra = Tundra;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -470,7 +607,7 @@ exports.default = Leds;
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -509,7 +646,7 @@ exports.default = Monitor;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -550,7 +687,7 @@ exports.default = ComputerSound;
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -616,7 +753,7 @@ exports.default = KeyboardSound;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -638,7 +775,7 @@ exports.default = SpaceshipSound;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -661,9 +798,25 @@ class Speaker {
         state.load.audio('hdd/load/6', 'assets/sounds/hdd/load_6.wav');
         state.load.audio('hdd/load/7', 'assets/sounds/hdd/load_7.wav');
         state.load.audio('hdd/load/8', 'assets/sounds/hdd/load_8.wav');
+        state.load.audio('capture/grassland', 'assets/sounds/capture/grassland.mp3');
+        state.load.audio('capture/ice-field', 'assets/sounds/capture/ice-field.mp3');
+        state.load.audio('capture/rain-forest', 'assets/sounds/capture/rain-forest.mp3');
+        state.load.audio('capture/rocky-mountain', 'assets/sounds/capture/rocky-mountain.mp3');
+        state.load.audio('capture/sand-desert', 'assets/sounds/capture/sand-desert.mp3');
+        state.load.audio('capture/sea-shore', 'assets/sounds/capture/sea-shore.mp3');
+        state.load.audio('capture/tundra', 'assets/sounds/capture/tundra.mp3');
     }
     playSound(name, volume = 1, loop = false) {
         return this.state.sound.play(name, volume, loop);
+    }
+    playCapture(name, volume = 1) {
+        this.currentPlayingCapture = this.state.sound.play(name, volume);
+        return this.currentPlayingCapture;
+    }
+    stopCapture() {
+        if (this.currentPlayingCapture) {
+            this.currentPlayingCapture.destroy();
+        }
     }
     setOutput(output) {
         this.output = output;
@@ -674,7 +827,7 @@ exports.default = Speaker;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -690,7 +843,7 @@ exports.default = Boot;
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -720,7 +873,7 @@ exports.default = Introduction;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -748,28 +901,28 @@ exports.default = Menu;
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const grassland_1 = __webpack_require__(0);
-const sea_shore_1 = __webpack_require__(4);
-const rain_forest_1 = __webpack_require__(1);
-const rocky_mountain_1 = __webpack_require__(2);
-const sand_desert_1 = __webpack_require__(3);
-const ice_field_1 = __webpack_require__(18);
-const tundra_1 = __webpack_require__(5);
-const board_1 = __webpack_require__(20);
-const shell_1 = __webpack_require__(21);
-const speaker_1 = __webpack_require__(11);
-const monitor_1 = __webpack_require__(7);
-const leds_1 = __webpack_require__(6);
-const dashboard_1 = __webpack_require__(19);
-const keyboard_1 = __webpack_require__(9);
-const computer_1 = __webpack_require__(8);
-const output_1 = __webpack_require__(31);
+const grassland_1 = __webpack_require__(1);
+const sea_shore_1 = __webpack_require__(5);
+const rain_forest_1 = __webpack_require__(2);
+const rocky_mountain_1 = __webpack_require__(3);
+const sand_desert_1 = __webpack_require__(4);
+const ice_field_1 = __webpack_require__(19);
+const tundra_1 = __webpack_require__(6);
+const board_1 = __webpack_require__(21);
+const shell_1 = __webpack_require__(22);
+const speaker_1 = __webpack_require__(12);
+const monitor_1 = __webpack_require__(8);
+const leds_1 = __webpack_require__(7);
+const dashboard_1 = __webpack_require__(20);
+const keyboard_1 = __webpack_require__(10);
+const computer_1 = __webpack_require__(9);
+const output_1 = __webpack_require__(33);
 class Play extends Phaser.State {
     constructor() {
         super(...arguments);
@@ -777,6 +930,7 @@ class Play extends Phaser.State {
         this.installedModules = [];
         this.isRoverLanded = false;
         this.isPlayingFinishScene = false;
+        this.gatheredData = [];
         this.debug = false;
     }
     create() {
@@ -838,17 +992,21 @@ class Play extends Phaser.State {
         setTimeout(function () { output.writeToTerminal('Subject: LD39 ASAP!'); }, timeout * 2);
         setTimeout(function () { output.writeToTerminal('From: Bernard McLindon'); }, timeout * 3);
         setTimeout(function () {
-            output.writeToTerminal('Well received the confirmation of station health check, everything is ok.' +
-                'We started the extraction, your job is done here.' +
+            output.writeToTerminal('Well received the confirmation of station health check, everything is ok. ' +
+                'We started the extraction, your job is done here. ' +
                 'BTW, engineers messed up again, they don\'t manage to remotely update your rover\'s firmware, ' +
-                'it seems the patch is not applicable.' +
-                'Anyway, let it there, you\'ll receive a new rover on LD 39, your new mission starts now.' +
+                'it seems the patch is not applicable. ' +
+                'Anyway, let it there, you\'ll receive a new rover on LD 39, your new mission starts now' +
                 '.');
         }, timeout * 4);
         setTimeout(function () { output.writeToTerminal('...'); }, timeout * 5);
+        setTimeout(function () { output.writeToTerminal('What are you doing? Don\'t let me alone!', false, true); }, timeout * 12);
+        setTimeout(() => { output.writeToTerminal('Connection lost.'); }, timeout * 14);
+        setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 16);
+        setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 20);
     }
     finish() {
-        if (this.isPlayingFinishScene == false && this.installedModules.length == 1) {
+        if (this.isPlayingFinishScene == false && this.installedModules.length == 4) {
             this.isPlayingFinishScene = true;
             this.game.camera.onFadeComplete.add(this.resetFade, this);
             this.fade();
@@ -859,18 +1017,18 @@ exports.default = Play;
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const keyboard_1 = __webpack_require__(9);
-const computer_1 = __webpack_require__(8);
-const spaceship_1 = __webpack_require__(10);
-const speaker_1 = __webpack_require__(11);
-const monitor_1 = __webpack_require__(7);
-const leds_1 = __webpack_require__(6);
+const keyboard_1 = __webpack_require__(10);
+const computer_1 = __webpack_require__(9);
+const spaceship_1 = __webpack_require__(11);
+const speaker_1 = __webpack_require__(12);
+const monitor_1 = __webpack_require__(8);
+const leds_1 = __webpack_require__(7);
 class Preload extends Phaser.State {
     preload() {
         this.load.image('cinematic1', 'assets/images/cinematic1.png');
@@ -893,18 +1051,18 @@ exports.default = Preload;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /// <reference path="../lib/phaser.d.ts"/>
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Boot_1 = __webpack_require__(12);
-const Preload_1 = __webpack_require__(16);
-const Menu_1 = __webpack_require__(14);
-const Introduction_1 = __webpack_require__(13);
-const Play_1 = __webpack_require__(15);
+const Boot_1 = __webpack_require__(13);
+const Preload_1 = __webpack_require__(17);
+const Menu_1 = __webpack_require__(15);
+const Introduction_1 = __webpack_require__(14);
+const Play_1 = __webpack_require__(16);
 class SimpleGame extends Phaser.Game {
     constructor() {
         super(720 * 1.5, 405 * 1.5, Phaser.WEBGL, "content", null);
@@ -922,7 +1080,7 @@ window.onload = () => {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -939,7 +1097,7 @@ class IceField {
         this.searchedCount++;
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal("My instruments are going crazy.");
+                output.writeToTerminal("Uploading one photo...");
                 setTimeout(function () {
                     output.writeToTerminal('Uploading one photo (99): 7% ...');
                     output.displayToMonitor('scenes/ice-field', 0.10);
@@ -963,10 +1121,30 @@ class IceField {
                 }, 1000 * 5);
                 break;
             case 2:
-                output.writeToTerminal("It’s getting really cold down here, I can’t wear mittens!");
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200 * 5);
+                output.playCapture('capture/ice-field');
+                output.writeToTerminal("My instruments are going crazy.", false, true);
+                break;
+            case 3:
+                output.writeToTerminal("It’s getting really cold down here, I can’t wear mittens!", false, true);
                 break;
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
     build(output) { }
@@ -975,7 +1153,7 @@ exports.IceField = IceField;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -999,7 +1177,7 @@ exports.default = Dashboard;
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1050,21 +1228,22 @@ exports.default = BoardFX;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const terminal_1 = __webpack_require__(32);
-const help_1 = __webpack_require__(24);
-const goto_1 = __webpack_require__(23);
-const search_1 = __webpack_require__(27);
-const whereami_1 = __webpack_require__(29);
-const undock_1 = __webpack_require__(28);
-const build_1 = __webpack_require__(22);
-const inventory_1 = __webpack_require__(26);
-const inbox_1 = __webpack_require__(25);
+const terminal_1 = __webpack_require__(34);
+const help_1 = __webpack_require__(26);
+const goto_1 = __webpack_require__(25);
+const search_1 = __webpack_require__(29);
+const whereami_1 = __webpack_require__(31);
+const undock_1 = __webpack_require__(30);
+const archive_1 = __webpack_require__(23);
+const build_1 = __webpack_require__(24);
+const inventory_1 = __webpack_require__(28);
+const inbox_1 = __webpack_require__(27);
 class Shell {
     constructor(state) {
         this.shellInput = null;
@@ -1100,6 +1279,7 @@ class Shell {
         this.terminal.addActionFactory('build', build_1.BuildActionFactory);
         this.terminal.addActionFactory('undock', undock_1.UndockActionFactory);
         this.terminal.addActionFactory('inventory', inventory_1.InventoryActionFactory);
+        this.terminal.addActionFactory('archive', archive_1.ArchiveActionFactory);
     }
     setOutput(output) {
         this.output = output;
@@ -1158,32 +1338,110 @@ class Shell {
             output.writeToTerminal("\\_|  \\___/ \\__,_|\\_____/ \\___/  \\___/  \\___/ ");
         }, timeout * 3);
         setTimeout(function () { output.writeToTerminal(':: Loading kernel...'); }, timeout * 5);
-        setTimeout(function () { output.writeToTerminal(':: Loading external modules...'); }, timeout * 8);
-        setTimeout(function () { output.writeToTerminal(':: Checking for system integrity...'); }, timeout * 13);
-        setTimeout(function () { output.writeToTerminal(':: Warming up RAM module...'); }, timeout * 17);
+        setTimeout(function () { output.writeToTerminal(':: Loading external modules...'); }, timeout * 7);
+        setTimeout(function () { output.writeToTerminal(':: Checking system integrity...'); }, timeout * 10);
+        setTimeout(function () { output.writeToTerminal(':: Warming up RAM module...'); }, timeout * 13);
+        setTimeout(function () { output.writeToTerminal(':: Mount disks...'); }, timeout * 16);
+        setTimeout(function () { output.writeToTerminal(':: Mount extra devices...'); }, timeout * 19);
         setTimeout(function () {
             output.writeToTerminal('Welcome again agent XD6001.');
             output.writeToTerminal('You\'ve got a new message! (type `inbox`)');
             callback();
-        }, timeout * 18);
+        }, timeout * 21);
     }
 }
 exports.default = Shell;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tundra_1 = __webpack_require__(5);
-const sand_desert_1 = __webpack_require__(3);
-const rocky_mountain_1 = __webpack_require__(2);
-const grassland_1 = __webpack_require__(0);
-const sea_shore_1 = __webpack_require__(4);
-const rain_forest_1 = __webpack_require__(1);
+const gathered_data_1 = __webpack_require__(0);
+class Archive {
+    constructor(action, filename = null) {
+        this.name = 'archive';
+        this.action = action;
+        this.filename = filename;
+    }
+    execute(state, output) {
+        switch (this.action) {
+            case 'ls':
+                return this.ls(state, output);
+            case 'open':
+                return this.open(state, output);
+            default:
+                throw 'Usage: archive ls, archive open <name>';
+        }
+    }
+    ls(state, output) {
+        return new Promise((resolve) => {
+            let timeout = 100;
+            if (state.gatheredData.length === 0) {
+                throw 'You have no data in your archive.';
+            }
+            for (let i in state.gatheredData) {
+                setTimeout(() => {
+                    output.writeToTerminal('- ' + state.gatheredData[i].name);
+                }, timeout * parseInt(i));
+            }
+            setTimeout(() => resolve(), timeout * (state.gatheredData.length + 1));
+        });
+    }
+    open(state, output) {
+        return new Promise((resolve) => {
+            if (null === this.filename) {
+                throw 'Please, specify an archive to display.';
+            }
+            const archive = state.gatheredData.find((file) => file.name === this.filename);
+            if (!archive) {
+                throw 'Cannot find archive "' + this.filename + '".';
+            }
+            if (archive instanceof gathered_data_1.ImageFile) {
+                output.writeToTerminal('Displaying "' + archive.name + '" on monitor...');
+                output.displayToMonitor(archive.path, 1);
+            }
+            if (archive instanceof gathered_data_1.SoundFile) {
+                output.writeToTerminal('Playing "' + archive.name + '" on speaker...');
+                output.playToSpeaker(archive.path);
+            }
+            resolve();
+        });
+    }
+}
+function ArchiveActionFactory(parameters) {
+    if (parameters.length === 0) {
+        throw 'Usage: archive ls, archive open <name>';
+    }
+    if (parameters.length === 1) {
+        return new Archive(parameters[0]);
+    }
+    if (parameters.length === 2) {
+        return new Archive(parameters[0], parameters[1]);
+    }
+    if (parameters.length > 2) {
+        throw 'Usage: archive ls, archive open <name>';
+    }
+}
+exports.ArchiveActionFactory = ArchiveActionFactory;
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const tundra_1 = __webpack_require__(6);
+const sand_desert_1 = __webpack_require__(4);
+const rocky_mountain_1 = __webpack_require__(3);
+const grassland_1 = __webpack_require__(1);
+const sea_shore_1 = __webpack_require__(5);
+const rain_forest_1 = __webpack_require__(2);
 class Build {
     constructor(module) {
         this.name = 'build';
@@ -1326,7 +1584,7 @@ exports.BuildActionFactory = BuildActionFactory;
 
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1347,6 +1605,7 @@ class Goto {
             const destination = state.locations.filter((location) => location.name === this.destination);
             if (1 === destination.length) {
                 state.currentLocation = destination[0];
+                output.stopCapture();
                 output.writeToTerminal('Moved to ' + state.currentLocation.type + '.');
                 output.writeToTerminal(state.currentLocation.description);
                 resolve();
@@ -1367,7 +1626,7 @@ exports.GotoActionFactory = GotoActionFactory;
 
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1398,7 +1657,7 @@ exports.HelpActionFactory = HelpActionFactory;
 
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1429,7 +1688,7 @@ exports.InboxActionFactory = InboxActionFactory;
 
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1466,7 +1725,7 @@ exports.InventoryActionFactory = InventoryActionFactory;
 
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1487,7 +1746,10 @@ class Search {
             if (!location) {
                 throw 'Move me first...';
             }
-            location.search(output);
+            const data = location.search(output);
+            if (data) {
+                state.gatheredData.push(data);
+            }
             resolve();
         });
     }
@@ -1500,13 +1762,13 @@ exports.SearchActionFactory = SearchActionFactory;
 
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const spaceship_1 = __webpack_require__(10);
+const spaceship_1 = __webpack_require__(11);
 class Undock {
     constructor() {
         this.name = 'undock';
@@ -1538,7 +1800,12 @@ class Undock {
             setTimeout(() => { output.writeToTerminal('Ping...'); }, 30000);
             setTimeout(() => { output.writeToTerminal('Ping...'); }, 31000);
             setTimeout(() => { output.writeToTerminal('Connection established.'); }, 32000);
-            setTimeout(() => { output.writeToTerminal('Hello operator, I\'m VJ-Net38, your recon rover. I\'ve finally landed on this small planet, feel free to send instructions.', false, true); resolve(); }, 33000);
+            setTimeout(() => {
+                output.writeToTerminal('Hello operator, I\'m VJ-Net38, your recon rover. I\'ve finally ' +
+                    'landed on this small planet, feel free to send instructions.', false, true);
+                output.writeToTerminal(state.currentLocation.description, false, true);
+                resolve();
+            }, 33000);
         });
     }
 }
@@ -1549,7 +1816,7 @@ exports.UndockActionFactory = UndockActionFactory;
 
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1586,7 +1853,7 @@ exports.WhereamiActionFactory = WhereamiActionFactory;
 
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1601,7 +1868,7 @@ exports.Command = Command;
 
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1614,10 +1881,10 @@ class Output {
             lineStart = '\n';
         }
         if (errored) {
-            this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ERROR: ' + data + '\n';
+            this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ERROR: ' + data;
         }
         else if (fromRover) {
-            this.terminalElement.value = this.terminalElement.value + lineStart + 'VJ-Net38: "' + data + '"\n';
+            this.terminalElement.value = this.terminalElement.value + lineStart + 'VJ-Net38: "' + data + '"';
         }
         else {
             this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ' + data;
@@ -1627,6 +1894,12 @@ class Output {
     playToSpeaker(data, volume = 1, loop = false) {
         const sound = this.speaker.playSound(data, volume, loop);
         return () => sound.destroy();
+    }
+    playCapture(data, volume = 1) {
+        this.speaker.playCapture(data, volume);
+    }
+    stopCapture() {
+        this.speaker.stopCapture();
     }
     displayToMonitor(data, opacity) {
         this.monitor.showImage(data, opacity);
@@ -1639,13 +1912,13 @@ exports.Output = Output;
 
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const command_1 = __webpack_require__(30);
+const command_1 = __webpack_require__(32);
 class Terminal {
     constructor() {
         this.actionFactories = [];
