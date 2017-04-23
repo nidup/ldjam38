@@ -10,12 +10,16 @@ export class Output {
     public leds: Leds;
 
     writeToTerminal(data: string, errored: boolean = false) {
-        if (errored) {
-            this.terminalElement.value = this.terminalElement.value + '>>> ERROR: ' + data + '\n';
-        } else {
-            this.terminalElement.value = this.terminalElement.value + '>>> ' + data + '\n';
+        var lineStart = '';
+        if (this.terminalElement.value !== "") {
+            lineStart = '\n';
         }
-        this.terminalElement.scrollTop = this.terminalElement.scrollHeight;
+        if (errored) {
+            this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ERROR: ' + data;
+        } else {
+            this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ' + data;
+        }
+        this.terminalElement.scrollTop = this.terminalElement.scrollHeight + 10;
     }
 
     playToSpeaker(data: string) {

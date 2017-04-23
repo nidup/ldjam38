@@ -63,7 +63,7 @@ export default class Shell {
                 if (this.shellInput.value == "") {
                     return;
                 }
-                this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
+                this.shellText.value = this.shellText.value + '\n' + this.shellInput.value;
                 this.shellInput.setAttribute('disabled', true);
 
                 try {
