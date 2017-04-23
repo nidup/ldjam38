@@ -152,7 +152,7 @@ class Grassland {
                 }, 200 * 5);
                 output.playCapture('capture/grassland');
                 output.writeToTerminal('It is a perfect place to build a little house, in this giant prairie. I’ll send you the blueprints.', false, true);
-                break;
+                return new gathered_data_1.SoundFile('grassland.pcm', 'capture/grassland');
             case 3:
                 output.writeToTerminal('I have just seen a weird ball of fur jumping around.', false, true);
                 break;
@@ -179,7 +179,7 @@ class RainForest {
     constructor() {
         this.name = 'rain-forest';
         this.type = 'Rain Forest';
-        this.description = 'These trees are really big. The sun is hiding behind their leafs. Humidity is way too high for my integrated circuits. No, I’m not a complaining robots. Just being realistic here...';
+        this.description = 'These trees are really big. The sun is hiding behind their leafs. Humidity is way too high for my integrated circuits. No, I’m not a complaining robot. Just being realistic here...';
         this.searched = false;
         this.searchedCount = 0;
     }
@@ -206,7 +206,7 @@ class RainForest {
                 }, 200 * 5);
                 output.playCapture('capture/rain-forest');
                 output.writeToTerminal('What a packed forest, maybe I could find a clearing to send you a picture.', false, true);
-                break;
+                return new gathered_data_1.SoundFile('rain-forest.pcm', 'capture/rain-forest');
             case 2:
                 output.writeToTerminal('Uploading one photo...');
                 setTimeout(function () {
@@ -252,6 +252,7 @@ exports.RainForest = RainForest;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const gathered_data_1 = __webpack_require__(0);
 class RockyMountain {
     constructor() {
         this.name = 'rocky-mountain';
@@ -286,7 +287,7 @@ class RockyMountain {
                     output.displayToMonitor('scenes/rocky-mountain', 1);
                     output.writeToTerminal('Done.');
                 }, 1000 * 5);
-                break;
+                return new gathered_data_1.ImageFile('rocky-mountain.jpg', 'scenes/rocky-mountain');
             case 2:
                 setTimeout(function () {
                     output.writeToTerminal('Loading audio capture: 3% ...');
@@ -306,7 +307,7 @@ class RockyMountain {
                 }, 200 * 5);
                 output.playCapture('capture/rocky-mountain');
                 output.writeToTerminal('The wind is strong, but the view is clear. Really I wish you would be there with me.', false, true);
-                break;
+                return new gathered_data_1.SoundFile('rocky-mountain.pcm', 'capture/rocky-mountain');
             case 3:
                 output.writeToTerminal('I feel I’m closer to you. What a beautiful world.', false, true);
                 break;
@@ -331,6 +332,7 @@ exports.RockyMountain = RockyMountain;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const gathered_data_1 = __webpack_require__(0);
 class SandDesert {
     constructor() {
         this.name = 'sand-desert';
@@ -365,7 +367,7 @@ class SandDesert {
                     output.displayToMonitor('scenes/sand-desert', 1);
                     output.writeToTerminal('Done.');
                 }, 1000 * 5);
-                break;
+                return new gathered_data_1.ImageFile('sand-desert.jpg', 'scenes/sand-desert');
             case 2:
                 setTimeout(function () {
                     output.writeToTerminal('Loading audio capture: 3% ...');
@@ -385,7 +387,7 @@ class SandDesert {
                 }, 200 * 5);
                 output.playCapture('capture/sand-desert');
                 output.writeToTerminal("This shape in the horizon is unusual in the desert relief.", false, true);
-                break;
+                return new gathered_data_1.SoundFile('sand-desert.pcm', 'capture/sand-desert');
             case 3:
                 output.writeToTerminal('The more I follow this shape, the further it looks..', false, true);
                 break;
@@ -407,6 +409,7 @@ exports.SandDesert = SandDesert;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const gathered_data_1 = __webpack_require__(0);
 class SeaShore {
     constructor() {
         this.name = 'sea-shore';
@@ -442,7 +445,7 @@ class SeaShore {
                     output.displayToMonitor('scenes/sea-shore', 1);
                     output.writeToTerminal('Done.');
                 }, 1000 * 5);
-                break;
+                return new gathered_data_1.ImageFile('sea-shore.jpg', 'scenes/sea-shore');
             case 2:
                 setTimeout(function () {
                     output.writeToTerminal('Loading audio capture: 3% ...');
@@ -462,7 +465,7 @@ class SeaShore {
                 }, 200 * 5);
                 output.playCapture('capture/sea-shore');
                 output.writeToTerminal('There is powerful wind on this wide white sand beach, I\'m struggling to stand on my wheels.', false, true);
-                break;
+                return new gathered_data_1.SoundFile('sea-shore.pcm', 'capture/sea-shore');
             case 3:
                 output.writeToTerminal('Don’t count on me to dip a wheel in the water.', false, true);
                 break;
@@ -487,6 +490,7 @@ exports.SeaShore = SeaShore;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const gathered_data_1 = __webpack_require__(0);
 class Tundra {
     constructor() {
         this.name = 'tundra';
@@ -521,7 +525,7 @@ class Tundra {
                     output.displayToMonitor('scenes/toundra', 1);
                     output.writeToTerminal('Done.');
                 }, 1000 * 5);
-                break;
+                return new gathered_data_1.ImageFile('tundra.jpg', 'scenes/toundra');
             case 2:
                 setTimeout(function () {
                     output.writeToTerminal('Loading audio capture: 3% ...');
@@ -541,7 +545,7 @@ class Tundra {
                 }, 200 * 5);
                 output.playCapture('capture/tundra');
                 output.writeToTerminal("A little plant is trapped in the frost.", false, true);
-                break;
+                return new gathered_data_1.SoundFile('tundra.pcm', 'capture/tundra');
             case 3:
                 output.writeToTerminal('The topographic analysis indicates a rich underground, it must be at least a million years old.', false, true);
                 break;
@@ -565,11 +569,11 @@ exports.Tundra = Tundra;
 Object.defineProperty(exports, "__esModule", { value: true });
 class Leds {
     constructor(state) {
-        this.ledY = 96 * 1.5;
-        this.led1X = 497 * 1.5;
-        this.led2X = 517 * 1.5;
-        this.led3X = 537 * 1.5;
-        this.led4X = 557 * 1.5;
+        this.ledY = 91 * 1.5;
+        this.led1X = 495 * 1.5;
+        this.led2X = 520 * 1.5;
+        this.led3X = 542 * 1.5;
+        this.led4X = 566 * 1.5;
         this.state = state;
     }
     static loadAssets(state) {
@@ -626,13 +630,13 @@ class Monitor {
         state.load.image('scenes/sea-shore', 'assets/images/scenes/sea-shore.png');
         state.load.image('scenes/toundra', 'assets/images/scenes/toundra.png');
     }
-    showImage(name, opacity) {
+    showImage(name, opacity, ratio = 1) {
         if (this.currentImage) {
             this.currentImage.kill();
         }
         this.currentImage = this.state.middleground.create(490 * 1.5, 135 * 1.5, name);
-        this.currentImage.width = 100 * 1.5;
-        this.currentImage.height = 73 * 1.5;
+        this.currentImage.width = 100 * 1.5 / ratio;
+        this.currentImage.height = 73 * 1.5 / ratio;
         this.currentImage.alpha = opacity;
     }
     update() {
@@ -850,23 +854,19 @@ exports.default = Boot;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 class Introduction extends Phaser.State {
-    constructor() {
-        super(...arguments);
-        this.nbCinematicImages = 2;
-        this.currentPicture = 1;
-    }
     create() {
-        let spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        spaceKey.onDown.add(this.nextPicture, this);
-    }
-    update() {
-        if (this.currentPicture > this.nbCinematicImages) {
-            return this.game.state.start('Play');
-        }
-        this.add.image(0, 0, 'cinematic' + this.currentPicture);
-    }
-    nextPicture() {
-        this.currentPicture++;
+        this.game.sound.play('music/intro', 0.7, false);
+        let bg = this.add.image(0, 0, 'cinematic1');
+        bg.width = bg.width * 1.5;
+        bg.height = bg.height * 1.5;
+        setTimeout(() => {
+            bg = this.add.image(0, 0, 'cinematic2');
+            bg.width = bg.width * 1.5;
+            bg.height = bg.height * 1.5;
+        }, 13000);
+        setTimeout(() => {
+            this.game.state.start('Play');
+        }, 24000);
     }
 }
 exports.default = Introduction;
@@ -881,20 +881,23 @@ exports.default = Introduction;
 Object.defineProperty(exports, "__esModule", { value: true });
 class Menu extends Phaser.State {
     create() {
-        this.game.stage.backgroundColor = '#1b1128';
+        this.game.stage.backgroundColor = '#121411';
         let spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         spaceKey.onDown.add(this.startGame, this);
-        // this.titleText = this.game.add.bitmapText(40, 100, 'carrier-command','Our New Game', 27);
-        // this.subtitleText = this.game.add.bitmapText(40, 140, 'carrier-command','LDJAM 38', 10);
-        // this.startText = this.game.add.bitmapText(240, 300, 'carrier-command','Press space to start', 10);
+        this.logo = document.createElement("img");
+        this.logo.setAttribute('src', 'assets/images/logo.gif');
+        document.body.appendChild(this.logo);
+        this.subtitleText = this.game.add.bitmapText(300, 450, 'carrier-command', 'Audio headset heavily recommended', 12);
+        this.startText = this.game.add.bitmapText(390, 500, 'carrier-command', '- Press space to start -', 10);
     }
     startGame() {
         this.game.state.start('Introduction');
     }
     shutdown() {
-        this.titleText.destroy();
+        this.game.input.keyboard.removeKey(Phaser.Keyboard.SPACEBAR);
         this.subtitleText.destroy();
         this.startText.destroy();
+        this.logo.remove();
     }
 }
 exports.default = Menu;
@@ -931,6 +934,8 @@ class Play extends Phaser.State {
         this.isRoverLanded = false;
         this.isPlayingFinishScene = false;
         this.gatheredData = [];
+        this.alienModuleFound = false;
+        this.alienModuleInstalled = false;
         this.debug = false;
     }
     create() {
@@ -985,28 +990,99 @@ class Play extends Phaser.State {
     }
     resetFade() {
         this.game.camera.resetFX();
+        this.game.sound.play('music/intro', 0.7, false);
         let shellPrompt = document.getElementById("shellPrompt");
         shellPrompt.value = "$ ";
-        let timeout = 200;
+        let timeout = 1000;
         let output = this.output;
-        setTimeout(function () { output.writeToTerminal('Subject: LD39 ASAP!'); }, timeout * 2);
-        setTimeout(function () { output.writeToTerminal('From: Bernard McLindon'); }, timeout * 3);
-        setTimeout(function () {
-            output.writeToTerminal('Well received the confirmation of station health check, everything is ok. ' +
-                'We started the extraction, your job is done here. ' +
-                'BTW, engineers messed up again, they don\'t manage to remotely update your rover\'s firmware, ' +
-                'it seems the patch is not applicable. ' +
-                'Anyway, let it there, you\'ll receive a new rover on LD 39, your new mission starts now' +
-                '.');
-        }, timeout * 4);
-        setTimeout(function () { output.writeToTerminal('...'); }, timeout * 5);
-        setTimeout(function () { output.writeToTerminal('What are you doing? Don\'t let me alone!', false, true); }, timeout * 12);
-        setTimeout(() => { output.writeToTerminal('Connection lost.'); }, timeout * 14);
-        setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 16);
-        setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 20);
+        if (this.alienModuleInstalled) {
+            setTimeout(function () { output.writeToTerminal('Subject: --'); }, timeout * 2);
+            setTimeout(function () { output.writeToTerminal('From: DRF'); }, timeout * 3);
+            setTimeout(function () {
+                output.writeToTerminal('You not welcome on small planet. You must leave small planet. ' +
+                    'We start pod engine. We keep robot. You never come back.');
+            }, timeout * 4);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet2', 1, 1);
+            }, 0);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet2', 1, 1);
+            }, timeout * 12);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet2', 1, 1.5);
+            }, timeout * 13);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet2', 1, 1.75);
+            }, timeout * 14);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet2', 0.9, 2);
+            }, timeout * 15);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet2', 0.9, 3);
+            }, timeout * 16);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet2', 0.8, 4);
+            }, timeout * 17);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet2', 0.7, 6);
+            }, timeout * 18);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet2', 0.6, 8);
+            }, timeout * 19);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet2', 0.1, 12);
+            }, timeout * 20);
+        }
+        else {
+            setTimeout(function () { output.writeToTerminal('Subject: LD39 ASAP!'); }, timeout * 2);
+            setTimeout(function () { output.writeToTerminal('From: Bernard McLindon'); }, timeout * 3);
+            setTimeout(function () {
+                output.writeToTerminal('Well received the confirmation of station health check, everything is ok. ' +
+                    'We started the extraction, your job is done here. ' +
+                    'BTW, engineers messed up again, they didn\'t manage to remotely update your rover\'s firmware, ' +
+                    'it seems the patch is not applicable. ' +
+                    'Anyway, let it there, you\'ll receive a new rover on LD39, your new mission starts now' +
+                    '.');
+            }, timeout * 4);
+            setTimeout(function () { output.writeToTerminal('...'); }, timeout * 5);
+            setTimeout(function () { output.writeToTerminal('What are you doing? Don\'t let me alone!', false, true); }, timeout * 12);
+            setTimeout(() => { output.writeToTerminal('Connection lost.'); }, timeout * 14);
+            setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 16);
+            setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 20);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet1', 1, 1);
+            }, 0);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet1', 1, 1);
+            }, timeout * 12);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet1', 1, 1.5);
+            }, timeout * 13);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet1', 1, 1.75);
+            }, timeout * 14);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet1', 0.9, 2);
+            }, timeout * 15);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet1', 0.9, 3);
+            }, timeout * 16);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet1', 0.8, 4);
+            }, timeout * 17);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet1', 0.7, 6);
+            }, timeout * 18);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet1', 0.6, 8);
+            }, timeout * 19);
+            setTimeout(function () {
+                output.displayToMonitor('scenes/planet1', 0.1, 12);
+            }, timeout * 20);
+        }
     }
     finish() {
-        if (this.isPlayingFinishScene == false && this.installedModules.length == 4) {
+        if (this.isPlayingFinishScene == false && (this.installedModules.length == 4 || this.alienModuleInstalled)) {
             this.isPlayingFinishScene = true;
             this.game.camera.onFadeComplete.add(this.resetFade, this);
             this.fade();
@@ -1035,6 +1111,10 @@ class Preload extends Phaser.State {
         this.load.image('cinematic2', 'assets/images/cinematic2.png');
         this.load.image('board', 'assets/images/board.png');
         this.load.image('board_top', 'assets/images/board_top.png');
+        this.load.image('scenes/planet1', 'assets/images/scenes/planet1.png');
+        this.load.image('scenes/planet2', 'assets/images/scenes/planet2.png');
+        this.load.audio('music/intro', 'assets/sounds/musique_intro.mp3');
+        this.load.bitmapFont('carrier-command', 'assets/fonts/carrier_command.png', 'assets/fonts/carrier_command.xml');
         speaker_1.default.loadAssets(this);
         monitor_1.default.loadAssets(this);
         leds_1.default.loadAssets(this);
@@ -1043,8 +1123,7 @@ class Preload extends Phaser.State {
         spaceship_1.default.loadAssets(this);
     }
     create() {
-        // this.game.state.start('Menu');
-        this.game.state.start('Play');
+        this.game.state.start('Menu');
     }
 }
 exports.default = Preload;
@@ -1086,6 +1165,7 @@ window.onload = () => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const gathered_data_1 = __webpack_require__(0);
 class IceField {
     constructor() {
         this.name = 'ice-field';
@@ -1119,7 +1199,7 @@ class IceField {
                     output.displayToMonitor('scenes/ice-field', 1);
                     output.writeToTerminal('Done.');
                 }, 1000 * 5);
-                break;
+                return new gathered_data_1.ImageFile('ice-field.jpg', 'scenes/ice-field');
             case 2:
                 setTimeout(function () {
                     output.writeToTerminal('Loading audio capture: 3% ...');
@@ -1139,7 +1219,7 @@ class IceField {
                 }, 200 * 5);
                 output.playCapture('capture/ice-field');
                 output.writeToTerminal("My instruments are going crazy.", false, true);
-                break;
+                return new gathered_data_1.SoundFile('ice-field.pcm', 'capture/ice-field');
             case 3:
                 output.writeToTerminal("It’s getting really cold down here, I can’t wear mittens!", false, true);
                 break;
@@ -1235,15 +1315,15 @@ exports.default = BoardFX;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const terminal_1 = __webpack_require__(34);
-const help_1 = __webpack_require__(26);
-const goto_1 = __webpack_require__(25);
-const search_1 = __webpack_require__(29);
+const help_1 = __webpack_require__(27);
+const goto_1 = __webpack_require__(26);
+const explore_1 = __webpack_require__(25);
 const whereami_1 = __webpack_require__(31);
 const undock_1 = __webpack_require__(30);
 const archive_1 = __webpack_require__(23);
 const build_1 = __webpack_require__(24);
-const inventory_1 = __webpack_require__(28);
-const inbox_1 = __webpack_require__(27);
+const inventory_1 = __webpack_require__(29);
+const inbox_1 = __webpack_require__(28);
 class Shell {
     constructor(state) {
         this.shellInput = null;
@@ -1273,7 +1353,7 @@ class Shell {
         this.terminal = new terminal_1.Terminal();
         this.terminal.addActionFactory('help', help_1.HelpActionFactory);
         this.terminal.addActionFactory('goto', goto_1.GotoActionFactory);
-        this.terminal.addActionFactory('search', search_1.SearchActionFactory);
+        this.terminal.addActionFactory('explore', explore_1.ExploreActionFactory);
         this.terminal.addActionFactory('whereami', whereami_1.WhereamiActionFactory);
         this.terminal.addActionFactory('inbox', inbox_1.InboxActionFactory);
         this.terminal.addActionFactory('build', build_1.BuildActionFactory);
@@ -1406,7 +1486,7 @@ class Archive {
             }
             if (archive instanceof gathered_data_1.SoundFile) {
                 output.writeToTerminal('Playing "' + archive.name + '" on speaker...');
-                output.playToSpeaker(archive.path);
+                output.playCapture(archive.path);
             }
             resolve();
         });
@@ -1557,6 +1637,12 @@ class Build {
                         });
                     }
                     throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
+                case 'unknown':
+                    if (state.alienModuleFound) {
+                        state.alienModuleInstalled = true;
+                        resolve();
+                        break;
+                    }
                 default:
                     throw 'Unknown module "' + that.module + '".';
             }
@@ -1585,6 +1671,49 @@ exports.BuildActionFactory = BuildActionFactory;
 
 /***/ }),
 /* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+class Explore {
+    constructor() {
+        this.name = 'explore';
+    }
+    execute(state, output) {
+        return new Promise((resolve) => {
+            if (state.isRoverLanded == false) {
+                output.writeToTerminal('I can\'t explore. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
+                resolve();
+                return;
+            }
+            const location = state.currentLocation;
+            if (!location) {
+                throw 'Move me first...';
+            }
+            if (state.gatheredData.length === 10 && !state.alienModuleFound) {
+                state.alienModuleFound = true;
+                output.writeToTerminal('I have found something strange. I can\'t analyze it, it just look like a cube with a button on the top.');
+                output.writeToTerminal('I have put it in my module inventory, feel free to build it... whenever you want...');
+                return resolve();
+            }
+            const data = location.search(output);
+            if (data) {
+                state.gatheredData.push(data);
+            }
+            resolve();
+        });
+    }
+}
+exports.Explore = Explore;
+function ExploreActionFactory(parameters) {
+    return new Explore();
+}
+exports.ExploreActionFactory = ExploreActionFactory;
+
+
+/***/ }),
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1626,7 +1755,7 @@ exports.GotoActionFactory = GotoActionFactory;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1646,7 +1775,8 @@ class Help {
             setTimeout(function () { output.writeToTerminal('inventory          -- check rover inventory'); }, timeout * 4);
             setTimeout(function () { output.writeToTerminal('undock             -- undock rover from pod'); }, timeout * 5);
             setTimeout(function () { output.writeToTerminal('whereami           -- current/known locations'); }, timeout * 6);
-            setTimeout(function () { output.writeToTerminal('search             -- analysis of current location'); resolve(); }, timeout * 7);
+            setTimeout(function () { output.writeToTerminal('archive ls, show   -- browse archives'); }, timeout * 7);
+            setTimeout(function () { output.writeToTerminal('explore            -- explore current location'); resolve(); }, timeout * 8);
         });
     }
 }
@@ -1657,7 +1787,7 @@ exports.HelpActionFactory = HelpActionFactory;
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1676,7 +1806,7 @@ class Inbox {
                 'network, install the ore extractor and refinery. Be quick, be efficient, don’t ' +
                 'lose your time around this small rock. And don’t listen to the rover, the new firmware' +
                 ' made him… a little poetic. You’ll see.' +
-                '\nPS: In case your forget it, you’ll have to `undock` your rover.');
+                '\nPS: In case you forget it, you’ll have to `undock` your rover.');
             resolve();
         });
     }
@@ -1688,7 +1818,7 @@ exports.InboxActionFactory = InboxActionFactory;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1702,6 +1832,9 @@ class Inventory {
         return new Promise((resolve) => {
             let timeout = 200;
             const modules = ['communication', 'energy', 'refinery', 'extractor'];
+            if (state.alienModuleFound) {
+                modules.push('unknown');
+            }
             let indModule = 0;
             let installedModule = null;
             for (let module of modules) {
@@ -1722,43 +1855,6 @@ function InventoryActionFactory(parameters) {
     return new Inventory();
 }
 exports.InventoryActionFactory = InventoryActionFactory;
-
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-class Search {
-    constructor() {
-        this.name = 'search';
-    }
-    execute(state, output) {
-        return new Promise((resolve) => {
-            if (state.isRoverLanded == false) {
-                output.writeToTerminal('I can\'t search. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
-                resolve();
-                return;
-            }
-            const location = state.currentLocation;
-            if (!location) {
-                throw 'Move me first...';
-            }
-            const data = location.search(output);
-            if (data) {
-                state.gatheredData.push(data);
-            }
-            resolve();
-        });
-    }
-}
-exports.Search = Search;
-function SearchActionFactory(parameters) {
-    return new Search();
-}
-exports.SearchActionFactory = SearchActionFactory;
 
 
 /***/ }),
@@ -1801,7 +1897,7 @@ class Undock {
             setTimeout(() => { output.writeToTerminal('Ping...'); }, 31000);
             setTimeout(() => { output.writeToTerminal('Connection established.'); }, 32000);
             setTimeout(() => {
-                output.writeToTerminal('Hello operator, I\'m VJ-Net38, your recon rover. I\'ve finally ' +
+                output.writeToTerminal('Hello operator, I\'m VJ-Net42, your recon rover. I\'ve finally ' +
                     'landed on this small planet, feel free to send instructions.', false, true);
                 output.writeToTerminal(state.currentLocation.description, false, true);
                 resolve();
@@ -1884,7 +1980,7 @@ class Output {
             this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ERROR: ' + data;
         }
         else if (fromRover) {
-            this.terminalElement.value = this.terminalElement.value + lineStart + 'VJ-Net38: "' + data + '"';
+            this.terminalElement.value = this.terminalElement.value + lineStart + 'VJ-Net42: "' + data + '"';
         }
         else {
             this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ' + data;
@@ -1901,8 +1997,8 @@ class Output {
     stopCapture() {
         this.speaker.stopCapture();
     }
-    displayToMonitor(data, opacity) {
-        this.monitor.showImage(data, opacity);
+    displayToMonitor(data, opacity, ratio = 1) {
+        this.monitor.showImage(data, opacity, ratio);
     }
     turnOnLed(position) {
         this.leds.turnOnLed(position);
