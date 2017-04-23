@@ -12,6 +12,12 @@ class Goto implements Action {
     }
 
     execute(state: Play, output: Output) {
+
+        if (state.isRoverLanded == false) {
+            output.writeToTerminal('I can\'t move. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
+            return;
+        }
+
         const destination = state.locations.filter((location: Biome) => location.name === this.destination);
         if (1 === destination.length) {
             state.currentLocation = destination[0];
@@ -24,8 +30,9 @@ class Goto implements Action {
 }
 
 export function GotoActionFactory(parameters: string[]) {
+
     if (1 !== parameters.length) {
-        throw 'Where do you want to go?!';
+        throw 'I need a destination, I can\'t decide where to go, or may I?';
     }
 
     return new Goto(parameters[0]);
