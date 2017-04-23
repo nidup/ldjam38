@@ -16,10 +16,17 @@ export default class Shell {
     private terminal: Terminal;
     private shellInput = null;
     private shellText = null;
+    private shellPrompt = null;
     private state : Play;
 
     constructor(state: Play) {
         this.state = state;
+        this.shellPrompt = document.createElement("input");
+        this.shellPrompt.value = "$ ";
+        this.shellPrompt.setAttribute('id', 'shellPrompt');
+        this.shellPrompt.setAttribute('type', 'text');
+        this.shellPrompt.setAttribute('readonly', 'readonly');
+        document.body.appendChild(this.shellPrompt);
         this.shellInput = document.createElement("input");
         this.shellInput.setAttribute('type', 'text');
         this.shellInput.setAttribute('id', 'shellInput');
@@ -53,20 +60,17 @@ export default class Shell {
         this.writeBootLines(this.output, () => {
             let enterKey = this.state.input.keyboard.addKey(Phaser.Keyboard.ENTER);
             enterKey.onDown.add(() => {
-                this.shellInput.value = this.shellInput.value.substring(2);
-
                 if (this.shellInput.value == "") {
                     return;
                 }
                 this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
-
                 try {
                     this.terminal.getAction(this.shellInput.value).execute(this.state, this.output);
                 } catch (e) {
                     this.output.writeToTerminal(e, true);
                     this.output.playToSpeaker('notifications/error');
                 }
-                this.shellInput.value = '$ ';
+                this.shellInput.value = "";
             }, this);
             this.shellInput.removeAttribute('disabled');
             this.shellInput.focus();
@@ -92,7 +96,6 @@ export default class Shell {
         setTimeout(function(){
             output.writeToTerminal('Welcome again agent XD6001.');
             output.writeToTerminal('You\'ve got a new message! (type `inbox`)');
-            this.shellInput.value = '$ ';
             callback();
           }, timeout*18);
     }

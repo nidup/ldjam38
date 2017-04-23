@@ -21,9 +21,9 @@ export default class Monitor {
 		if (this.currentImage) {
 			this.currentImage.kill();
 		}
-		this.currentImage = this.state.middleground.create(490, 135, name);
-		this.currentImage.width = 100;
-		this.currentImage.height = 73;
+		this.currentImage = this.state.middleground.create(490 * 1.5, 135 * 1.5, name);
+		this.currentImage.width = 100 * 1.5;
+		this.currentImage.height = 73 * 1.5;
 		this.currentImage.alpha = opacity;
 	}
 

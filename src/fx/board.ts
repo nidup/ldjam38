@@ -52,9 +52,9 @@ export default class BoardFX {
         this.filter = new Phaser.Filter(this.state.game, null, fragmentSrc);
         this.filter.setResolution(300, 300);
 
-        this.sprite = this.state.game.add.sprite(115, 70);
-        this.sprite.width = 355;
-        this.sprite.height = 265;
+        this.sprite = this.state.game.add.sprite(115 * 1.5, 70 * 1.5);
+        this.sprite.width = 355 * 1.5;
+        this.sprite.height = 265 * 1.5;
         this.sprite.filters = [ this.filter ];
     }
 

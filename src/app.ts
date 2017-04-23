@@ -6,12 +6,12 @@ import Menu from "./states/Menu";
 import Introduction from "./states/Introduction";
 import Play from "./states/Play";
 
+
 class SimpleGame extends Phaser.Game {
-    constructor()
-    {
+    constructor() {
         super(
-            720,
-            405,
+            720 * 1.5,
+            405 * 1.5,
             Phaser.WEBGL,
             "content",
             null

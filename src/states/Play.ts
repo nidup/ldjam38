@@ -70,7 +70,9 @@ export default class Play extends Phaser.State {
         this.locations.push(new Tundra());
 
         this.background = this.game.add.group();
-        this.background.create(0, 0, 'board');
+        var board = this.background.create(0, 0, 'board');
+        board.width = board.width * 1.5;
+        board.height = board.height * 1.5;
 
         this.middleground = this.game.add.group();
 
@@ -78,7 +80,9 @@ export default class Play extends Phaser.State {
         this.boardFX.display();
 
         this.foreground = this.game.add.group();
-        this.foreground.create(0, 0, 'board_top');
+        var board_top = this.foreground.create(0, 0, 'board_top');
+        board_top.width = board_top.width * 1.5;
+        board_top.height = board_top.height * 1.5;
     }
 
     public update()
