@@ -14,7 +14,7 @@ class Undock implements Action {
                 return;
             }
 
-        output.writeToTerminal('Wow, finally!', false, true);output.writeToTerminal('::Undocking procedure started');
+        output.writeToTerminal('Wow, finally!', false, true);output.writeToTerminal(':: Undocking procedure started');
         let spaceshipSound = new SpaceshipSound(state);
         spaceshipSound.playUndock();
 
