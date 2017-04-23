@@ -21,7 +21,7 @@ class Undock implements Action {
 
             setTimeout(() => { output.writeToTerminal(':: Depressuring process...'); }, 2000);
             setTimeout(() => {
-                this.shake();
+                this.shake(state);
                 output.writeToTerminal(':: Undocking rover... please stay vigilant.');
               }, 15000);
             setTimeout(() => {
@@ -48,11 +48,18 @@ class Undock implements Action {
             }, 33000);
         });
     }
-    shake() {
+    shake(state: Play) {
         var canvas = document.getElementsByTagName('canvas')[0];
         var shellText = document.getElementById('shellText');
         canvas.classList.add('shake');
         shellText.classList.add('shake');
+
+        let darkBoard = state.foreground.create(0, 0, 'board_top_dark');
+        darkBoard.width = darkBoard.width * 1.5;
+        darkBoard.height = darkBoard.height * 1.5;
+        setTimeout(() => {
+            darkBoard.kill();
+        }, 200);
 
         setTimeout(() => {
             canvas.classList.remove('shake');
@@ -62,6 +69,13 @@ class Undock implements Action {
         setTimeout(() => {
             canvas.classList.add('shake');
             shellText.classList.add('shake');
+
+            let darkBoard = state.foreground.create(0, 0, 'board_top_dark');
+            darkBoard.width = darkBoard.width * 1.5;
+            darkBoard.height = darkBoard.height * 1.5;
+            setTimeout(() => {
+                darkBoard.kill();
+            }, 200);
         }, 3000);
 
         setTimeout(() => {
