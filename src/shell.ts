@@ -4,12 +4,12 @@ import { HelpActionFactory } from './terminal/actions/help';
 import { GotoActionFactory } from './terminal/actions/goto';
 import { SearchActionFactory } from './terminal/actions/search';
 import { WhereamiActionFactory } from './terminal/actions/whereami';
-import { EmailActionFactory } from './terminal/actions/email';
 import { UndockActionFactory } from './terminal/actions/undock';
 import {Output} from "./terminal/output";
 import {BuildActionFactory} from "./terminal/actions/build";
 import Play from "./states/Play";
 import {InventoryActionFactory} from "./terminal/actions/inventory";
+import {InboxActionFactory} from "./terminal/actions/inbox";
 
 export default class Shell {
     private output: Output;
@@ -40,7 +40,7 @@ export default class Shell {
         this.terminal.addActionFactory('goto', GotoActionFactory);
         this.terminal.addActionFactory('search', SearchActionFactory);
         this.terminal.addActionFactory('whereami', WhereamiActionFactory);
-        this.terminal.addActionFactory('email', EmailActionFactory);
+        this.terminal.addActionFactory('inbox', InboxActionFactory);
         this.terminal.addActionFactory('build', BuildActionFactory);
         this.terminal.addActionFactory('undock', UndockActionFactory);
         this.terminal.addActionFactory('inventory', InventoryActionFactory);
