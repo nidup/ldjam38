@@ -1,6 +1,7 @@
 
 import { Biome } from './biome';
 import { Output } from '../terminal/output';
+import {ImageFile, SoundFile} from "../gathered-data";
 
 export class RockyMountain implements Biome {
     public name: string = 'rocky-mountain';
@@ -37,7 +38,7 @@ export class RockyMountain implements Biome {
                     output.displayToMonitor('scenes/rocky-mountain', 1);
                     output.writeToTerminal('Done.');
                 }, 1000*5);
-                break;
+                return new ImageFile('rocky-mountain.jpg', 'scenes/rocky-mountain');
 
             case 2:
                 setTimeout(function(){
@@ -59,7 +60,7 @@ export class RockyMountain implements Biome {
                 output.playCapture('capture/rocky-mountain');
 
                 output.writeToTerminal('The wind is strong, but the view is clear. Really I wish you would be there with me.', false, true);
-                break;
+                return new SoundFile('rocky-mountain.pcm', 'capture/rocky-mountain');
 
             case 3:
                 output.writeToTerminal('I feel I’m closer to you. What a beautiful world.', false, true);

@@ -1,6 +1,7 @@
 
 import { Biome } from './biome';
 import { Output } from '../terminal/output';
+import {ImageFile, SoundFile} from "../gathered-data";
 
 export class SandDesert implements Biome {
     public name: string = 'sand-desert';
@@ -37,7 +38,7 @@ export class SandDesert implements Biome {
                     output.displayToMonitor('scenes/sand-desert', 1);
                     output.writeToTerminal('Done.');
                 }, 1000*5);
-                break;
+                return new ImageFile('sand-desert.jpg', 'scenes/sand-desert');
 
             case 2:
                 setTimeout(function(){
@@ -59,7 +60,7 @@ export class SandDesert implements Biome {
                 output.playCapture('capture/sand-desert');
 
                 output.writeToTerminal("This shape in the horizon is unusual in the desert relief.", false, true);
-                break;
+                return new SoundFile('sand-desert.pcm', 'capture/sand-desert');
 
             case 3:
                 output.writeToTerminal('The more I follow this shape, the further it looks..', false, true);

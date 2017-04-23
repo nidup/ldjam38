@@ -142,6 +142,12 @@ class Build implements Action {
                 }
                 throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
 
+                case 'unknown':
+                    if (state.alienArtifactFound) {
+                    //  TODO:  <23-04-17, gildas> // Implement alternative ending here
+                        output.writeToTerminal('BUILDING ALIEN ARTIFCAT');
+                        break;
+                    }
 
                 default:
                     throw 'Unknown module "' + that.module + '".';

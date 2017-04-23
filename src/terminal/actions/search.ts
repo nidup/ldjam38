@@ -18,10 +18,19 @@ export class Search implements Action {
                 throw 'Move me first...';
             }
 
+            if (state.gatheredData.length === 10 && !state.alienArtifactFound) {
+                state.alienArtifactFound = true;
+                //  TODO:  <23-04-17, gildas> // Improve message
+                output.writeToTerminal('* OMAGAD You have found an alien artificat!! BUILD IT !!!! *');
+
+                return resolve();
+            }
+
             const data = location.search(output);
             if (data) {
                 state.gatheredData.push(data);
             }
+
             resolve();
         });
     }

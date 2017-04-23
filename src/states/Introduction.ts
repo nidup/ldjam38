@@ -1,26 +1,21 @@
 
 export default class Introduction extends Phaser.State {
-
-    private nbCinematicImages = 2;
-    private currentPicture = 1;
-
     public create()
     {
-        let spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        spaceKey.onDown.add(this.nextPicture, this);
-    }
+        this.game.sound.play('music/intro', 0.7, false);
 
-    public update()
-    {
-        if (this.currentPicture > this.nbCinematicImages) {
-            return this.game.state.start('Play');
-        }
+        let bg = this.add.image(0, 0, 'cinematic1');
+        bg.width = bg.width * 1.5;
+        bg.height = bg.height * 1.5;
 
-        this.add.image(0, 0, 'cinematic' + this.currentPicture);
-    }
+        setTimeout(() => {
+            bg = this.add.image(0, 0, 'cinematic2');
+            bg.width = bg.width * 1.5;
+            bg.height = bg.height * 1.5;
+        }, 13000);
 
-    public nextPicture()
-    {
-        this.currentPicture++;
+        setTimeout(() => {
+            this.game.state.start('Play');
+        }, 24000);
     }
 }

@@ -1,6 +1,7 @@
 
 import { Biome } from './biome';
 import { Output } from '../terminal/output';
+import {ImageFile, SoundFile} from "../gathered-data";
 
 export class Tundra implements Biome {
     public name: string = 'tundra';
@@ -37,7 +38,7 @@ export class Tundra implements Biome {
                     output.displayToMonitor('scenes/toundra', 1);
                     output.writeToTerminal('Done.');
                 }, 1000*5);
-                break;
+                return new ImageFile('tundra.jpg', 'scenes/toundra');
             case 2:
                 setTimeout(function(){
                     output.writeToTerminal('Loading audio capture: 3% ...');
@@ -58,7 +59,7 @@ export class Tundra implements Biome {
                 output.playCapture('capture/tundra');
 
                 output.writeToTerminal("A little plant is trapped in the frost.", false, true);
-                break;
+                return new SoundFile('tundra.pcm', 'capture/tundra');
             case 3:
                 output.writeToTerminal('The topographic analysis indicates a rich underground, it must be at least a million years old.', false, true);
                 break;

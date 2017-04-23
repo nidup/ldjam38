@@ -1,6 +1,7 @@
 
 import { Biome } from './biome';
 import { Output } from '../terminal/output';
+import {ImageFile, SoundFile} from "../gathered-data";
 
 export class SeaShore implements Biome {
     public name: string = 'sea-shore';
@@ -38,7 +39,7 @@ export class SeaShore implements Biome {
                     output.displayToMonitor('scenes/sea-shore', 1);
                     output.writeToTerminal('Done.');
                 }, 1000*5);
-                break;
+                return new ImageFile('sea-shore.jpg', 'scenes/sea-shore');
             case 2:
                 setTimeout(function(){
                     output.writeToTerminal('Loading audio capture: 3% ...');
@@ -59,7 +60,7 @@ export class SeaShore implements Biome {
                 output.playCapture('capture/sea-shore');
 
                 output.writeToTerminal('There is powerful wind on this wide white sand beach, I\'m struggling to stand on my wheels.', false, true);
-                break;
+                return new SoundFile('sea-shore.pcm', 'capture/sea-shore');
             case 3:
                 output.writeToTerminal('Don’t count on me to dip a wheel in the water.', false, true);
                 break;

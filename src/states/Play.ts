@@ -27,6 +27,7 @@ export default class Play extends Phaser.State {
     isRoverLanded: boolean = false;
     isPlayingFinishScene: boolean = false;
     gatheredData: GatheredData[] = [];
+    alienArtifactFound: boolean = false;
 
     private debug: boolean = false;
 
@@ -127,7 +128,7 @@ export default class Play extends Phaser.State {
         let shellPrompt = <HTMLInputElement> document.getElementById("shellPrompt");
         shellPrompt.value = "$ ";
 
-        let timeout = 200;
+        let timeout = 1000;
         let output = this.output;
         setTimeout(function(){ output.writeToTerminal('Subject: LD39 ASAP!'); }, timeout * 2);
         setTimeout(function(){ output.writeToTerminal('From: Bernard McLindon')}, timeout * 3);
@@ -143,6 +144,22 @@ export default class Play extends Phaser.State {
         setTimeout(() => { output.writeToTerminal('Connection lost.'); }, timeout * 14);
         setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 16);
         setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 20);
+
+        setTimeout(function(){
+            output.displayToMonitor('scenes/planet1', 0.10);
+        }, 1000*12);
+        setTimeout(function(){
+            output.displayToMonitor('scenes/planet1', 0.25);
+        }, 1000*13);
+        setTimeout(function(){
+            output.displayToMonitor('scenes/planet1', 0.53);
+        }, 1000*14);
+        setTimeout(function(){
+            output.displayToMonitor('scenes/planet1', 0.78);
+        }, 1000*16);
+        setTimeout(function(){
+            output.displayToMonitor('scenes/planet1', 1);
+        }, 1000*18);
     }
 
     private finish() {
