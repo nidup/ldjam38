@@ -17,12 +17,15 @@ export class SeaShore implements Biome {
         switch (this.searchedCount) {
             case 1:
                 output.writeToTerminal('There is powerful wind on this wide white sand beach, I\'m struggling to stand on my wheels.');
+                break;
 
             case 2:
                 output.writeToTerminal('Don’t count on me to dip a wheel in the water.');
+                break;
 
             case 3:
                 output.writeToTerminal('I’m starting to have sand in my pipes...');
+                break;
 
             default:
                 output.writeToTerminal('Nothing more to add.');

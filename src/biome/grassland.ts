@@ -48,11 +48,9 @@ export class Grassland implements Biome {
             default:
                 output.writeToTerminal('Nothing more to add.');
         }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
-        }
+    }
+
+    build(output: Output) {
+        output.writeToTerminal('I had some problems during the installation, I patched it, I really hope it will hold. Would be a shame call it wasteland...');
     }
 }

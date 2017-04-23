@@ -5,7 +5,7 @@ import { Output } from '../terminal/output';
 export class RainForest implements Biome {
     public name: string = 'rain-forest';
     public type: string = 'Rain Forest';
-    public description: string = 'These trees are really big the sun is hiding behind leafs. Humidity is way high for my integrated circuits. No I’m not a complaining robots. Just being realistic here...';
+    public description: string = 'These trees are really big. The sun is hiding behind their leafs. Humidity is way too high for my integrated circuits. No, I’m not a complaining robots. Just being realistic here...';
 
     private searched: boolean = false;
     private searchedCount: number = 0;
@@ -50,7 +50,6 @@ export class RainForest implements Biome {
 
             default:
                 output.writeToTerminal('Nothing more to add.');
-
         }
     }
 

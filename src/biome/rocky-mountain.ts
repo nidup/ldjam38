@@ -38,21 +38,22 @@ export class RockyMountain implements Biome {
                     output.displayToMonitor('scenes/rocky-mountain', 1);
                     output.writeToTerminal('Done.');
                 }, 1000*5);
+                break;
 
             case 2:
                 output.writeToTerminal('I feel I’m closer to you. What a beautiful world.');
+                break;
 
             case 3:
                 output.writeToTerminal('Hola dere tütü, hola dero');
+                break;
 
             default:
                 output.writeToTerminal('Nothing more to add.');
         }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
-        }
+    }
+
+    build(output: Output) {
+        output.writeToTerminal('The signal is much better now.');
     }
 }

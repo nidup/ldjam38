@@ -17,9 +17,11 @@ export class Tundra implements Biome {
         switch (this.searchedCount) {
             case 1:
                 output.writeToTerminal('This little plant is trapped in the frost.');
+                break;
 
             case 2:
                 output.writeToTerminal('The topographic analysis indicates a rich underground, it must be at least a million years old.');
+                break;
 
             default:
                 output.writeToTerminal('Nothing more to add.');

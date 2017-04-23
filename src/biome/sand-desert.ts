@@ -17,9 +17,11 @@ export class SandDesert implements Biome {
         switch (this.searchedCount) {
             case 1:
                 output.writeToTerminal('This shape in the horizon is unusual in the desert relief.');
+                break;
 
             case 2:
                 output.writeToTerminal('The more I follow this shape, the further it looks..');
+                break;
 
             default:
                 output.writeToTerminal('Nothing more to add.');

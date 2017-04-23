@@ -14,9 +14,11 @@ export class IceField implements Biome {
         switch (this.searchedCount) {
             case 1:
                 output.writeToTerminal("My instruments are going crazy.");
+                break;
 
             case 2:
                 output.writeToTerminal("It’s getting really cold down here, I can’t wear mittens!");
+                break;
 
             default:
                 output.writeToTerminal('Nothing more to add.');
