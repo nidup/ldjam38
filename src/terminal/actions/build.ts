@@ -20,7 +20,7 @@ class Build implements Action {
     execute(state: Play, output: Output) {
         const that = this;
         return new Promise((resolve) => {
-            if (state.isRoverLanded != false) {
+            if (state.isRoverLanded == false) {
                 output.writeToTerminal('I can\'t build. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
                 resolve();
                 return;
