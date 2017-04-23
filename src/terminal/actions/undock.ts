@@ -35,8 +35,13 @@ class Undock implements Action {
         setTimeout(() => { output.writeToTerminal('Ping...'); }, 30000);
         setTimeout(() => { output.writeToTerminal('Ping...'); }, 31000);
         setTimeout(() => { output.writeToTerminal('Connection established.'); }, 32000);
-        setTimeout(() => { output.writeToTerminal('Hello operator, I\'m VJ-Net38, your recon rover. I\'ve finally landed on this small planet, feel free to send instructions.', false, true); resolve(); }, 33000);
-        });
+        setTimeout(() => {
+            output.writeToTerminal(
+                'Hello operator, I\'m VJ-Net38, your recon rover. I\'ve finally ' +
+                'landed on this small planet, feel free to send instructions.', false, true);
+            output.writeToTerminal(state.currentLocation.description, false, true);
+            resolve();
+        }, 33000);
     }
 }
 
