@@ -1,2 +1,9 @@
 node_modules
-build
+build/a*
+build/bi*
+build/d*
+build/i*
+build/f*
+build/m*
+build/s*
+build/t*
