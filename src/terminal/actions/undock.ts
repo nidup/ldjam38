@@ -7,33 +7,36 @@ class Undock implements Action {
     name: string = 'undock';
 
     execute(state: Play, output: Output) {
-        if (state.isRoverLanded) {
-            output.writeToTerminal('Nothing to undock.');
-            return;
-        }
+        return new Promise((resolve) => {
+            if (state.isRoverLanded) {
+                output.writeToTerminal('Nothing to undock.');
+                resolve();
+                return;
+            }
 
-        output.writeToTerminal('Undocking module from spaceship...');
-        let spaceshipSound = new SpaceshipSound(state);
-        spaceshipSound.playUndock();
+            output.writeToTerminal('Undocking module from spaceship...');
+            let spaceshipSound = new SpaceshipSound(state);
+            spaceshipSound.playUndock();
 
-        setTimeout(() => { output.writeToTerminal('Depressuring process...'); }, 2000);
-        setTimeout(() => { output.writeToTerminal('Undocking rover... please stay vigilant.'); }, 15000);
-        setTimeout(() => {
-            output.writeToTerminal('Undocking process succeeded!');
-            state.isRoverLanded = true;
-            // always land on tundra, you can't do nothing here
-            state.currentLocation = state.locations.find((location) => location.name === 'snowy-forest');
+            setTimeout(() => { output.writeToTerminal('Depressuring process...'); }, 2000);
+            setTimeout(() => { output.writeToTerminal('Undocking rover... please stay vigilant.'); }, 15000);
+            setTimeout(() => {
+                output.writeToTerminal('Undocking process succeeded!');
+                state.isRoverLanded = true;
+                // always land on snowy-forest, you can't do nothing here
+                state.currentLocation = state.locations.find((location) => location.name === 'snowy-forest');
 
-        }, 28000);
-        setTimeout(() => {
-            output.writeToTerminal('Boot...');
-            output.writeToTerminal('Connect to recon rover...');
-        }, 28500);
+            }, 28000);
+            setTimeout(() => {
+                output.writeToTerminal('Boot...');
+                output.writeToTerminal('Connect to recon rover...');
+            }, 28500);
         setTimeout(() => { output.writeToTerminal('Ping...'); }, 29000);
         setTimeout(() => { output.writeToTerminal('Ping...'); }, 30000);
         setTimeout(() => { output.writeToTerminal('Ping...'); }, 31000);
         setTimeout(() => { output.writeToTerminal('Connection established.'); }, 32000);
-        setTimeout(() => { output.writeToTerminal('Hello operator, i\'m VJ-Net38, your recon rover.'); }, 33000);
+        setTimeout(() => { output.writeToTerminal('Hello operator, i\'m VJ-Net38, your recon rover.'); resolve(); }, 33000);
+        });
     }
 }
 

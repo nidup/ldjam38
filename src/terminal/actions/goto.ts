@@ -12,20 +12,24 @@ class Goto implements Action {
     }
 
     execute(state: Play, output: Output) {
+        return new Promise((resolve) => {
+            if (state.isRoverLanded == false) {
+                output.writeToTerminal('I can\'t move. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
+                resolve();
+                return;
+            }
 
-        if (state.isRoverLanded == false) {
-            output.writeToTerminal('I can\'t move. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
-            return;
-        }
-
-        const destination = state.locations.filter((location: Biome) => location.name === this.destination);
-        if (1 === destination.length) {
-            state.currentLocation = destination[0];
-            output.writeToTerminal('Moved to ' + state.currentLocation.type + '.');
-            output.writeToTerminal(state.currentLocation.description);
-            return;
-        }
-        output.writeToTerminal('I don\'t know this place...');
+            const destination = state.locations.filter((location: Biome) => location.name === this.destination);
+            if (1 === destination.length) {
+                state.currentLocation = destination[0];
+                output.writeToTerminal('Moved to ' + state.currentLocation.type + '.');
+                output.writeToTerminal(state.currentLocation.description);
+                resolve();
+                return;
+            }
+            output.writeToTerminal('I don\'t know this place...');
+            resolve();
+        });
     }
 }
 

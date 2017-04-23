@@ -6,12 +6,15 @@ export class Search implements Action {
     name: string = 'search';
 
     execute(state: Play, output: Output) {
-        const location = state.currentLocation;
-        if (!location) {
-            throw 'Move me first...';
-        }
+        return new Promise((resolve) => {
+            const location = state.currentLocation;
+            if (!location) {
+                throw 'Move me first...';
+            }
 
-        location.search(output);
+            location.search(output);
+            resolve();
+        });
     }
 }
 
