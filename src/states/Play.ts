@@ -12,6 +12,7 @@ import BoardFX from '../fx/board';
 import Shell from '../shell';
 import Speaker from '../speaker';
 import Monitor from '../monitor';
+import Leds from '../leds';
 import Dashboard from '../dashboard';
 import KeyboardSound from '../sounds/keyboard';
 import ComputerSound from '../sounds/computer';
@@ -30,7 +31,7 @@ export default class Play extends Phaser.State {
     // Sprites
     private background: Phaser.Group;
     public middleground: Phaser.Group;
-    private foreground: Phaser.Group;
+    public foreground: Phaser.Group;
 
     private dashboard: Dashboard;
     private keyboardSound: KeyboardSound;
@@ -50,7 +51,8 @@ export default class Play extends Phaser.State {
         this.dashboard = new Dashboard(
             new Shell(this),
             new Speaker(this),
-            new Monitor(this)
+            new Monitor(this),
+            new Leds(this)
         );
         this.dashboard.setOutput(new Output());
 
@@ -79,6 +81,8 @@ export default class Play extends Phaser.State {
 
         this.foreground = this.game.add.group();
         this.foreground.create(0, 0, 'board_top');
+
+        this.dashboard.leds.displayLeds();
     }
 
     public update()
