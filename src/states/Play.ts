@@ -124,6 +124,7 @@ export default class Play extends Phaser.State {
 
     private resetFade() {
         this.game.camera.resetFX();
+        this.game.sound.play('music/intro', 0.7, false);
 
         let shellPrompt = <HTMLInputElement> document.getElementById("shellPrompt");
         shellPrompt.value = "$ ";
@@ -147,7 +148,7 @@ export default class Play extends Phaser.State {
 
         setTimeout(function(){
             output.displayToMonitor('scenes/planet1', 1, 1);
-        }, timeout);
+        }, 0);
         setTimeout(function(){
             output.displayToMonitor('scenes/planet1', 1, 1);
         }, timeout*12);
