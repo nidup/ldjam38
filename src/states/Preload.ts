@@ -15,6 +15,8 @@ export default class Preload extends Phaser.State {
         this.load.image('board', 'assets/images/board.png');
         this.load.image('board_top', 'assets/images/board_top.png');
 
+        this.load.audio('music/intro', 'assets/sounds/musique_intro.mp3')
+
         Speaker.loadAssets(this);
         Monitor.loadAssets(this);
         Leds.loadAssets(this);
@@ -26,6 +28,6 @@ export default class Preload extends Phaser.State {
     public create ()
     {
         // this.game.state.start('Menu');
-        this.game.state.start('Play');
+        this.game.state.start('Introduction');
     }
 }
