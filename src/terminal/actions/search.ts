@@ -18,10 +18,10 @@ export class Search implements Action {
                 throw 'Move me first...';
             }
 
-            if (state.gatheredData.length === 10 && !state.alienArtifactFound) {
-                state.alienArtifactFound = true;
-                //  TODO:  <23-04-17, gildas> // Improve message
-                output.writeToTerminal('* OMAGAD You have found an alien artificat!! BUILD IT !!!! *');
+            if (state.gatheredData.length === 10 && !state.alienModuleFound) {
+                state.alienModuleFound = true;
+                output.writeToTerminal('I have found something strange. I can\'t analyze it, it just look like a cube with a button on the top.');
+                output.writeToTerminal('I have put it in my module inventory, feel free to build it... whenever you want...');
 
                 return resolve();
             }

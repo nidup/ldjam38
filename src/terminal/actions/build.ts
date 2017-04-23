@@ -20,7 +20,7 @@ class Build implements Action {
     execute(state: Play, output: Output) {
         const that = this;
         return new Promise((resolve) => {
-            if (state.isRoverLanded == false) {
+            if (state.isRoverLanded != false) {
                 output.writeToTerminal('I can\'t build. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
                 resolve();
                 return;
@@ -123,9 +123,7 @@ class Build implements Action {
                         type = "biomass processor";
                     }
 
-                    return that.build(output, type, () => {
-                        output.playToSpeaker('notifications/success');
-
+                    return that.build(output, type, () => { output.playToSpeaker('notifications/success'); 
                         setTimeout(() => {
                             output.playToSpeaker('notifications/bip');
                             output.turnOnLed(1);
@@ -143,9 +141,9 @@ class Build implements Action {
                 throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
 
                 case 'unknown':
-                    if (state.alienArtifactFound) {
-                    //  TODO:  <23-04-17, gildas> // Implement alternative ending here
-                        output.writeToTerminal('BUILDING ALIEN ARTIFCAT');
+                    if (state.alienModuleFound) {
+                        state.alienModuleInstalled = true;
+                        resolve();
                         break;
                     }
 
