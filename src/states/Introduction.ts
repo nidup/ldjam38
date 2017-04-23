@@ -8,6 +8,7 @@ export default class Introduction extends Phaser.State {
         bg.width = bg.width * 1.5;
         bg.height = bg.height * 1.5;
 
+
         setTimeout(() => {
             bg = this.add.image(0, 0, 'cinematic2');
             bg.width = bg.width * 1.5;
