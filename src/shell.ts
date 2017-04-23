@@ -59,6 +59,7 @@ export default class Shell {
 
         this.writeBootLines(this.output, () => {
             let enterKey = this.state.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+            let lastHddLoadSoundPlayed = 1;
             enterKey.onDown.add(() => {
                 if (this.shellInput.value == "") {
                     return;
@@ -66,15 +67,28 @@ export default class Shell {
                 this.shellText.value = this.shellText.value + '\n$ ' + this.shellInput.value;
                 this.shellInput.setAttribute('disabled', true);
 
+                const stopSound = this.output.playToSpeaker('hdd/load/'+lastHddLoadSoundPlayed++);
+                if (lastHddLoadSoundPlayed > 8) {
+                    lastHddLoadSoundPlayed = 1;
+                }
+
                 try {
-                this.terminal
-                    .getAction(this.shellInput.value)
-                    .execute(this.state, this.output)
-                    .then(() => {
-                        this.shellInput.removeAttribute('disabled');
-                        this.shellInput.focus();
-                    }, this.printError);
+                    this.terminal
+                        .getAction(this.shellInput.value)
+                        .execute(this.state, this.output)
+                        .then(
+                            () => {
+                                stopSound();
+                                this.shellInput.removeAttribute('disabled');
+                                this.shellInput.focus();
+                            },
+                            (error) => {
+                                stopSound();
+                                this.printError(error);
+                            }
+                        );
                 } catch (e) {
+                    stopSound();
                     this.printError(e);
                 }
                 this.shellInput.value = "";
