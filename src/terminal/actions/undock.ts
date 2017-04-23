@@ -16,14 +16,8 @@ class Undock implements Action {
         let spaceshipSound = new SpaceshipSound(state);
         spaceshipSound.playUndock();
 
-        setTimeout(() => {
-            output.writeToTerminal('Depressuring process...');
-        }, 2000);
-
-        setTimeout(() => {
-            output.writeToTerminal('Undocking rover... please stay vigilant.');
-        }, 15000);
-
+        setTimeout(() => { output.writeToTerminal('Depressuring process...'); }, 2000);
+        setTimeout(() => { output.writeToTerminal('Undocking rover... please stay vigilant.'); }, 15000);
         setTimeout(() => {
             output.writeToTerminal('Undocking process succeeded!');
             state.isRoverLanded = true;
@@ -35,15 +29,9 @@ class Undock implements Action {
             output.writeToTerminal('Boot...');
             output.writeToTerminal('Connect to recon rover...');
         }, 28500);
-        setTimeout(() => {
-            output.writeToTerminal('Ping...');
-        }, 29000);
-        setTimeout(() => {
-            output.writeToTerminal('Connection established.');
-        }, 30000);
-        setTimeout(() => {
-            output.writeToTerminal('Hello operator, i\'m VJ-Net38, your recon rover.');
-        }, 31000);
+        setTimeout(() => { output.writeToTerminal('Ping...'); }, 29000);
+        setTimeout(() => { output.writeToTerminal('Connection established.'); }, 30000);
+        setTimeout(() => { output.writeToTerminal('Hello operator, i\'m VJ-Net38, your recon rover.'); }, 31000);
     }
 }
 
