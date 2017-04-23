@@ -46,8 +46,6 @@ export default class Play extends Phaser.State {
             this.game.time.advancedTiming = true
         }
         this.game.stage.backgroundColor = '#000000';
-        // this.briefingText = this.game.add.bitmapText(40, 40, 'carrier-command','Game PLAY STATE.', 10);
-        // this.briefingText.fixedToCamera = true;
 
         this.dashboard = new Dashboard(
             new Shell(this),
@@ -112,7 +110,8 @@ export default class Play extends Phaser.State {
     }
 
     private fade() {
-        this.game.camera.fade(0x000000, 3000);
+        this.game.camera.fade(0x000000, 6000);
+        this.output.terminalElement.value = '';
     }
 
     private resetFade() {
@@ -122,12 +121,6 @@ export default class Play extends Phaser.State {
 
         let timeout = 200;
         let output = this.output;
-
-        setTimeout(function(){ output.writeToTerminal('...'); }, timeout);
-        setTimeout(function(){ output.writeToTerminal('...'); }, timeout);
-        setTimeout(function(){ output.writeToTerminal('...'); }, timeout);
-        setTimeout(function(){ output.writeToTerminal('...'); }, timeout);
-        setTimeout(function(){ output.writeToTerminal('...'); }, timeout);
         setTimeout(function(){ output.writeToTerminal('Subject: LD39 ASAP!'); }, timeout * 2);
         setTimeout(function(){ output.writeToTerminal('From: Bernard McLindon')}, timeout * 3);
         setTimeout(function(){ output.writeToTerminal(
@@ -143,9 +136,7 @@ export default class Play extends Phaser.State {
 
     private finish() {
         if (this.isPlayingFinishScene == false && this.installedModules.length == 1) {
-
             this.isPlayingFinishScene = true;
-
             this.game.camera.onFadeComplete.add(this.resetFade, this);
             this.fade();
         }
