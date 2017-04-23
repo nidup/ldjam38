@@ -16,7 +16,6 @@ export class Grassland implements Biome {
 
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal('It is a perfect place to build a little house, in this giant prairie. I’ll send you the blueprints.');
                 output.writeToTerminal("Uploading one photo...");
                 setTimeout(function(){
                     output.writeToTerminal('Uploading one photo (108): 3% ...');
@@ -42,15 +41,37 @@ export class Grassland implements Biome {
                 return new ImageFile('grassland.jpg', 'scenes/grassland');
 
             case 2:
-                output.writeToTerminal('I have just seen a weird ball of fur jumping around.');
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200*1);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200*2);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200*3);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200*4);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200*5);
+                output.playCapture('capture/grassland');
+
+                output.writeToTerminal('It is a perfect place to build a little house, in this giant prairie. I’ll send you the blueprints.', false, true);
+                break;
+
+            case 3:
+                output.writeToTerminal('I have just seen a weird ball of fur jumping around.', false, true);
                 break;
 
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
 
     build(output: Output) {
-        output.writeToTerminal('I had some problems during the installation, I patched it, I really hope it will hold. Would be a shame call it wasteland...');
+        output.writeToTerminal('I had some problems during the installation, I patched it, I really hope it will hold. Would be a shame call it wasteland...', false, true);
     }
 }

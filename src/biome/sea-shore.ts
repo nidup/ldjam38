@@ -16,7 +16,6 @@ export class SeaShore implements Biome {
 
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal('There is powerful wind on this wide white sand beach, I\'m struggling to stand on my wheels.');
                 output.writeToTerminal("Uploading one photo...");
                 setTimeout(function(){
                     output.writeToTerminal('Uploading one photo (109): 5% ...');
@@ -41,17 +40,38 @@ export class SeaShore implements Biome {
                 }, 1000*5);
                 break;
             case 2:
-                output.writeToTerminal('Don’t count on me to dip a wheel in the water.');
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200*1);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200*2);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200*3);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200*4);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200*5);
+                output.playCapture('capture/sea-shore');
+
+                output.writeToTerminal('There is powerful wind on this wide white sand beach, I\'m struggling to stand on my wheels.', false, true);
                 break;
             case 3:
-                output.writeToTerminal('I’m starting to have sand in my pipes...');
+                output.writeToTerminal('Don’t count on me to dip a wheel in the water.', false, true);
+                break;
+            case 4:
+                output.writeToTerminal('I’m starting to have sand in my pipes...', false, true);
                 break;
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
 
     build(output: Output) {
-        output.writeToTerminal('Not an easy job, but it’s working.');
+        output.writeToTerminal('Not an easy job, but it’s working.', false, true);
     }
 }

@@ -16,7 +16,6 @@ export class Tundra implements Biome {
 
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal("This little plant is trapped in the frost.");
                 setTimeout(function(){
                     output.writeToTerminal('Uploading one photo (183): 5% ...');
                     output.displayToMonitor('scenes/toundra', 0.10);
@@ -40,14 +39,35 @@ export class Tundra implements Biome {
                 }, 1000*5);
                 break;
             case 2:
-                output.writeToTerminal('The topographic analysis indicates a rich underground, it must be at least a million years old.');
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200*1);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200*2);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200*3);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200*4);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200*5);
+                output.playCapture('capture/tundra');
+
+                output.writeToTerminal("A little plant is trapped in the frost.", false, true);
+                break;
+            case 3:
+                output.writeToTerminal('The topographic analysis indicates a rich underground, it must be at least a million years old.', false, true);
                 break;
            default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
 
     build(output: Output) {
-                output.writeToTerminal('Pipeline network is finished. Should we talk about this last remaining bolt?..');
+        output.writeToTerminal('Pipeline network is finished. Should we talk about this last remaining bolt?..', false, true);
     }
 }

@@ -16,7 +16,25 @@ export class RainForest implements Biome {
 
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal('What a packed forest, maybe I could find a clearing to send you a picture.');
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200*1);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200*2);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200*3);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200*4);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200*5);
+                output.playCapture('capture/rain-forest');
+
+                output.writeToTerminal('What a packed forest, maybe I could find a clearing to send you a picture.', false, true);
                 break;
             case 2:
                 output.writeToTerminal('Uploading one photo...');
@@ -44,15 +62,15 @@ export class RainForest implements Biome {
                 return new ImageFile('rain-forest.jpg', 'scenes/rain-forest');
 
             case 3:
-                output.writeToTerminal('Like a feeling of being observed by some beasts. Did you hear that ?');
+                output.writeToTerminal('Like a feeling of being observed by some beasts. Did you hear that ?', false, true);
                 break;
 
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
 
     build(output: Output) {
-        output.writeToTerminal('I had to cut down all the trees... the place is sadly silent now. All I can hear is my engine.');
+        output.writeToTerminal('I had to cut down all the trees... the place is sadly silent now. All I can hear is my engine.', false, true);
     }
 }

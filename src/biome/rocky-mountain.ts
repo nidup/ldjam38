@@ -16,7 +16,6 @@ export class RockyMountain implements Biome {
 
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal('The wind is strong, but the view is clear. Really I wish you would be there with me.');
                 setTimeout(function(){
                     output.writeToTerminal('Uploading one photo (78): 7% ...');
                     output.displayToMonitor('scenes/rocky-mountain', 0.10);
@@ -41,19 +40,41 @@ export class RockyMountain implements Biome {
                 break;
 
             case 2:
-                output.writeToTerminal('I feel I’m closer to you. What a beautiful world.');
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200*1);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200*2);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200*3);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200*4);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200*5);
+                output.playCapture('capture/rocky-mountain');
+
+                output.writeToTerminal('The wind is strong, but the view is clear. Really I wish you would be there with me.', false, true);
                 break;
 
             case 3:
-                output.writeToTerminal('Hola dere tütü, hola dero');
+                output.writeToTerminal('I feel I’m closer to you. What a beautiful world.', false, true);
+                break;
+
+            case 4:
+                output.writeToTerminal('Hola dere tütü, hola dero', false, true);
                 break;
 
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
 
     build(output: Output) {
-        output.writeToTerminal('The signal is much better now.');
+        output.writeToTerminal('The signal is much better now.', false, true);
     }
 }
