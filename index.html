@@ -5,6 +5,9 @@
     <title>POD2000</title>
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <style>
+        html {
+            cursor: none;
+        }
         body {
             font-family: 'VT323', monospace;
             font-size: 19.99995px;
@@ -38,6 +41,13 @@
             height: 295px;
             overflow-y: hidden;
             resize: none;
+            -webkit-user-select: none; /* Chrome/Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+ */
+
+            /* Rules below not implemented in browsers yet */
+            -o-user-select: none;
+            user-select: none;
         }
 
         #shellPrompt {
