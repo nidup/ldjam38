@@ -18,73 +18,78 @@ class Build implements Action {
     }
 
     execute(state: Play, output: Output) {
-        switch (this.module) {
-            case 'extractor':
-                if (state.currentLocation instanceof Tundra || state.currentLocation instanceof SandDesert) {
-                    const installedModule = state.installedModules.find((installed) => installed.name === this.module);
+        const that = this;
+        return new Promise((resolve) => {
+            switch (that.module) {
+                case 'extractor':
+                    if (state.currentLocation instanceof Tundra || state.currentLocation instanceof SandDesert) {
+                    const installedModule = state.installedModules.find((installed) => installed.name === that.module);
                     if (undefined !== installedModule) {
                         throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
                     }
 
                     let type = 'smelter';
-                    return this.build(output, type, () => {
+                    return that.build(output, type, () => {
                         output.playToSpeaker('notifications/success');
                         output.turnOnLed(3);
 
                         state.installedModules.push({
-                            name: this.module,
+                            name: that.module,
                             location: state.currentLocation,
                             type: type
                         });
+                        resolve();
                     });
                 }
-                throw 'Cannot install module "' + this.module + '" in "' + state.currentLocation.type + '".';
+                throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
 
-            case 'communication':
-                if (state.currentLocation instanceof RockyMountain) {
-                    const installedModule = state.installedModules.find((installed) => installed.name === this.module);
+                case 'communication':
+                    if (state.currentLocation instanceof RockyMountain) {
+                    const installedModule = state.installedModules.find((installed) => installed.name === that.module);
                     if (undefined !== installedModule) {
                         throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
                     }
 
                     let type = 'satellite dish';
-                    return this.build(output, type, () => {
+                    return that.build(output, type, () => {
                         output.playToSpeaker('notifications/success');
                         output.turnOnLed(2);
 
                         state.installedModules.push({
-                            name: this.module,
+                            name: that.module,
                             location: state.currentLocation,
                             type: type
                         });
+                        resolve();
                     });
                 }
-                throw 'Cannot install module "' + this.module + '" in "' + state.currentLocation.type + '".';
+                throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
 
-            case 'refinery':
-                if (state.currentLocation instanceof Grassland || state.currentLocation instanceof SandDesert) {
-                    const installedModule = state.installedModules.find((installed) => installed.name === this.module);
+                case 'refinery':
+                    if (state.currentLocation instanceof Grassland || state.currentLocation instanceof SandDesert) {
+                    const installedModule = state.installedModules.find((installed) => installed.name === that.module);
                     if (undefined !== installedModule) {
                         throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
                     }
 
                     let type = 'autonomous processor';
-                    return this.build(output, type, () => {
+                    return that.build(output, type, () => {
                         output.playToSpeaker('notifications/success');
                         output.turnOnLed(4);
 
                         state.installedModules.push({
-                            name: this.module,
+                            name: that.module,
                             location: state.currentLocation,
                             type: type
                         });
+                        resolve();
                     });
                 }
-                throw 'Cannot install module "' + this.module + '" in "' + state.currentLocation.type + '".';
+                throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
 
-            case 'energy':
-                if (state.currentLocation instanceof Ocean || state.currentLocation instanceof SandDesert || state.currentLocation instanceof RainForest) {
-                    const installedModule = state.installedModules.find((installed) => installed.name === this.module);
+                case 'energy':
+                    if (state.currentLocation instanceof Ocean || state.currentLocation instanceof SandDesert || state.currentLocation instanceof RainForest) {
+                    const installedModule = state.installedModules.find((installed) => installed.name === that.module);
                     if (undefined !== installedModule) {
                         throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
                     }
@@ -98,23 +103,25 @@ class Build implements Action {
                         type = "biomass processor";
                     }
 
-                    return this.build(output, type, () => {
+                    return that.build(output, type, () => {
                         output.playToSpeaker('notifications/success');
                         output.turnOnLed(1);
 
                         state.installedModules.push({
-                            name: this.module,
+                            name: that.module,
                             location: state.currentLocation,
                             type: type
                         });
+                        resolve();
                     });
                 }
-                throw 'Cannot install module "' + this.module + '" in "' + state.currentLocation.type + '".';
+                throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
 
 
-            default:
-                throw 'Unknown module "' + this.module + '".';
-        }
+                default:
+                    throw 'Unknown module "' + that.module + '".';
+            }
+        });
     }
 
     private build(output: Output, type, callback) {

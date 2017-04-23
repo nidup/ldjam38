@@ -4,7 +4,6 @@ import Speaker from "../speaker";
 import Leds from "../leds";
 
 export class Output {
-
     public terminalElement: HTMLInputElement
     public monitor: Monitor;
     public speaker: Speaker;
@@ -12,10 +11,11 @@ export class Output {
 
     writeToTerminal(data: string, errored: boolean = false) {
         if (errored) {
-            this.out('>>> ERROR: ' + data + '\n');
-            return;
+            this.terminalElement.value = this.terminalElement.value + '>>> ERROR: ' + data + '\n';
+        } else {
+            this.terminalElement.value = this.terminalElement.value + '>>> ' + data + '\n';
         }
-        this.out('>>> ' + data + '\n');
+        this.terminalElement.scrollTop = this.terminalElement.scrollHeight;
     }
 
     playToSpeaker(data: string) {
@@ -28,10 +28,5 @@ export class Output {
 
     turnOnLed(position: number) {
         this.leds.turnOnLed(position);
-    }
-
-    private out(data: string) {
-        this.terminalElement.value = this.terminalElement.value + data
-        this.terminalElement.scrollTop = this.terminalElement.scrollHeight;
     }
 }

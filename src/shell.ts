@@ -64,17 +64,31 @@ export default class Shell {
                     return;
                 }
                 this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
+                this.shellInput.setAttribute('disabled', true);
+
                 try {
-                    this.terminal.getAction(this.shellInput.value).execute(this.state, this.output);
+                this.terminal
+                    .getAction(this.shellInput.value)
+                    .execute(this.state, this.output)
+                    .then(() => {
+                        this.shellInput.removeAttribute('disabled');
+                        this.shellInput.focus();
+                    }, this.printError);
                 } catch (e) {
-                    this.output.writeToTerminal(e, true);
-                    this.output.playToSpeaker('notifications/error');
+                    this.printError(e);
                 }
                 this.shellInput.value = "";
             }, this);
             this.shellInput.removeAttribute('disabled');
             this.shellInput.focus();
         });
+    }
+
+    private printError(error) {
+        this.output.writeToTerminal(error, true);
+        this.output.playToSpeaker('notifications/error');
+        this.shellInput.removeAttribute('disabled');
+        this.shellInput.focus();
     }
 
     private writeBootLines(output: Output, callback)
