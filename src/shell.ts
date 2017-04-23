@@ -28,6 +28,7 @@ export default class Shell {
         this.shellPrompt.setAttribute('readonly', 'readonly');
         document.body.appendChild(this.shellPrompt);
         this.shellInput = document.createElement("input");
+        this.shellInput.spellcheck = false;
         this.shellInput.setAttribute('type', 'text');
         this.shellInput.setAttribute('id', 'shellInput');
         document.body.appendChild(this.shellInput);
