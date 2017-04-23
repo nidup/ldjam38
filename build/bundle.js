@@ -153,23 +153,23 @@ class RainForest {
             output.writeToTerminal("Uploading one photo...");
             setTimeout(function () {
                 output.writeToTerminal('Uploading one photo (102): 5% ...');
-                output.displayToMonitor('scenes/river', 0.10);
+                output.displayToMonitor('scenes/rain-forest', 0.10);
             }, 1000 * 1);
             setTimeout(function () {
                 output.writeToTerminal('Uploading one photo (102): 25% ...');
-                output.displayToMonitor('scenes/river', 0.25);
+                output.displayToMonitor('scenes/rain-forest', 0.25);
             }, 1000 * 2);
             setTimeout(function () {
                 output.writeToTerminal('Uploading one photo (102): 53% ...');
-                output.displayToMonitor('scenes/river', 0.53);
+                output.displayToMonitor('scenes/rain-forest', 0.53);
             }, 1000 * 3);
             setTimeout(function () {
                 output.writeToTerminal('Uploading one photo (102): 78% ...');
-                output.displayToMonitor('scenes/river', 0.78);
+                output.displayToMonitor('scenes/rain-forest', 0.78);
             }, 1000 * 4);
             setTimeout(function () {
                 output.writeToTerminal('Uploading one photo (102): 100% ...');
-                output.displayToMonitor('scenes/river', 1);
+                output.displayToMonitor('scenes/rain-forest', 1);
                 output.writeToTerminal('Done.');
             }, 1000 * 5);
         }
@@ -289,10 +289,11 @@ exports.Tundra = Tundra;
 Object.defineProperty(exports, "__esModule", { value: true });
 class Leds {
     constructor(state) {
-        this.led1X = 497;
-        this.led2X = 517;
-        this.led3X = 537;
-        this.led4X = 557;
+        this.ledY = 96 * 1.5;
+        this.led1X = 497 * 1.5;
+        this.led2X = 517 * 1.5;
+        this.led3X = 537 * 1.5;
+        this.led4X = 557 * 1.5;
         this.state = state;
     }
     static loadAssets(state) {
@@ -302,24 +303,24 @@ class Leds {
     turnOnLed(position) {
         switch (position) {
             case 1:
-                this.state.foreground.create(this.led1X, 96, 'leds/on');
+                this.state.foreground.create(this.led1X, this.ledY, 'leds/on');
                 break;
             case 2:
-                this.state.foreground.create(this.led2X, 96, 'leds/on');
+                this.state.foreground.create(this.led2X, this.ledY, 'leds/on');
                 break;
             case 3:
-                this.state.foreground.create(this.led3X, 96, 'leds/on');
+                this.state.foreground.create(this.led3X, this.ledY, 'leds/on');
                 break;
             case 4:
-                this.state.foreground.create(this.led4X, 96, 'leds/on');
+                this.state.foreground.create(this.led4X, this.ledY, 'leds/on');
                 break;
         }
     }
     displayLeds() {
-        this.state.foreground.create(this.led1X, 96, 'leds/off');
-        this.state.foreground.create(this.led2X, 96, 'leds/off');
-        this.state.foreground.create(this.led3X, 96, 'leds/off');
-        this.state.foreground.create(this.led4X, 96, 'leds/off');
+        this.state.foreground.create(this.led1X, this.ledY, 'leds/off');
+        this.state.foreground.create(this.led2X, this.ledY, 'leds/off');
+        this.state.foreground.create(this.led3X, this.ledY, 'leds/off');
+        this.state.foreground.create(this.led4X, this.ledY, 'leds/off');
     }
     setOutput(output) {
         this.output = output;
@@ -341,8 +342,7 @@ class Monitor {
         this.state = state;
     }
     static loadAssets(state) {
-        state.load.image('scenes/01', 'assets/images/scenes/01.png');
-        state.load.image('scenes/river', 'assets/images/scenes/river.png');
+        state.load.image('scenes/rain-forest', 'assets/images/scenes/rain-forest.png');
     }
     showImage(name, opacity) {
         if (this.currentImage) {
@@ -505,11 +505,20 @@ class Speaker {
     }
     static loadAssets(state) {
         state.load.audio('notifications/error', 'assets/sounds/notifications/01.wav');
+        state.load.audio('notifications/bip', 'assets/sounds/notifications/02.wav');
         state.load.audio('notifications/01', 'assets/sounds/notifications/01.wav');
         state.load.audio('notifications/success', 'assets/sounds/notifications/success.wav');
+        state.load.audio('hdd/load/1', 'assets/sounds/hdd/load_1.wav');
+        state.load.audio('hdd/load/2', 'assets/sounds/hdd/load_2.wav');
+        state.load.audio('hdd/load/3', 'assets/sounds/hdd/load_3.wav');
+        state.load.audio('hdd/load/4', 'assets/sounds/hdd/load_4.wav');
+        state.load.audio('hdd/load/5', 'assets/sounds/hdd/load_5.wav');
+        state.load.audio('hdd/load/6', 'assets/sounds/hdd/load_6.wav');
+        state.load.audio('hdd/load/7', 'assets/sounds/hdd/load_7.wav');
+        state.load.audio('hdd/load/8', 'assets/sounds/hdd/load_8.wav');
     }
-    playSound(name) {
-        this.state.sound.play(name);
+    playSound(name, volume = 1, loop = false) {
+        return this.state.sound.play(name, volume, loop);
     }
     setOutput(output) {
         this.output = output;
@@ -622,6 +631,7 @@ class Play extends Phaser.State {
         this.locations = [];
         this.installedModules = [];
         this.isRoverLanded = false;
+        this.isPlayingFinishScene = false;
         this.debug = false;
     }
     create() {
@@ -632,7 +642,8 @@ class Play extends Phaser.State {
         // this.briefingText = this.game.add.bitmapText(40, 40, 'carrier-command','Game PLAY STATE.', 10);
         // this.briefingText.fixedToCamera = true;
         this.dashboard = new dashboard_1.default(new shell_1.default(this), new speaker_1.default(this), new monitor_1.default(this), new leds_1.default(this));
-        this.dashboard.setOutput(new output_1.Output());
+        this.output = new output_1.Output();
+        this.dashboard.setOutput(this.output);
         this.computerSound = new computer_1.default(this);
         this.computerSound.playAllSequentially();
         this.keyboardSound = new keyboard_1.default(this);
@@ -659,11 +670,44 @@ class Play extends Phaser.State {
         this.dashboard.leds.displayLeds();
     }
     update() {
+        this.finish();
         this.boardFX.update();
     }
     render() {
         if (this.debug) {
             this.game.debug.text("FPS: " + this.game.time.fps + " ", 2, 14, "#00ff00");
+        }
+    }
+    fade() {
+        this.game.camera.fade(0x000000, 3000);
+    }
+    resetFade() {
+        this.game.camera.resetFX();
+        // TODO: disable focus
+        let timeout = 200;
+        let output = this.output;
+        setTimeout(function () { output.writeToTerminal('...'); }, timeout);
+        setTimeout(function () { output.writeToTerminal('...'); }, timeout);
+        setTimeout(function () { output.writeToTerminal('...'); }, timeout);
+        setTimeout(function () { output.writeToTerminal('...'); }, timeout);
+        setTimeout(function () { output.writeToTerminal('...'); }, timeout);
+        setTimeout(function () { output.writeToTerminal('Subject: LD39 ASAP!'); }, timeout * 2);
+        setTimeout(function () { output.writeToTerminal('From: Bernard McLindon'); }, timeout * 3);
+        setTimeout(function () {
+            output.writeToTerminal('Well received the confirmation of station health check, everything is ok.' +
+                'We started the extraction, your job is done here.' +
+                'BTW, engineers messed up again, they don\'t manage to remotely update your rover\'s firmware, ' +
+                'it seems the patch is not applicable.' +
+                'Anyway, let it there, you\'ll receive a new rover on LD 39, your new mission starts now.' +
+                '.');
+        }, timeout * 4);
+        setTimeout(function () { output.writeToTerminal('...'); }, timeout * 5);
+    }
+    finish() {
+        if (this.isPlayingFinishScene == false && this.installedModules.length == 1) {
+            this.isPlayingFinishScene = true;
+            this.game.camera.onFadeComplete.add(this.resetFade, this);
+            this.fade();
         }
     }
 }
@@ -902,23 +946,45 @@ class Shell {
         this.output.terminalElement = this.shellText;
         this.writeBootLines(this.output, () => {
             let enterKey = this.state.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+            let lastHddLoadSoundPlayed = 1;
             enterKey.onDown.add(() => {
                 if (this.shellInput.value == "") {
                     return;
                 }
-                this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
+                this.shellText.value = this.shellText.value + '\n$ ' + this.shellInput.value;
+                this.shellInput.setAttribute('disabled', true);
+                const stopSound = this.output.playToSpeaker('hdd/load/' + lastHddLoadSoundPlayed++);
+                if (lastHddLoadSoundPlayed > 8) {
+                    lastHddLoadSoundPlayed = 1;
+                }
                 try {
-                    this.terminal.getAction(this.shellInput.value).execute(this.state, this.output);
+                    this.terminal
+                        .getAction(this.shellInput.value)
+                        .execute(this.state, this.output)
+                        .then(() => {
+                        stopSound();
+                        this.shellInput.removeAttribute('disabled');
+                        this.shellInput.focus();
+                    }, (error) => {
+                        stopSound();
+                        this.printError(error);
+                    });
                 }
                 catch (e) {
-                    this.output.writeToTerminal(e, true);
-                    this.output.playToSpeaker('notifications/error');
+                    stopSound();
+                    this.printError(e);
                 }
                 this.shellInput.value = "";
             }, this);
             this.shellInput.removeAttribute('disabled');
             this.shellInput.focus();
         });
+    }
+    printError(error) {
+        this.output.writeToTerminal(error, true);
+        this.output.playToSpeaker('notifications/error');
+        this.shellInput.removeAttribute('disabled');
+        this.shellInput.focus();
     }
     writeBootLines(output, callback) {
         let timeout = 1000;
@@ -964,91 +1030,115 @@ class Build {
         this.module = module;
     }
     execute(state, output) {
-        switch (this.module) {
-            case 'extractor':
-                if (state.currentLocation instanceof tundra_1.Tundra || state.currentLocation instanceof sand_desert_1.SandDesert) {
-                    const installedModule = state.installedModules.find((installed) => installed.name === this.module);
-                    if (undefined !== installedModule) {
-                        throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
-                    }
-                    let type = 'smelter';
-                    return this.build(output, type, () => {
-                        output.playToSpeaker('notifications/success');
-                        output.turnOnLed(3);
-                        state.installedModules.push({
-                            name: this.module,
-                            location: state.currentLocation,
-                            type: type
+        const that = this;
+        return new Promise((resolve) => {
+            if (state.isRoverLanded == false) {
+                output.writeToTerminal('I can\'t build. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
+                resolve();
+                return;
+            }
+            switch (that.module) {
+                case 'extractor':
+                    if (state.currentLocation instanceof tundra_1.Tundra || state.currentLocation instanceof sand_desert_1.SandDesert) {
+                        const installedModule = state.installedModules.find((installed) => installed.name === that.module);
+                        if (undefined !== installedModule) {
+                            throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
+                        }
+                        let type = 'smelter';
+                        return that.build(output, type, () => {
+                            output.playToSpeaker('notifications/success');
+                            setTimeout(() => {
+                                output.playToSpeaker('notifications/bip');
+                                output.turnOnLed(3);
+                            }, 500);
+                            state.installedModules.push({
+                                name: that.module,
+                                location: state.currentLocation,
+                                type: type
+                            });
+                            resolve();
                         });
-                    });
-                }
-                throw 'Cannot install module "' + this.module + '" in "' + state.currentLocation.type + '".';
-            case 'communication':
-                if (state.currentLocation instanceof rocky_mountain_1.RockyMountain) {
-                    const installedModule = state.installedModules.find((installed) => installed.name === this.module);
-                    if (undefined !== installedModule) {
-                        throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
                     }
-                    let type = 'satellite dish';
-                    return this.build(output, type, () => {
-                        output.playToSpeaker('notifications/success');
-                        output.turnOnLed(2);
-                        state.installedModules.push({
-                            name: this.module,
-                            location: state.currentLocation,
-                            type: type
+                    throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
+                case 'communication':
+                    if (state.currentLocation instanceof rocky_mountain_1.RockyMountain) {
+                        const installedModule = state.installedModules.find((installed) => installed.name === that.module);
+                        if (undefined !== installedModule) {
+                            throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
+                        }
+                        let type = 'satellite dish';
+                        return that.build(output, type, () => {
+                            output.playToSpeaker('notifications/success');
+                            setTimeout(() => {
+                                output.playToSpeaker('notifications/bip');
+                                output.turnOnLed(2);
+                            }, 500);
+                            state.installedModules.push({
+                                name: that.module,
+                                location: state.currentLocation,
+                                type: type
+                            });
+                            resolve();
                         });
-                    });
-                }
-                throw 'Cannot install module "' + this.module + '" in "' + state.currentLocation.type + '".';
-            case 'refinery':
-                if (state.currentLocation instanceof grassland_1.Grassland || state.currentLocation instanceof sand_desert_1.SandDesert) {
-                    const installedModule = state.installedModules.find((installed) => installed.name === this.module);
-                    if (undefined !== installedModule) {
-                        throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
                     }
-                    let type = 'autonomous processor';
-                    return this.build(output, type, () => {
-                        output.playToSpeaker('notifications/success');
-                        output.turnOnLed(4);
-                        state.installedModules.push({
-                            name: this.module,
-                            location: state.currentLocation,
-                            type: type
+                    throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
+                case 'refinery':
+                    if (state.currentLocation instanceof grassland_1.Grassland || state.currentLocation instanceof sand_desert_1.SandDesert) {
+                        const installedModule = state.installedModules.find((installed) => installed.name === that.module);
+                        if (undefined !== installedModule) {
+                            throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
+                        }
+                        let type = 'autonomous processor';
+                        return that.build(output, type, () => {
+                            output.playToSpeaker('notifications/success');
+                            setTimeout(() => {
+                                output.playToSpeaker('notifications/bip');
+                                output.turnOnLed(4);
+                            }, 500);
+                            state.installedModules.push({
+                                name: that.module,
+                                location: state.currentLocation,
+                                type: type
+                            });
+                            resolve();
                         });
-                    });
-                }
-                throw 'Cannot install module "' + this.module + '" in "' + state.currentLocation.type + '".';
-            case 'energy':
-                if (state.currentLocation instanceof ocean_1.Ocean || state.currentLocation instanceof sand_desert_1.SandDesert || state.currentLocation instanceof rain_forest_1.RainForest) {
-                    const installedModule = state.installedModules.find((installed) => installed.name === this.module);
-                    if (undefined !== installedModule) {
-                        throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
                     }
-                    let type = '';
-                    if (state.currentLocation instanceof ocean_1.Ocean) {
-                        type = 'wind turbines';
-                    }
-                    else if (state.currentLocation instanceof ocean_1.Ocean) {
-                        type = "solar panels";
-                    }
-                    else {
-                        type = "biomass processor";
-                    }
-                    return this.build(output, type, () => {
-                        output.playToSpeaker('notifications/success');
-                        output.turnOnLed(1);
-                        state.installedModules.push({
-                            name: this.module,
-                            location: state.currentLocation,
-                            type: type
+                    throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
+                case 'energy':
+                    if (state.currentLocation instanceof ocean_1.Ocean || state.currentLocation instanceof sand_desert_1.SandDesert || state.currentLocation instanceof rain_forest_1.RainForest) {
+                        const installedModule = state.installedModules.find((installed) => installed.name === that.module);
+                        if (undefined !== installedModule) {
+                            throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
+                        }
+                        let type = '';
+                        if (state.currentLocation instanceof ocean_1.Ocean) {
+                            type = 'wind turbines';
+                        }
+                        else if (state.currentLocation instanceof ocean_1.Ocean) {
+                            type = "solar panels";
+                        }
+                        else {
+                            type = "biomass processor";
+                        }
+                        return that.build(output, type, () => {
+                            output.playToSpeaker('notifications/success');
+                            setTimeout(() => {
+                                output.playToSpeaker('notifications/bip');
+                                output.turnOnLed(1);
+                            }, 500);
+                            state.installedModules.push({
+                                name: that.module,
+                                location: state.currentLocation,
+                                type: type
+                            });
+                            resolve();
                         });
-                    });
-                }
-                throw 'Cannot install module "' + this.module + '" in "' + state.currentLocation.type + '".';
-            default:
-                throw 'Unknown module "' + this.module + '".';
-        }
+                    }
+                    throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
+                default:
+                    throw 'Unknown module "' + that.module + '".';
+            }
+        });
     }
     build(output, type, callback) {
         output.writeToTerminal('Setting up the ' + this.module + '[' + type + ']...');
@@ -1084,18 +1174,23 @@ class Goto {
         this.destination = destination;
     }
     execute(state, output) {
-        if (state.isRoverLanded == false) {
-            output.writeToTerminal('I can\'t move. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
-            return;
-        }
-        const destination = state.locations.filter((location) => location.name === this.destination);
-        if (1 === destination.length) {
-            state.currentLocation = destination[0];
-            output.writeToTerminal('Moved to ' + state.currentLocation.type + '.');
-            output.writeToTerminal(state.currentLocation.description);
-            return;
-        }
-        output.writeToTerminal('I don\'t know this place...');
+        return new Promise((resolve) => {
+            if (state.isRoverLanded == false) {
+                output.writeToTerminal('I can\'t move. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
+                resolve();
+                return;
+            }
+            const destination = state.locations.filter((location) => location.name === this.destination);
+            if (1 === destination.length) {
+                state.currentLocation = destination[0];
+                output.writeToTerminal('Moved to ' + state.currentLocation.type + '.');
+                output.writeToTerminal(state.currentLocation.description);
+                resolve();
+                return;
+            }
+            output.writeToTerminal('I don\'t know this place...');
+            resolve();
+        });
     }
 }
 function GotoActionFactory(parameters) {
@@ -1119,15 +1214,17 @@ class Help {
         this.name = 'help';
     }
     execute(state, output) {
-        output.writeToTerminal('help               -- display helps');
-        let timeout = 200;
-        setTimeout(function () { output.writeToTerminal('build [module]     -- build a module'); }, timeout * 2);
-        setTimeout(function () { output.writeToTerminal('goto [location]    -- move to location'); }, timeout * 1);
-        setTimeout(function () { output.writeToTerminal('inbox              -- check your inbox'); }, timeout * 3);
-        setTimeout(function () { output.writeToTerminal('inventory          -- check inventory'); }, timeout * 2);
-        setTimeout(function () { output.writeToTerminal('search             -- analysis of current location'); }, timeout * 6);
-        setTimeout(function () { output.writeToTerminal('undock             -- undock recon from pod'); }, timeout * 4);
-        setTimeout(function () { output.writeToTerminal('whereami           -- current/known locations'); }, timeout * 5);
+        return new Promise(function (resolve) {
+            output.writeToTerminal('help               -- display helps');
+            let timeout = 200;
+            setTimeout(function () { output.writeToTerminal('build [module]     -- build a module'); }, timeout * 1);
+            setTimeout(function () { output.writeToTerminal('goto [location]    -- move to location'); }, timeout * 2);
+            setTimeout(function () { output.writeToTerminal('inbox              -- check your inbox'); }, timeout * 3);
+            setTimeout(function () { output.writeToTerminal('inventory          -- check rover inventory'); }, timeout * 4);
+            setTimeout(function () { output.writeToTerminal('undock             -- undock rover from pod'); }, timeout * 5);
+            setTimeout(function () { output.writeToTerminal('whereami           -- current/known locations'); }, timeout * 6);
+            setTimeout(function () { output.writeToTerminal('search             -- analysis of current location'); resolve(); }, timeout * 7);
+        });
     }
 }
 function HelpActionFactory(parameters) {
@@ -1148,14 +1245,17 @@ class Inbox {
         this.name = 'inbox';
     }
     execute(state, output) {
-        output.writeToTerminal('Subject: Get the job done');
-        output.writeToTerminal('From: Bernard McLindon');
-        output.writeToTerminal('No surprise, investors are pushing us for exo-planet LD38. You know the drill: ' +
-            'land the rover on the surface, deploy solar arrays, settle the communication ' +
-            'network, install the ore extractor and refinery. Be quick, be efficient, don’t ' +
-            'lose your time around this rock. And don’t listen to the rover, the new firmware' +
-            ' made him… a little poetic. You’ll see.' +
-            '\nPS: In case your forget it, you’ll have to `undock` your rover.');
+        return new Promise((resolve) => {
+            output.writeToTerminal('Subject: Get the job done');
+            output.writeToTerminal('From: Bernard McLindon');
+            output.writeToTerminal('No surprise, investors are pushing us for exo-planet LD38. You know the drill: ' +
+                'land the rover on the surface, deploy solar arrays, settle the communication ' +
+                'network, install the ore extractor and refinery. Be quick, be efficient, don’t ' +
+                'lose your time around this small rock. And don’t listen to the rover, the new firmware' +
+                ' made him… a little poetic. You’ll see.' +
+                '\nPS: In case your forget it, you’ll have to `undock` your rover.');
+            resolve();
+        });
     }
 }
 function InboxActionFactory(parameters) {
@@ -1176,20 +1276,23 @@ class Inventory {
         this.name = 'inventory';
     }
     execute(state, output) {
-        let timeout = 200;
-        const modules = ['communication', 'energy', 'refinery', 'extractor'];
-        let indModule = 0;
-        let installedModule = null;
-        for (let module of modules) {
-            indModule++;
-            installedModule = state.installedModules.find((installed) => installed.name === module);
-            if (installedModule) {
-                setTimeout(function () { output.writeToTerminal(module + ' (0 module)'); }, timeout * indModule);
+        return new Promise((resolve) => {
+            let timeout = 200;
+            const modules = ['communication', 'energy', 'refinery', 'extractor'];
+            let indModule = 0;
+            let installedModule = null;
+            for (let module of modules) {
+                indModule++;
+                installedModule = state.installedModules.find((installed) => installed.name === module);
+                if (installedModule) {
+                    setTimeout(function () { output.writeToTerminal(module + ' (0 remaining module)'); }, timeout * indModule);
+                }
+                else {
+                    setTimeout(function () { output.writeToTerminal(module + ' (1 remaining module)'); }, timeout * indModule);
+                }
             }
-            else {
-                setTimeout(function () { output.writeToTerminal(module + ' (1 module)'); }, timeout * indModule);
-            }
-        }
+            setTimeout(() => resolve(), timeout * (indModule + 1));
+        });
     }
 }
 function InventoryActionFactory(parameters) {
@@ -1210,11 +1313,19 @@ class Search {
         this.name = 'search';
     }
     execute(state, output) {
-        const location = state.currentLocation;
-        if (!location) {
-            throw 'Move me first...';
-        }
-        location.search(output);
+        return new Promise((resolve) => {
+            if (state.isRoverLanded == false) {
+                output.writeToTerminal('I can\'t search. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
+                resolve();
+                return;
+            }
+            const location = state.currentLocation;
+            if (!location) {
+                throw 'Move me first...';
+            }
+            location.search(output);
+            resolve();
+        });
     }
 }
 exports.Search = Search;
@@ -1237,30 +1348,34 @@ class Undock {
         this.name = 'undock';
     }
     execute(state, output) {
-        if (state.isRoverLanded) {
-            output.writeToTerminal('Nothing to undock.');
-            return;
-        }
-        output.writeToTerminal('Undocking module from spaceship...');
-        let spaceshipSound = new spaceship_1.default(state);
-        spaceshipSound.playUndock();
-        setTimeout(() => { output.writeToTerminal('Depressuring process...'); }, 2000);
-        setTimeout(() => { output.writeToTerminal('Undocking rover... please stay vigilant.'); }, 15000);
-        setTimeout(() => {
-            output.writeToTerminal('Undocking process succeeded!');
-            state.isRoverLanded = true;
-            // always land on tundra, you can't do nothing here
-            state.currentLocation = state.locations.find((location) => location.name === 'snowy-forest');
-        }, 28000);
-        setTimeout(() => {
-            output.writeToTerminal('Boot...');
-            output.writeToTerminal('Connect to recon rover...');
-        }, 28500);
-        setTimeout(() => { output.writeToTerminal('Ping...'); }, 29000);
-        setTimeout(() => { output.writeToTerminal('Ping...'); }, 30000);
-        setTimeout(() => { output.writeToTerminal('Ping...'); }, 31000);
-        setTimeout(() => { output.writeToTerminal('Connection established.'); }, 32000);
-        setTimeout(() => { output.writeToTerminal('Hello operator, i\'m VJ-Net38, your recon rover.'); }, 33000);
+        return new Promise((resolve) => {
+            if (state.isRoverLanded) {
+                output.writeToTerminal('Nothing to undock.');
+                resolve();
+                return;
+            }
+            output.writeToTerminal('Wow, finally!', false, true);
+            output.writeToTerminal('::Undocking procedure started');
+            let spaceshipSound = new spaceship_1.default(state);
+            spaceshipSound.playUndock();
+            setTimeout(() => { output.writeToTerminal(':: Depressuring process...'); }, 2000);
+            setTimeout(() => { output.writeToTerminal(':: Undocking rover... please stay vigilant.'); }, 15000);
+            setTimeout(() => {
+                output.writeToTerminal('Undocking process succeeded!');
+                state.isRoverLanded = true;
+                // always land on snowy-forest, you can't do nothing here
+                state.currentLocation = state.locations.find((location) => location.name === 'snowy-forest');
+            }, 28000);
+            setTimeout(() => {
+                output.writeToTerminal('Boot...');
+                output.writeToTerminal('Connect to recon rover...');
+            }, 28500);
+            setTimeout(() => { output.writeToTerminal('Ping...'); }, 29000);
+            setTimeout(() => { output.writeToTerminal('Ping...'); }, 30000);
+            setTimeout(() => { output.writeToTerminal('Ping...'); }, 31000);
+            setTimeout(() => { output.writeToTerminal('Connection established.'); }, 32000);
+            setTimeout(() => { output.writeToTerminal('Hello operator, I\'m VJ-Net38, your recon rover. I\'ve finally landed on this small planet, feel free to send instructions.', false, true); resolve(); }, 33000);
+        });
     }
 }
 function UndockActionFactory(parameters) {
@@ -1281,19 +1396,23 @@ class Whereami {
         this.name = 'whereami';
     }
     execute(state, output) {
-        const currentLocation = state.currentLocation;
-        if (!state.isRoverLanded) {
-            output.writeToTerminal('Docked in the pod');
-            return;
-        }
-        for (let location of state.locations) {
-            if (currentLocation && currentLocation.type == location.type) {
-                output.writeToTerminal('[x] ' + location.name);
+        return new Promise((resolve) => {
+            const currentLocation = state.currentLocation;
+            if (!state.isRoverLanded) {
+                output.writeToTerminal('Docked in the pod.');
+                resolve();
+                return;
             }
-            else {
-                output.writeToTerminal('[ ] ' + location.name);
+            for (let location of state.locations) {
+                if (currentLocation && currentLocation.type == location.type) {
+                    output.writeToTerminal('[x] ' + location.name);
+                }
+                else {
+                    output.writeToTerminal('[ ] ' + location.name);
+                }
             }
-        }
+            resolve();
+        });
     }
 }
 function WhereamiActionFactory(parameters) {
@@ -1325,25 +1444,31 @@ exports.Command = Command;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 class Output {
-    writeToTerminal(data, errored = false) {
-        if (errored) {
-            this.out('>>> ERROR: ' + data + '\n');
-            return;
+    writeToTerminal(data, errored = false, fromRover = false) {
+        var lineStart = '';
+        if (this.terminalElement.value !== "") {
+            lineStart = '\n';
         }
-        this.out('>>> ' + data + '\n');
+        if (errored) {
+            this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ERROR: ' + data + '\n';
+        }
+        else if (fromRover) {
+            this.terminalElement.value = this.terminalElement.value + lineStart + 'VJ-Net38: "' + data + '"\n';
+        }
+        else {
+            this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ' + data;
+        }
+        this.terminalElement.scrollTop = this.terminalElement.scrollHeight + 10;
     }
-    playToSpeaker(data) {
-        this.speaker.playSound(data);
+    playToSpeaker(data, volume = 1, loop = false) {
+        const sound = this.speaker.playSound(data, volume, loop);
+        return () => sound.destroy();
     }
     displayToMonitor(data, opacity) {
         this.monitor.showImage(data, opacity);
     }
     turnOnLed(position) {
         this.leds.turnOnLed(position);
-    }
-    out(data) {
-        this.terminalElement.value = this.terminalElement.value + data;
-        this.terminalElement.scrollTop = this.terminalElement.scrollHeight;
     }
 }
 exports.Output = Output;
