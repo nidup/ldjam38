@@ -120,7 +120,7 @@ export default class Shell {
         }, timeout*3);
         setTimeout(function(){ output.writeToTerminal(':: Loading kernel...'); }, timeout*5);
         setTimeout(function(){ output.writeToTerminal(':: Loading external modules...'); }, timeout*8);
-        setTimeout(function(){ output.writeToTerminal(':: Checking for system integrity...'); }, timeout*13);
+        setTimeout(function(){ output.writeToTerminal(':: Checking system integrity...'); }, timeout*13);
         setTimeout(function(){ output.writeToTerminal(':: Warming up RAM module...'); }, timeout*17);
         setTimeout(function(){
             output.writeToTerminal('Welcome again agent XD6001.');

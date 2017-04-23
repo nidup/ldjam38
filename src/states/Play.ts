@@ -134,14 +134,17 @@ export default class Play extends Phaser.State {
             'We started the extraction, your job is done here.' +
             'BTW, engineers messed up again, they don\'t manage to remotely update your rover\'s firmware, ' +
             'it seems the patch is not applicable.' +
-            'Anyway, let it there, you\'ll receive a new rover on LD 39, your new mission starts now.' +
+            'Anyway, let it there, you\'ll receive a new rover on LD 39, your new mission starts now' +
             '.')}, timeout * 4);
         setTimeout(function(){ output.writeToTerminal('...'); }, timeout*5);
-
+        setTimeout(function(){ output.writeToTerminal('What are you doing? Don\'t let me alone!', false, true); }, timeout * 12);
+        setTimeout(() => { output.writeToTerminal('Connection lost.'); }, timeout * 14);
+        setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 16);
+        setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 20);
     }
 
     private finish() {
-        if (this.isPlayingFinishScene == false && this.installedModules.length == 1) {
+        if (this.isPlayingFinishScene == false && this.installedModules.length == 4) {
             this.isPlayingFinishScene = true;
             this.game.camera.onFadeComplete.add(this.resetFade, this);
             this.fade();
