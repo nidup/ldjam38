@@ -27,6 +27,7 @@ export default class Play extends Phaser.State {
     isRoverLanded: boolean = false;
     isPlayingFinishScene: boolean = false;
     gatheredData: GatheredData[] = [];
+    alienArtifactFound: boolean = false;
 
     private debug: boolean = false;
 
