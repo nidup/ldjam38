@@ -14,35 +14,40 @@ export class Tundra implements Biome {
         this.searched = true;
         this.searchedCount++;
 
-        if (this.searchedCount == 1) {
-            output.writeToTerminal("This little plant is trapped in the frost.");
-            setTimeout(function(){
-                output.writeToTerminal('Uploading one photo (183): 5% ...');
-                output.displayToMonitor('scenes/toundra', 0.10);
-            }, 1000*1);
-            setTimeout(function(){
-                output.writeToTerminal('Uploading one photo (183): 25% ...');
-                output.displayToMonitor('scenes/toundra', 0.25);
-            }, 1000*2);
-            setTimeout(function(){
-                output.writeToTerminal('Uploading one photo (183): 53% ...');
-                output.displayToMonitor('scenes/toundra', 0.53);
-            }, 1000*3);
-            setTimeout(function(){
-                output.writeToTerminal('Uploading one photo (183): 78% ...');
-                output.displayToMonitor('scenes/toundra', 0.78);
-            }, 1000*4);
-            setTimeout(function(){
-                output.writeToTerminal('Uploading one photo (183): 100% ...');
-                output.displayToMonitor('scenes/toundra', 1);
-                output.writeToTerminal('Done.');
-            }, 1000*5);
+        switch (this.searchedCount) {
+            case 1:
+                output.writeToTerminal("This little plant is trapped in the frost.");
+                setTimeout(function(){
+                    output.writeToTerminal('Uploading one photo (183): 5% ...');
+                    output.displayToMonitor('scenes/toundra', 0.10);
+                }, 1000*1);
+                setTimeout(function(){
+                    output.writeToTerminal('Uploading one photo (183): 25% ...');
+                    output.displayToMonitor('scenes/toundra', 0.25);
+                }, 1000*2);
+                setTimeout(function(){
+                    output.writeToTerminal('Uploading one photo (183): 53% ...');
+                    output.displayToMonitor('scenes/toundra', 0.53);
+                }, 1000*3);
+                setTimeout(function(){
+                    output.writeToTerminal('Uploading one photo (183): 78% ...');
+                    output.displayToMonitor('scenes/toundra', 0.78);
+                }, 1000*4);
+                setTimeout(function(){
+                    output.writeToTerminal('Uploading one photo (183): 100% ...');
+                    output.displayToMonitor('scenes/toundra', 1);
+                    output.writeToTerminal('Done.');
+                }, 1000*5);
+                break;
+            case 2:
+                output.writeToTerminal('The topographic analysis indicates a rich underground, it must be at least a million years old.');
+                break;
+           default:
+                output.writeToTerminal('Nothing more to add.');
         }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
-        }
+    }
+
+    build(output: Output) {
+                output.writeToTerminal('Pipeline network is finished. Should we talk about this last remaining bolt?..');
     }
 }
