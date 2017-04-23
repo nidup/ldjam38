@@ -14,17 +14,20 @@ export default class Monitor {
 
 	static loadAssets (state: Preload) {
         state.load.image('scenes/01', 'assets/images/scenes/01.png');
+        state.load.image('scenes/river', 'assets/images/scenes/river.png');
 	}
 
-	showImage (name: string) {
-		// 490x 130 | 105 x 75
-		var sprite = this.state.game.add.sprite(495, 143, name);
-		sprite.width = 90;
-		sprite.height = 60;
+	showImage (name: string, opacity: number) {
+		if (this.currentImage) {
+			this.currentImage.kill();
+		}
+		this.currentImage = this.state.middleground.create(490, 135, name);
+		this.currentImage.width = 100;
+		this.currentImage.height = 73;
+		this.currentImage.alpha = opacity;
 	}
 
 	update() {
-	    // this.state.game.add.sprite(80, 0, this.currentImage);
 	}
 
 	setOutput (output: Output) {

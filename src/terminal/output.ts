@@ -20,8 +20,8 @@ export class Output {
         this.speaker.playSound(data);
     }
 
-    displayToMonitor(data: string) {
-        this.monitor.showImage(data);
+    displayToMonitor(data: string, opacity: number) {
+        this.monitor.showImage(data, opacity);
     }
 
     private out(data: string) {

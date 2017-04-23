@@ -24,6 +24,11 @@ export default class Play extends Phaser.State {
     private debug: boolean = false;
     private briefingText : Phaser.BitmapText;
 
+    // Sprites
+    private background: Phaser.Group;
+    public middleground: Phaser.Group;
+    private foreground: Phaser.Group;
+
     private dashboard: Dashboard;
     private keyboardSound: KeyboardSound;
     private computerSound: ComputerSound;
@@ -61,12 +66,16 @@ export default class Play extends Phaser.State {
         this.locations.push(new SnowyForest(this.dashboard));
         this.locations.push(new Tundra(this.dashboard));
 
-        this.add.image(0, 0, 'board');
+        this.background = this.game.add.group();
+        this.background.create(0, 0, 'board');
+
+        this.middleground = this.game.add.group();
 
         this.boardFX = new BoardFX(this);
         this.boardFX.display();
 
-        this.add.image(0, 0, 'board_top');
+        this.foreground = this.game.add.group();
+        this.foreground.create(0, 0, 'board_top');
     }
 
     public update()
