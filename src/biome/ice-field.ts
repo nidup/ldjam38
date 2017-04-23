@@ -1,10 +1,10 @@
 import { Biome } from './biome';
 import { Output } from '../terminal/output';
 
-export class SnowyForest implements Biome {
-    public name: string = 'snowy-forest';
-    public type: string = 'Snowy forest';
-    public description: string = 'A snowy forest.';
+export class IceField implements Biome {
+    public name: string = 'ice-field';
+    public type: string = 'Ice field';
+    public description: string = 'An ice field.';
 
     private searched: boolean = false;
     private searchedCount: number = 0;

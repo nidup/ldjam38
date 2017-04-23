@@ -6,7 +6,7 @@ import { Tundra } from '../../biome/tundra';
 import { SandDesert } from '../../biome/sand-desert';
 import {RockyMountain} from "../../biome/rocky-mountain";
 import {Grassland} from "../../biome/grassland";
-import {Ocean} from "../../biome/ocean";
+import {SeaShore} from "../../biome/sea-shore";
 import {RainForest} from "../../biome/rain-forest";
 
 class Build implements Action {
@@ -105,16 +105,16 @@ class Build implements Action {
                 throw 'Cannot install module "' + that.module + '" in "' + state.currentLocation.type + '".';
 
                 case 'energy':
-                    if (state.currentLocation instanceof Ocean || state.currentLocation instanceof SandDesert || state.currentLocation instanceof RainForest) {
+                    if (state.currentLocation instanceof SeaShore || state.currentLocation instanceof SandDesert || state.currentLocation instanceof RainForest) {
                     const installedModule = state.installedModules.find((installed) => installed.name === that.module);
                     if (undefined !== installedModule) {
                         throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
                     }
 
                     let type = '';
-                    if (state.currentLocation instanceof Ocean) {
+                    if (state.currentLocation instanceof SeaShore) {
                         type = 'wind turbines';
-                    } else if (state.currentLocation instanceof Ocean) {
+                    } else if (state.currentLocation instanceof SeaShore) {
                         type = "solar panels";
                     } else {
                         type = "biomass processor";

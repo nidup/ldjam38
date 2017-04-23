@@ -1,10 +1,10 @@
 import { Biome } from '../biome/biome';
 import { Grassland } from '../biome/grassland';
-import { Ocean } from '../biome/ocean';
+import { SeaShore } from "../biome/sea-shore";
 import { RainForest } from '../biome/rain-forest';
 import { RockyMountain } from '../biome/rocky-mountain';
 import { SandDesert } from '../biome/sand-desert';
-import { SnowyForest } from '../biome/snowy-forest';
+import { IceField } from '../biome/ice-field';
 import { Tundra } from '../biome/tundra';
 
 import BoardFX from '../fx/board';
@@ -66,11 +66,11 @@ export default class Play extends Phaser.State {
 
         // INIT LOCATIONS
         this.locations.push(new Grassland());
-        this.locations.push(new Ocean());
+        this.locations.push(new SeaShore());
         this.locations.push(new RainForest());
         this.locations.push(new RockyMountain());
         this.locations.push(new SandDesert());
-        this.locations.push(new SnowyForest());
+        this.locations.push(new IceField());
         this.locations.push(new Tundra());
 
         this.background = this.game.add.group();
