@@ -57,7 +57,7 @@ export class Grassland implements Biome {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
                 }, 200*5);
-                output.playToSpeaker('capture/grassland');
+                output.playCapture('capture/grassland');
 
                 output.writeToTerminal('It is a perfect place to build a little house, in this giant prairie. I’ll send you the blueprints.', false, true);
                 break;

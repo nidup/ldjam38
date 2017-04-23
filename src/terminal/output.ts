@@ -30,6 +30,14 @@ export class Output {
         return () => sound.destroy();
     }
 
+    playCapture(data: string, volume: number = 1) {
+        this.speaker.playCapture(data, volume);
+    }
+
+    stopCapture() {
+        this.speaker.stopCapture();
+    }
+
     displayToMonitor(data: string, opacity: number) {
         this.monitor.showImage(data, opacity);
     }

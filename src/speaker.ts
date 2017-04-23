@@ -8,6 +8,8 @@ export default class Speaker {
 	private state: Play;
 	private output: Output;
 
+	private currentPlayingCapture: Phaser.Sound;
+
 	constructor(state: Play) {
 		this.state = state;
 	}
@@ -39,6 +41,18 @@ export default class Speaker {
 	playSound(name: string, volume: number = 1, loop: boolean = false) {
 		return this.state.sound.play(name, volume, loop);
 	}
+
+	playCapture(name: string, volume: number = 1) {
+	    this.currentPlayingCapture = this.state.sound.play(name, volume);
+
+	    return this.currentPlayingCapture;
+    }
+
+    stopCapture() {
+        if(this.currentPlayingCapture) {
+            this.currentPlayingCapture.destroy();
+        }
+    }
 
 	setOutput (output: Output) {
 		this.output = output;

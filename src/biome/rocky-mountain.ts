@@ -56,7 +56,7 @@ export class RockyMountain implements Biome {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
                 }, 200*5);
-                output.playToSpeaker('capture/rocky-mountain');
+                output.playCapture('capture/rocky-mountain');
 
                 output.writeToTerminal('The wind is strong, but the view is clear. Really I wish you would be there with me.', false, true);
                 break;

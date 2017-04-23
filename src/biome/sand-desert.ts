@@ -56,7 +56,7 @@ export class SandDesert implements Biome {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
                 }, 200*5);
-                output.playToSpeaker('capture/sand-desert');
+                output.playCapture('capture/sand-desert');
 
                 output.writeToTerminal("This shape in the horizon is unusual in the desert relief.", false, true);
                 break;

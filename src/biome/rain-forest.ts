@@ -32,7 +32,7 @@ export class RainForest implements Biome {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
                 }, 200*5);
-                output.playToSpeaker('capture/rain-forest');
+                output.playCapture('capture/rain-forest');
 
                 output.writeToTerminal('What a packed forest, maybe I could find a clearing to send you a picture.', false, true);
                 break;
