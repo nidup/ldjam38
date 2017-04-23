@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -287,6 +287,55 @@ exports.Tundra = Tundra;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+class Leds {
+    constructor(state) {
+        this.led1X = 497;
+        this.led2X = 517;
+        this.led3X = 537;
+        this.led4X = 557;
+        this.state = state;
+    }
+    static loadAssets(state) {
+        state.load.image('leds/off', 'assets/images/leds/led_off.png');
+        state.load.image('leds/on', 'assets/images/leds/led_on.png');
+    }
+    turnOnLed(position) {
+        switch (position) {
+            case 1:
+                this.state.foreground.create(this.led1X, 96, 'leds/on');
+                break;
+            case 2:
+                this.state.foreground.create(this.led2X, 96, 'leds/on');
+                break;
+            case 3:
+                this.state.foreground.create(this.led3X, 96, 'leds/on');
+                break;
+            case 4:
+                this.state.foreground.create(this.led4X, 96, 'leds/on');
+                break;
+        }
+    }
+    displayLeds() {
+        this.state.foreground.create(this.led1X, 96, 'leds/off');
+        this.state.foreground.create(this.led2X, 96, 'leds/off');
+        this.state.foreground.create(this.led3X, 96, 'leds/off');
+        this.state.foreground.create(this.led4X, 96, 'leds/off');
+    }
+    setOutput(output) {
+        this.output = output;
+        output.leds = this;
+    }
+}
+exports.default = Leds;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
 class Monitor {
     constructor(state) {
         this.state = state;
@@ -299,9 +348,9 @@ class Monitor {
         if (this.currentImage) {
             this.currentImage.kill();
         }
-        this.currentImage = this.state.middleground.create(490, 135, name);
-        this.currentImage.width = 100;
-        this.currentImage.height = 73;
+        this.currentImage = this.state.middleground.create(490 * 1.5, 135 * 1.5, name);
+        this.currentImage.width = 100 * 1.5;
+        this.currentImage.height = 73 * 1.5;
         this.currentImage.alpha = opacity;
     }
     update() {
@@ -315,7 +364,7 @@ exports.default = Monitor;
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -356,7 +405,7 @@ exports.default = ComputerSound;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -422,7 +471,7 @@ exports.default = KeyboardSound;
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -444,7 +493,7 @@ exports.default = SpaceshipSound;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -457,6 +506,7 @@ class Speaker {
     static loadAssets(state) {
         state.load.audio('notifications/error', 'assets/sounds/notifications/01.wav');
         state.load.audio('notifications/01', 'assets/sounds/notifications/01.wav');
+        state.load.audio('notifications/success', 'assets/sounds/notifications/success.wav');
     }
     playSound(name) {
         this.state.sound.play(name);
@@ -470,7 +520,7 @@ exports.default = Speaker;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -486,7 +536,7 @@ exports.default = Boot;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -516,7 +566,7 @@ exports.default = Introduction;
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -544,7 +594,7 @@ exports.default = Menu;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -555,16 +605,17 @@ const ocean_1 = __webpack_require__(1);
 const rain_forest_1 = __webpack_require__(2);
 const rocky_mountain_1 = __webpack_require__(3);
 const sand_desert_1 = __webpack_require__(4);
-const snowy_forest_1 = __webpack_require__(17);
+const snowy_forest_1 = __webpack_require__(18);
 const tundra_1 = __webpack_require__(5);
-const board_1 = __webpack_require__(19);
-const shell_1 = __webpack_require__(20);
-const speaker_1 = __webpack_require__(10);
-const monitor_1 = __webpack_require__(6);
-const dashboard_1 = __webpack_require__(18);
-const keyboard_1 = __webpack_require__(8);
-const computer_1 = __webpack_require__(7);
-const output_1 = __webpack_require__(30);
+const board_1 = __webpack_require__(20);
+const shell_1 = __webpack_require__(21);
+const speaker_1 = __webpack_require__(11);
+const monitor_1 = __webpack_require__(7);
+const leds_1 = __webpack_require__(6);
+const dashboard_1 = __webpack_require__(19);
+const keyboard_1 = __webpack_require__(9);
+const computer_1 = __webpack_require__(8);
+const output_1 = __webpack_require__(31);
 class Play extends Phaser.State {
     constructor() {
         super(...arguments);
@@ -580,7 +631,7 @@ class Play extends Phaser.State {
         this.game.stage.backgroundColor = '#000000';
         // this.briefingText = this.game.add.bitmapText(40, 40, 'carrier-command','Game PLAY STATE.', 10);
         // this.briefingText.fixedToCamera = true;
-        this.dashboard = new dashboard_1.default(new shell_1.default(this), new speaker_1.default(this), new monitor_1.default(this));
+        this.dashboard = new dashboard_1.default(new shell_1.default(this), new speaker_1.default(this), new monitor_1.default(this), new leds_1.default(this));
         this.dashboard.setOutput(new output_1.Output());
         this.computerSound = new computer_1.default(this);
         this.computerSound.playAllSequentially();
@@ -595,12 +646,17 @@ class Play extends Phaser.State {
         this.locations.push(new snowy_forest_1.SnowyForest());
         this.locations.push(new tundra_1.Tundra());
         this.background = this.game.add.group();
-        this.background.create(0, 0, 'board');
+        var board = this.background.create(0, 0, 'board');
+        board.width = board.width * 1.5;
+        board.height = board.height * 1.5;
         this.middleground = this.game.add.group();
         this.boardFX = new board_1.default(this);
         this.boardFX.display();
         this.foreground = this.game.add.group();
-        this.foreground.create(0, 0, 'board_top');
+        var board_top = this.foreground.create(0, 0, 'board_top');
+        board_top.width = board_top.width * 1.5;
+        board_top.height = board_top.height * 1.5;
+        this.dashboard.leds.displayLeds();
     }
     update() {
         this.boardFX.update();
@@ -615,17 +671,18 @@ exports.default = Play;
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const keyboard_1 = __webpack_require__(8);
-const computer_1 = __webpack_require__(7);
-const spaceship_1 = __webpack_require__(9);
-const speaker_1 = __webpack_require__(10);
-const monitor_1 = __webpack_require__(6);
+const keyboard_1 = __webpack_require__(9);
+const computer_1 = __webpack_require__(8);
+const spaceship_1 = __webpack_require__(10);
+const speaker_1 = __webpack_require__(11);
+const monitor_1 = __webpack_require__(7);
+const leds_1 = __webpack_require__(6);
 class Preload extends Phaser.State {
     preload() {
         this.load.image('cinematic1', 'assets/images/cinematic1.png');
@@ -634,6 +691,7 @@ class Preload extends Phaser.State {
         this.load.image('board_top', 'assets/images/board_top.png');
         speaker_1.default.loadAssets(this);
         monitor_1.default.loadAssets(this);
+        leds_1.default.loadAssets(this);
         keyboard_1.default.loadAssets(this);
         computer_1.default.loadAssets(this);
         spaceship_1.default.loadAssets(this);
@@ -647,21 +705,21 @@ exports.default = Preload;
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /// <reference path="../lib/phaser.d.ts"/>
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Boot_1 = __webpack_require__(11);
-const Preload_1 = __webpack_require__(15);
-const Menu_1 = __webpack_require__(13);
-const Introduction_1 = __webpack_require__(12);
-const Play_1 = __webpack_require__(14);
+const Boot_1 = __webpack_require__(12);
+const Preload_1 = __webpack_require__(16);
+const Menu_1 = __webpack_require__(14);
+const Introduction_1 = __webpack_require__(13);
+const Play_1 = __webpack_require__(15);
 class SimpleGame extends Phaser.Game {
     constructor() {
-        super(720, 405, Phaser.WEBGL, "content", null);
+        super(720 * 1.5, 405 * 1.5, Phaser.WEBGL, "content", null);
         this.state.add('Boot', Boot_1.default);
         this.state.add('Preload', Preload_1.default);
         this.state.add('Menu', Menu_1.default);
@@ -676,7 +734,7 @@ window.onload = () => {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -714,29 +772,31 @@ exports.SnowyForest = SnowyForest;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 class Dashboard {
-    constructor(shell, speaker, monitor) {
+    constructor(shell, speaker, monitor, leds) {
         this.shell = shell;
         this.speaker = speaker;
         this.monitor = monitor;
+        this.leds = leds;
     }
     setOutput(output) {
         this.shell.setOutput(output);
         this.speaker.setOutput(output);
         this.monitor.setOutput(output);
+        this.leds.setOutput(output);
     }
 }
 exports.default = Dashboard;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -774,9 +834,9 @@ class BoardFX {
         ];
         this.filter = new Phaser.Filter(this.state.game, null, fragmentSrc);
         this.filter.setResolution(300, 300);
-        this.sprite = this.state.game.add.sprite(115, 70);
-        this.sprite.width = 355;
-        this.sprite.height = 265;
+        this.sprite = this.state.game.add.sprite(115 * 1.5, 70 * 1.5);
+        this.sprite.width = 355 * 1.5;
+        this.sprite.height = 265 * 1.5;
         this.sprite.filters = [this.filter];
     }
     update() {
@@ -787,26 +847,33 @@ exports.default = BoardFX;
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const terminal_1 = __webpack_require__(31);
-const help_1 = __webpack_require__(23);
-const goto_1 = __webpack_require__(22);
-const search_1 = __webpack_require__(26);
-const whereami_1 = __webpack_require__(28);
-const undock_1 = __webpack_require__(27);
-const build_1 = __webpack_require__(21);
-const inventory_1 = __webpack_require__(25);
-const inbox_1 = __webpack_require__(24);
+const terminal_1 = __webpack_require__(32);
+const help_1 = __webpack_require__(24);
+const goto_1 = __webpack_require__(23);
+const search_1 = __webpack_require__(27);
+const whereami_1 = __webpack_require__(29);
+const undock_1 = __webpack_require__(28);
+const build_1 = __webpack_require__(22);
+const inventory_1 = __webpack_require__(26);
+const inbox_1 = __webpack_require__(25);
 class Shell {
     constructor(state) {
         this.shellInput = null;
         this.shellText = null;
+        this.shellPrompt = null;
         this.state = state;
+        this.shellPrompt = document.createElement("input");
+        this.shellPrompt.value = "$ ";
+        this.shellPrompt.setAttribute('id', 'shellPrompt');
+        this.shellPrompt.setAttribute('type', 'text');
+        this.shellPrompt.setAttribute('readonly', 'readonly');
+        document.body.appendChild(this.shellPrompt);
         this.shellInput = document.createElement("input");
         this.shellInput.setAttribute('type', 'text');
         this.shellInput.setAttribute('id', 'shellInput');
@@ -836,7 +903,6 @@ class Shell {
         this.writeBootLines(this.output, () => {
             let enterKey = this.state.input.keyboard.addKey(Phaser.Keyboard.ENTER);
             enterKey.onDown.add(() => {
-                this.shellInput.value = this.shellInput.value.substring(2);
                 if (this.shellInput.value == "") {
                     return;
                 }
@@ -848,7 +914,7 @@ class Shell {
                     this.output.writeToTerminal(e, true);
                     this.output.playToSpeaker('notifications/error');
                 }
-                this.shellInput.value = '$ ';
+                this.shellInput.value = "";
             }, this);
             this.shellInput.removeAttribute('disabled');
             this.shellInput.focus();
@@ -872,7 +938,6 @@ class Shell {
         setTimeout(function () {
             output.writeToTerminal('Welcome again agent XD6001.');
             output.writeToTerminal('You\'ve got a new message! (type `inbox`)');
-            this.shellInput.value = '$ ';
             callback();
         }, timeout * 18);
     }
@@ -881,7 +946,7 @@ exports.default = Shell;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -908,6 +973,8 @@ class Build {
                     }
                     let type = 'smelter';
                     return this.build(output, type, () => {
+                        output.playToSpeaker('notifications/success');
+                        output.turnOnLed(3);
                         state.installedModules.push({
                             name: this.module,
                             location: state.currentLocation,
@@ -924,6 +991,8 @@ class Build {
                     }
                     let type = 'satellite dish';
                     return this.build(output, type, () => {
+                        output.playToSpeaker('notifications/success');
+                        output.turnOnLed(2);
                         state.installedModules.push({
                             name: this.module,
                             location: state.currentLocation,
@@ -940,6 +1009,8 @@ class Build {
                     }
                     let type = 'autonomous processor';
                     return this.build(output, type, () => {
+                        output.playToSpeaker('notifications/success');
+                        output.turnOnLed(4);
                         state.installedModules.push({
                             name: this.module,
                             location: state.currentLocation,
@@ -965,6 +1036,8 @@ class Build {
                         type = "biomass processor";
                     }
                     return this.build(output, type, () => {
+                        output.playToSpeaker('notifications/success');
+                        output.turnOnLed(1);
                         state.installedModules.push({
                             name: this.module,
                             location: state.currentLocation,
@@ -999,7 +1072,7 @@ exports.BuildActionFactory = BuildActionFactory;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1035,7 +1108,7 @@ exports.GotoActionFactory = GotoActionFactory;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1064,7 +1137,7 @@ exports.HelpActionFactory = HelpActionFactory;
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1092,7 +1165,7 @@ exports.InboxActionFactory = InboxActionFactory;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1126,7 +1199,7 @@ exports.InventoryActionFactory = InventoryActionFactory;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1152,13 +1225,13 @@ exports.SearchActionFactory = SearchActionFactory;
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const spaceship_1 = __webpack_require__(9);
+const spaceship_1 = __webpack_require__(10);
 class Undock {
     constructor() {
         this.name = 'undock';
@@ -1184,8 +1257,10 @@ class Undock {
             output.writeToTerminal('Connect to recon rover...');
         }, 28500);
         setTimeout(() => { output.writeToTerminal('Ping...'); }, 29000);
-        setTimeout(() => { output.writeToTerminal('Connection established.'); }, 30000);
-        setTimeout(() => { output.writeToTerminal('Hello operator, i\'m VJ-Net38, your recon rover.'); }, 31000);
+        setTimeout(() => { output.writeToTerminal('Ping...'); }, 30000);
+        setTimeout(() => { output.writeToTerminal('Ping...'); }, 31000);
+        setTimeout(() => { output.writeToTerminal('Connection established.'); }, 32000);
+        setTimeout(() => { output.writeToTerminal('Hello operator, i\'m VJ-Net38, your recon rover.'); }, 33000);
     }
 }
 function UndockActionFactory(parameters) {
@@ -1195,7 +1270,7 @@ exports.UndockActionFactory = UndockActionFactory;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1228,7 +1303,7 @@ exports.WhereamiActionFactory = WhereamiActionFactory;
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1243,7 +1318,7 @@ exports.Command = Command;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1263,6 +1338,9 @@ class Output {
     displayToMonitor(data, opacity) {
         this.monitor.showImage(data, opacity);
     }
+    turnOnLed(position) {
+        this.leds.turnOnLed(position);
+    }
     out(data) {
         this.terminalElement.value = this.terminalElement.value + data;
         this.terminalElement.scrollTop = this.terminalElement.scrollHeight;
@@ -1272,13 +1350,13 @@ exports.Output = Output;
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const command_1 = __webpack_require__(29);
+const command_1 = __webpack_require__(30);
 class Terminal {
     constructor() {
         this.actionFactories = [];
