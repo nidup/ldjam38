@@ -13,7 +13,7 @@ class Inbox implements Action {
                 'No surprise, investors are pushing us for exo-planet LD38. You know the drill: ' +
                 'land the rover on the surface, deploy solar arrays, settle the communication ' +
                 'network, install the ore extractor and refinery. Be quick, be efficient, don’t ' +
-                'lose your time around this rock. And don’t listen to the rover, the new firmware' +
+                'lose your time around this small rock. And don’t listen to the rover, the new firmware' +
                 ' made him… a little poetic. You’ll see.' +
                 '\nPS: In case your forget it, you’ll have to `undock` your rover.');
                 resolve();

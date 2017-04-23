@@ -9,13 +9,15 @@ export class Output {
     public speaker: Speaker;
     public leds: Leds;
 
-    writeToTerminal(data: string, errored: boolean = false) {
+    writeToTerminal(data: string, errored: boolean = false, fromRover: boolean = false) {
         var lineStart = '';
         if (this.terminalElement.value !== "") {
             lineStart = '\n';
         }
         if (errored) {
-            this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ERROR: ' + data;
+            this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ERROR: ' + data + '\n';
+        } else if (fromRover) {
+            this.terminalElement.value = this.terminalElement.value + lineStart + 'VJ-Net38: "' + data + '"\n';
         } else {
             this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ' + data;
         }

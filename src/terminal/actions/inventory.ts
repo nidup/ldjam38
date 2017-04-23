@@ -19,9 +19,9 @@ class Inventory implements Action {
                 indModule++;
                 installedModule = state.installedModules.find((installed) => installed.name === module);
                 if (installedModule) {
-                    setTimeout(function(){ output.writeToTerminal(module + ' (0 module)'); }, timeout*indModule);
+                    setTimeout(function(){ output.writeToTerminal(module + ' (0 remaining module)'); }, timeout*indModule);
                 } else {
-                    setTimeout(function(){ output.writeToTerminal(module + ' (1 module)'); }, timeout*indModule);
+                    setTimeout(function(){ output.writeToTerminal(module + ' (1 remaining module)'); }, timeout*indModule);
                 }
             }
 
