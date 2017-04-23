@@ -25,16 +25,16 @@ export default class Leds {
     turnOnLed(position: number) {
         switch (position) {
             case 1:
-                this.state.foreground.create(this.led1X, 96, 'leds/on');
+                this.state.foreground.create(this.led1X, this.ledY, 'leds/on');
                 break;
             case 2:
-                this.state.foreground.create(this.led2X, 96, 'leds/on');
+                this.state.foreground.create(this.led2X, this.ledY, 'leds/on');
                 break;
             case 3:
-                this.state.foreground.create(this.led3X, 96, 'leds/on');
+                this.state.foreground.create(this.led3X, this.ledY, 'leds/on');
                 break;
             case 4:
-                this.state.foreground.create(this.led4X, 96, 'leds/on');
+                this.state.foreground.create(this.led4X, this.ledY, 'leds/on');
                 break;
         }
     }
