@@ -84,37 +84,41 @@ class Grassland {
     search(output) {
         this.searched = true;
         this.searchedCount++;
-        if (this.searchedCount == 1) {
-            output.writeToTerminal("It is a perfect place to build a little house, in this little prairie. I’ll send you the blue prints.");
-            output.writeToTerminal("Uploading one photo...");
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (108): 3% ...');
-                output.displayToMonitor('scenes/grassland', 0.10);
-            }, 1000 * 1);
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (108): 21% ...');
-                output.displayToMonitor('scenes/grassland', 0.25);
-            }, 1000 * 2);
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (108): 48% ...');
-                output.displayToMonitor('scenes/grassland', 0.53);
-            }, 1000 * 3);
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (108): 79% ...');
-                output.displayToMonitor('scenes/grassland', 0.78);
-            }, 1000 * 4);
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (108): 100% ...');
-                output.displayToMonitor('scenes/grassland', 1);
-                output.writeToTerminal('Done.');
-            }, 1000 * 5);
+        switch (this.searchedCount) {
+            case 1:
+                output.writeToTerminal('It is a perfect place to build a little house, in this giant prairie. I’ll send you the blueprints.');
+                output.writeToTerminal("Uploading one photo...");
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (108): 3% ...');
+                    output.displayToMonitor('scenes/grassland', 0.10);
+                }, 1000 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (108): 21% ...');
+                    output.displayToMonitor('scenes/grassland', 0.25);
+                }, 1000 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (108): 48% ...');
+                    output.displayToMonitor('scenes/grassland', 0.53);
+                }, 1000 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (108): 79% ...');
+                    output.displayToMonitor('scenes/grassland', 0.78);
+                }, 1000 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (108): 100% ...');
+                    output.displayToMonitor('scenes/grassland', 1);
+                    output.writeToTerminal('Done.');
+                }, 1000 * 5);
+                break;
+            case 2:
+                output.writeToTerminal('I have just seen a weird ball of fur jumping around.');
+                break;
+            default:
+                output.writeToTerminal('Nothing more to add.');
         }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
-        }
+    }
+    build(output) {
+        output.writeToTerminal('I had some problems during the installation, I patched it, I really hope it will hold. Would be a shame call it wasteland...');
     }
 }
 exports.Grassland = Grassland;
@@ -131,44 +135,50 @@ class RainForest {
     constructor() {
         this.name = 'rain-forest';
         this.type = 'Rain Forest';
-        this.description = 'These trees are really big the sun is hiding behind leafs. Humidity is way high for my integrated circuits. No I’m not a complaining robots.';
+        this.description = 'These trees are really big. The sun is hiding behind their leafs. Humidity is way too high for my integrated circuits. No, I’m not a complaining robots. Just being realistic here...';
         this.searched = false;
         this.searchedCount = 0;
     }
     search(output) {
         this.searched = true;
         this.searchedCount++;
-        if (this.searchedCount == 1) {
-            output.writeToTerminal("Like a feeling of being observed by some beasts. Did you hear that ?");
-            output.writeToTerminal("Uploading one photo...");
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (102): 5% ...');
-                output.displayToMonitor('scenes/rain-forest', 0.10);
-            }, 1000 * 1);
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (102): 25% ...');
-                output.displayToMonitor('scenes/rain-forest', 0.25);
-            }, 1000 * 2);
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (102): 53% ...');
-                output.displayToMonitor('scenes/rain-forest', 0.53);
-            }, 1000 * 3);
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (102): 78% ...');
-                output.displayToMonitor('scenes/rain-forest', 0.78);
-            }, 1000 * 4);
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (102): 100% ...');
-                output.displayToMonitor('scenes/rain-forest', 1);
-                output.writeToTerminal('Done.');
-            }, 1000 * 5);
+        switch (this.searchedCount) {
+            case 1:
+                output.writeToTerminal('What a packed forest, maybe I could find a clearing to send you a picture.');
+                break;
+            case 2:
+                output.writeToTerminal('Uploading one photo...');
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (102): 5% ...');
+                    output.displayToMonitor('scenes/rain-forest', 0.10);
+                }, 1000 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (102): 25% ...');
+                    output.displayToMonitor('scenes/rain-forest', 0.25);
+                }, 1000 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (102): 53% ...');
+                    output.displayToMonitor('scenes/rain-forest', 0.53);
+                }, 1000 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (102): 78% ...');
+                    output.displayToMonitor('scenes/rain-forest', 0.78);
+                }, 1000 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (102): 100% ...');
+                    output.displayToMonitor('scenes/rain-forest', 1);
+                    output.writeToTerminal('Done.');
+                }, 1000 * 5);
+                break;
+            case 3:
+                output.writeToTerminal('Like a feeling of being observed by some beasts. Did you hear that ?');
+                break;
+            default:
+                output.writeToTerminal('Nothing more to add.');
         }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
-        }
+    }
+    build(output) {
+        output.writeToTerminal('I had to cut down all the trees... the place is sadly silent now. All I can hear is my engine.');
     }
 }
 exports.RainForest = RainForest;
@@ -192,36 +202,43 @@ class RockyMountain {
     search(output) {
         this.searched = true;
         this.searchedCount++;
-        if (this.searchedCount == 1) {
-            output.writeToTerminal("The wind is strong, but the view is clear. Really I wish you would be there with me.");
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (78): 7% ...');
-                output.displayToMonitor('scenes/rocky-mountain', 0.10);
-            }, 1000 * 1);
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (78): 26% ...');
-                output.displayToMonitor('scenes/rocky-mountain', 0.25);
-            }, 1000 * 2);
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (78): 58% ...');
-                output.displayToMonitor('scenes/rocky-mountain', 0.53);
-            }, 1000 * 3);
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (78): 81% ...');
-                output.displayToMonitor('scenes/rocky-mountain', 0.78);
-            }, 1000 * 4);
-            setTimeout(function () {
-                output.writeToTerminal('Uploading one photo (78): 100% ...');
-                output.displayToMonitor('scenes/rocky-mountain', 1);
-                output.writeToTerminal('Done.');
-            }, 1000 * 5);
+        switch (this.searchedCount) {
+            case 1:
+                output.writeToTerminal('The wind is strong, but the view is clear. Really I wish you would be there with me.');
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (78): 7% ...');
+                    output.displayToMonitor('scenes/rocky-mountain', 0.10);
+                }, 1000 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (78): 26% ...');
+                    output.displayToMonitor('scenes/rocky-mountain', 0.25);
+                }, 1000 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (78): 58% ...');
+                    output.displayToMonitor('scenes/rocky-mountain', 0.53);
+                }, 1000 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (78): 81% ...');
+                    output.displayToMonitor('scenes/rocky-mountain', 0.78);
+                }, 1000 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (78): 100% ...');
+                    output.displayToMonitor('scenes/rocky-mountain', 1);
+                    output.writeToTerminal('Done.');
+                }, 1000 * 5);
+                break;
+            case 2:
+                output.writeToTerminal('I feel I’m closer to you. What a beautiful world.');
+                break;
+            case 3:
+                output.writeToTerminal('Hola dere tütü, hola dero');
+                break;
+            default:
+                output.writeToTerminal('Nothing more to add.');
         }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
-        }
+    }
+    build(output) {
+        output.writeToTerminal('The signal is much better now.');
     }
 }
 exports.RockyMountain = RockyMountain;
@@ -245,15 +262,40 @@ class SandDesert {
     search(output) {
         this.searched = true;
         this.searchedCount++;
-        if (this.searchedCount == 1) {
-            output.writeToTerminal("This shape in the horizon is unusual in the desert relief.");
+        switch (this.searchedCount) {
+            case 1:
+                output.writeToTerminal("This shape in the horizon is unusual in the desert relief.");
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (137): 9% ...');
+                    output.displayToMonitor('scenes/sand-desert', 0.10);
+                }, 1000 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (137): 20% ...');
+                    output.displayToMonitor('scenes/sand-desert', 0.25);
+                }, 1000 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (137): 51% ...');
+                    output.displayToMonitor('scenes/sand-desert', 0.53);
+                }, 1000 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (137): 83% ...');
+                    output.displayToMonitor('scenes/sand-desert', 0.78);
+                }, 1000 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (137): 100% ...');
+                    output.displayToMonitor('scenes/sand-desert', 1);
+                    output.writeToTerminal('Done.');
+                }, 1000 * 5);
+                break;
+            case 2:
+                output.writeToTerminal('The more I follow this shape, the further it looks..');
+                break;
+            default:
+                output.writeToTerminal('Nothing more to add.');
         }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
-        }
+    }
+    build(output) {
+        output.writeToTerminal('I have terraformed a lot of dunes, it now looks like a giant beach.');
     }
 }
 exports.SandDesert = SandDesert;
@@ -270,22 +312,51 @@ class SeaShore {
     constructor() {
         this.name = 'sea-shore';
         this.type = 'Sea Shore';
-        this.description = 'Well I can’t swim. Do you ?';
+        this.description = 'Well, I can’t swim. Can you ?';
         this.searched = false;
         this.searchedCount = 0;
     }
     search(output) {
         this.searched = true;
         this.searchedCount++;
-        if (this.searchedCount == 1) {
-            output.writeToTerminal("Don’t count on me to dip a wheel in the water.");
+        switch (this.searchedCount) {
+            case 1:
+                output.writeToTerminal('There is powerful wind on this wide white sand beach, I\'m struggling to stand on my wheels.');
+                output.writeToTerminal("Uploading one photo...");
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (109): 5% ...');
+                    output.displayToMonitor('scenes/sea-shore', 0.10);
+                }, 1000 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (109): 25% ...');
+                    output.displayToMonitor('scenes/sea-shore', 0.25);
+                }, 1000 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (109): 53% ...');
+                    output.displayToMonitor('scenes/sea-shore', 0.53);
+                }, 1000 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (109): 78% ...');
+                    output.displayToMonitor('scenes/sea-shore', 0.78);
+                }, 1000 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (109): 100% ...');
+                    output.displayToMonitor('scenes/sea-shore', 1);
+                    output.writeToTerminal('Done.');
+                }, 1000 * 5);
+                break;
+            case 2:
+                output.writeToTerminal('Don’t count on me to dip a wheel in the water.');
+                break;
+            case 3:
+                output.writeToTerminal('I’m starting to have sand in my pipes...');
+                break;
+            default:
+                output.writeToTerminal('Nothing more to add.');
         }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
-        }
+    }
+    build(output) {
+        output.writeToTerminal('Not an easy job, but it’s working.');
     }
 }
 exports.SeaShore = SeaShore;
@@ -309,15 +380,40 @@ class Tundra {
     search(output) {
         this.searched = true;
         this.searchedCount++;
-        if (this.searchedCount == 1) {
-            output.writeToTerminal("This little plant is trapped in the frost.");
+        switch (this.searchedCount) {
+            case 1:
+                output.writeToTerminal("This little plant is trapped in the frost.");
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (183): 5% ...');
+                    output.displayToMonitor('scenes/toundra', 0.10);
+                }, 1000 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (183): 25% ...');
+                    output.displayToMonitor('scenes/toundra', 0.25);
+                }, 1000 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (183): 53% ...');
+                    output.displayToMonitor('scenes/toundra', 0.53);
+                }, 1000 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (183): 78% ...');
+                    output.displayToMonitor('scenes/toundra', 0.78);
+                }, 1000 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (183): 100% ...');
+                    output.displayToMonitor('scenes/toundra', 1);
+                    output.writeToTerminal('Done.');
+                }, 1000 * 5);
+                break;
+            case 2:
+                output.writeToTerminal('The topographic analysis indicates a rich underground, it must be at least a million years old.');
+                break;
+            default:
+                output.writeToTerminal('Nothing more to add.');
         }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
-        }
+    }
+    build(output) {
+        output.writeToTerminal('Pipeline network is finished. Should we talk about this last remaining bolt?..');
     }
 }
 exports.Tundra = Tundra;
@@ -388,6 +484,10 @@ class Monitor {
         state.load.image('scenes/rain-forest', 'assets/images/scenes/rain-forest.png');
         state.load.image('scenes/rocky-mountain', 'assets/images/scenes/rocky-mountain.png');
         state.load.image('scenes/grassland', 'assets/images/scenes/grassland.png');
+        state.load.image('scenes/sand-desert', 'assets/images/scenes/sand-desert.png');
+        state.load.image('scenes/ice-field', 'assets/images/scenes/ice-field.png');
+        state.load.image('scenes/sea-shore', 'assets/images/scenes/sea-shore.png');
+        state.load.image('scenes/toundra', 'assets/images/scenes/toundra.png');
     }
     showImage(name, opacity) {
         if (this.currentImage) {
@@ -684,8 +784,6 @@ class Play extends Phaser.State {
             this.game.time.advancedTiming = true;
         }
         this.game.stage.backgroundColor = '#000000';
-        // this.briefingText = this.game.add.bitmapText(40, 40, 'carrier-command','Game PLAY STATE.', 10);
-        // this.briefingText.fixedToCamera = true;
         this.dashboard = new dashboard_1.default(new shell_1.default(this), new speaker_1.default(this), new monitor_1.default(this), new leds_1.default(this));
         this.output = new output_1.Output();
         this.dashboard.setOutput(this.output);
@@ -724,18 +822,19 @@ class Play extends Phaser.State {
         }
     }
     fade() {
-        this.game.camera.fade(0x000000, 3000);
+        this.game.camera.fade(0x000000, 6000);
+        this.output.terminalElement.value = '';
+        let shellPrompt = document.getElementById("shellPrompt");
+        shellPrompt.value = "";
+        let shellInput = document.getElementById("shellInput");
+        shellInput.setAttribute('disabled', 'true');
     }
     resetFade() {
         this.game.camera.resetFX();
-        // TODO: disable focus
+        let shellPrompt = document.getElementById("shellPrompt");
+        shellPrompt.value = "$ ";
         let timeout = 200;
         let output = this.output;
-        setTimeout(function () { output.writeToTerminal('...'); }, timeout);
-        setTimeout(function () { output.writeToTerminal('...'); }, timeout);
-        setTimeout(function () { output.writeToTerminal('...'); }, timeout);
-        setTimeout(function () { output.writeToTerminal('...'); }, timeout);
-        setTimeout(function () { output.writeToTerminal('...'); }, timeout);
         setTimeout(function () { output.writeToTerminal('Subject: LD39 ASAP!'); }, timeout * 2);
         setTimeout(function () { output.writeToTerminal('From: Bernard McLindon'); }, timeout * 3);
         setTimeout(function () {
@@ -833,29 +932,44 @@ class IceField {
     constructor() {
         this.name = 'ice-field';
         this.type = 'Ice field';
-        this.description = 'An ice field.';
-        this.searched = false;
+        this.description = 'I\'m freezing here, but I feel attracted by this place, don’t ask me why.';
         this.searchedCount = 0;
-        this.forestDestroyed = false;
     }
     search(output) {
-        this.searched = true;
         this.searchedCount++;
-        if (this.forestDestroyed) {
-            output.writeToTerminal("You recently destoyed forest, the ground " +
-                "is just full of dirt. Next time, think before " +
-                "cutting all the trees.");
-        }
-        if (this.searchedCount == 1) {
-            output.writeToTerminal("This forest is full of snow, you move some snow and find many vegetables.");
-        }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
+        switch (this.searchedCount) {
+            case 1:
+                output.writeToTerminal("My instruments are going crazy.");
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (99): 7% ...');
+                    output.displayToMonitor('scenes/ice-field', 0.10);
+                }, 1000 * 1);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (99): 28% ...');
+                    output.displayToMonitor('scenes/ice-field', 0.25);
+                }, 1000 * 2);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (99): 59% ...');
+                    output.displayToMonitor('scenes/ice-field', 0.53);
+                }, 1000 * 3);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (99): 81% ...');
+                    output.displayToMonitor('scenes/ice-field', 0.78);
+                }, 1000 * 4);
+                setTimeout(function () {
+                    output.writeToTerminal('Uploading one photo (99): 100% ...');
+                    output.displayToMonitor('scenes/ice-field', 1);
+                    output.writeToTerminal('Done.');
+                }, 1000 * 5);
+                break;
+            case 2:
+                output.writeToTerminal("It’s getting really cold down here, I can’t wear mittens!");
+                break;
+            default:
+                output.writeToTerminal('Nothing more to add.');
         }
     }
+    build(output) { }
 }
 exports.IceField = IceField;
 
@@ -964,6 +1078,7 @@ class Shell {
         this.shellPrompt.setAttribute('readonly', 'readonly');
         document.body.appendChild(this.shellPrompt);
         this.shellInput = document.createElement("input");
+        this.shellInput.spellcheck = false;
         this.shellInput.setAttribute('type', 'text');
         this.shellInput.setAttribute('id', 'shellInput');
         document.body.appendChild(this.shellInput);
@@ -1096,6 +1211,7 @@ class Build {
                                 output.playToSpeaker('notifications/bip');
                                 output.turnOnLed(3);
                             }, 500);
+                            state.currentLocation.build(output);
                             state.installedModules.push({
                                 name: that.module,
                                 location: state.currentLocation,
@@ -1118,6 +1234,7 @@ class Build {
                                 output.playToSpeaker('notifications/bip');
                                 output.turnOnLed(2);
                             }, 500);
+                            state.currentLocation.build(output);
                             state.installedModules.push({
                                 name: that.module,
                                 location: state.currentLocation,
@@ -1140,6 +1257,7 @@ class Build {
                                 output.playToSpeaker('notifications/bip');
                                 output.turnOnLed(4);
                             }, 500);
+                            state.currentLocation.build(output);
                             state.installedModules.push({
                                 name: that.module,
                                 location: state.currentLocation,
@@ -1159,7 +1277,7 @@ class Build {
                         if (state.currentLocation instanceof sea_shore_1.SeaShore) {
                             type = 'wind turbines';
                         }
-                        else if (state.currentLocation instanceof sea_shore_1.SeaShore) {
+                        else if (state.currentLocation instanceof sand_desert_1.SandDesert) {
                             type = "solar panels";
                         }
                         else {
@@ -1171,6 +1289,7 @@ class Build {
                                 output.playToSpeaker('notifications/bip');
                                 output.turnOnLed(1);
                             }, 500);
+                            state.currentLocation.build(output);
                             state.installedModules.push({
                                 name: that.module,
                                 location: state.currentLocation,
@@ -1400,7 +1519,7 @@ class Undock {
                 return;
             }
             output.writeToTerminal('Wow, finally!', false, true);
-            output.writeToTerminal('::Undocking procedure started');
+            output.writeToTerminal(':: Undocking procedure started');
             let spaceshipSound = new spaceship_1.default(state);
             spaceshipSound.playUndock();
             setTimeout(() => { output.writeToTerminal(':: Depressuring process...'); }, 2000);
@@ -1409,7 +1528,7 @@ class Undock {
                 output.writeToTerminal('Undocking process succeeded!');
                 state.isRoverLanded = true;
                 // always land on snowy-forest, you can't do nothing here
-                state.currentLocation = state.locations.find((location) => location.name === 'snowy-forest');
+                state.currentLocation = state.locations.find((location) => location.name === 'ice-field');
             }, 28000);
             setTimeout(() => {
                 output.writeToTerminal('Boot...');
