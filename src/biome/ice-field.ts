@@ -13,7 +13,7 @@ export class IceField implements Biome {
 
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal("My instruments are going crazy.");
+                output.writeToTerminal("Uploading one photo...");
                 setTimeout(function(){
                     output.writeToTerminal('Uploading one photo (99): 7% ...');
                     output.displayToMonitor('scenes/ice-field', 0.10);
@@ -36,11 +36,34 @@ export class IceField implements Biome {
                     output.writeToTerminal('Done.');
                 }, 1000*5);
                 break;
+
             case 2:
-                output.writeToTerminal("It’s getting really cold down here, I can’t wear mittens!");
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200*1);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200*2);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200*3);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200*4);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200*5);
+                output.playToSpeaker('capture/ice-field');
+
+                output.writeToTerminal("My instruments are going crazy.", false, true);
+                break;
+
+            case 3:
+                output.writeToTerminal("It’s getting really cold down here, I can’t wear mittens!", false, true);
                 break;
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
 

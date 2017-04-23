@@ -16,7 +16,6 @@ export class SandDesert implements Biome {
 
         switch (this.searchedCount) {
             case 1:
-                output.writeToTerminal("This shape in the horizon is unusual in the desert relief.");
                 setTimeout(function(){
                     output.writeToTerminal('Uploading one photo (137): 9% ...');
                     output.displayToMonitor('scenes/sand-desert', 0.10);
@@ -39,15 +38,39 @@ export class SandDesert implements Biome {
                     output.writeToTerminal('Done.');
                 }, 1000*5);
                 break;
-               case 2:
-                output.writeToTerminal('The more I follow this shape, the further it looks..');
+
+            case 2:
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 3% ...');
+                }, 200*1);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 21% ...');
+                }, 200*2);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 48% ...');
+                }, 200*3);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 79% ...');
+                }, 200*4);
+                setTimeout(function(){
+                    output.writeToTerminal('Loading audio capture: 100% ...');
+                    output.writeToTerminal("Begin audio capture streaming...");
+                }, 200*5);
+                output.playToSpeaker('capture/sand-desert');
+
+                output.writeToTerminal("This shape in the horizon is unusual in the desert relief.", false, true);
                 break;
+
+            case 3:
+                output.writeToTerminal('The more I follow this shape, the further it looks..', false, true);
+                break;
+
             default:
-                output.writeToTerminal('Nothing more to add.');
+                output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
 
     build(output: Output) {
-        output.writeToTerminal('I have terraformed a lot of dunes, it now looks like a giant beach.');
+        output.writeToTerminal('I have terraformed a lot of dunes, it now looks like a giant beach.', false, true);
     }
 }
