@@ -112,12 +112,16 @@ export default class Play extends Phaser.State {
     private fade() {
         this.game.camera.fade(0x000000, 6000);
         this.output.terminalElement.value = '';
+        let shellPrompt = <HTMLInputElement> document.getElementById("shellPrompt");
+        shellPrompt.value = "";
+        // TODO: disable focus
     }
 
     private resetFade() {
         this.game.camera.resetFX();
 
-        // TODO: disable focus
+        let shellPrompt = <HTMLInputElement> document.getElementById("shellPrompt");
+        shellPrompt.value = "$ ";
 
         let timeout = 200;
         let output = this.output;
