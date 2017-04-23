@@ -6,4 +6,5 @@ export interface Biome  {
     description: string;
 
     search(output: Output);
+    build(output: Output);
 }

@@ -42,6 +42,7 @@ class Build implements Action {
                             output.turnOnLed(3);
                         }, 500);
 
+                        state.currentLocation.build(output);
                         state.installedModules.push({
                             name: that.module,
                             location: state.currentLocation,
@@ -68,6 +69,7 @@ class Build implements Action {
                             output.turnOnLed(2);
                         }, 500);
 
+                        state.currentLocation.build(output);
                         state.installedModules.push({
                             name: that.module,
                             location: state.currentLocation,
@@ -94,6 +96,7 @@ class Build implements Action {
                             output.turnOnLed(4);
                         }, 500);
 
+                        state.currentLocation.build(output);
                         state.installedModules.push({
                             name: that.module,
                             location: state.currentLocation,
@@ -114,7 +117,7 @@ class Build implements Action {
                     let type = '';
                     if (state.currentLocation instanceof SeaShore) {
                         type = 'wind turbines';
-                    } else if (state.currentLocation instanceof SeaShore) {
+                    } else if (state.currentLocation instanceof SandDesert) {
                         type = "solar panels";
                     } else {
                         type = "biomass processor";
@@ -128,6 +131,7 @@ class Build implements Action {
                             output.turnOnLed(1);
                         }, 500);
 
+                        state.currentLocation.build(output);
                         state.installedModules.push({
                             name: that.module,
                             location: state.currentLocation,
