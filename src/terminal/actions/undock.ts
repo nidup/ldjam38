@@ -27,6 +27,9 @@ class Undock implements Action {
         setTimeout(() => {
             output.writeToTerminal('Undocking process succeeded!');
             state.isRoverLanded = true;
+            // always land on tundra, you can't do nothing here
+            state.currentLocation = state.locations.find((location) => location.name === 'snowy-forest');
+
         }, 28000);
     }
 }
