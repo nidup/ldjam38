@@ -135,9 +135,9 @@ export default class Play extends Phaser.State {
 
         if (this.alienModuleInstalled) {
             setTimeout(function(){ output.writeToTerminal('Subject: --'); }, timeout * 2);
-            setTimeout(function(){ output.writeToTerminal('From: --'); }, timeout * 3);
+            setTimeout(function(){ output.writeToTerminal('From: DRF'); }, timeout * 3);
             setTimeout(function(){ output.writeToTerminal(
-                'You not welcome on small planet. You must leave small planet.' +
+                'You not welcome on small planet. You must leave small planet. ' +
                 'We start pod engine. We keep robot. You never come back.'
             ); }, timeout * 4);
             setTimeout(function(){
