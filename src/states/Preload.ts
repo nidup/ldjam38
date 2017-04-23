@@ -14,6 +14,8 @@ export default class Preload extends Phaser.State {
         this.load.image('cinematic2', 'assets/images/cinematic2.png');
         this.load.image('board', 'assets/images/board.png');
         this.load.image('board_top', 'assets/images/board_top.png');
+        this.load.image('scenes/planet1', 'assets/images/scenes/planet1.png');
+        this.load.image('scenes/planet2', 'assets/images/scenes/planet2.png');
 
         Speaker.loadAssets(this);
         Monitor.loadAssets(this);
