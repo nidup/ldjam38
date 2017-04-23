@@ -24,15 +24,16 @@ export default class Play extends Phaser.State {
     locations: Biome[] = [];
     installedModules: InstalledModule[] = [];
     isRoverLanded: boolean = false;
+    isPlayingFinishScene: boolean = false;
 
     private debug: boolean = false;
-    private briefingText : Phaser.BitmapText;
 
     // Sprites
     private background: Phaser.Group;
     public middleground: Phaser.Group;
     public foreground: Phaser.Group;
 
+    private output : Output;
     private dashboard: Dashboard;
     private keyboardSound: KeyboardSound;
     private computerSound: ComputerSound;
@@ -54,7 +55,8 @@ export default class Play extends Phaser.State {
             new Monitor(this),
             new Leds(this)
         );
-        this.dashboard.setOutput(new Output());
+        this.output = new Output();
+        this.dashboard.setOutput(this.output);
 
         this.computerSound = new ComputerSound(this);
         this.computerSound.playAllSequentially();
@@ -92,6 +94,8 @@ export default class Play extends Phaser.State {
 
     public update()
     {
+        this.finish();
+
         this.boardFX.update();
     }
 
@@ -104,6 +108,46 @@ export default class Play extends Phaser.State {
                 14,
                 "#00ff00"
             );
+        }
+    }
+
+    private fade() {
+        this.game.camera.fade(0x000000, 3000);
+    }
+
+    private resetFade() {
+        this.game.camera.resetFX();
+
+        // TODO: disable focus
+
+        let timeout = 200;
+        let output = this.output;
+
+        setTimeout(function(){ output.writeToTerminal('...'); }, timeout);
+        setTimeout(function(){ output.writeToTerminal('...'); }, timeout);
+        setTimeout(function(){ output.writeToTerminal('...'); }, timeout);
+        setTimeout(function(){ output.writeToTerminal('...'); }, timeout);
+        setTimeout(function(){ output.writeToTerminal('...'); }, timeout);
+        setTimeout(function(){ output.writeToTerminal('Subject: LD39 ASAP!'); }, timeout * 2);
+        setTimeout(function(){ output.writeToTerminal('From: Bernard McLindon')}, timeout * 3);
+        setTimeout(function(){ output.writeToTerminal(
+            'Well received the confirmation of station health check, everything is ok.'+
+            'We started the extraction, your job is done here.' +
+            'BTW, engineers messed up again, they don\'t manage to remotely update your rover\'s firmware, ' +
+            'it seems the patch is not applicable.' +
+            'Anyway, let it there, you\'ll receive a new rover on LD 39, your new mission starts now.' +
+            '.')}, timeout * 4);
+        setTimeout(function(){ output.writeToTerminal('...'); }, timeout*5);
+
+    }
+
+    private finish() {
+        if (this.isPlayingFinishScene == false && this.installedModules.length == 1) {
+
+            this.isPlayingFinishScene = true;
+
+            this.game.camera.onFadeComplete.add(this.resetFade, this);
+            this.fade();
         }
     }
 }
