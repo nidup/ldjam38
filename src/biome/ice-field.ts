@@ -4,30 +4,26 @@ import { Output } from '../terminal/output';
 export class IceField implements Biome {
     public name: string = 'ice-field';
     public type: string = 'Ice field';
-    public description: string = 'An ice field.';
+    public description: string = 'I\'m freezing here, but I feel attracted by this place, don’t ask me why.';
 
-    private searched: boolean = false;
     private searchedCount: number = 0;
-    private forestDestroyed: boolean = false;
 
     public search(output: Output) {
-        this.searched = true;
         this.searchedCount++;
 
-        if (this.forestDestroyed) {
-            output.writeToTerminal("You recently destoyed forest, the ground " +
-                "is just full of dirt. Next time, think before " +
-                "cutting all the trees.")
-        }
+        switch (this.searchedCount) {
+            case 1:
+                output.writeToTerminal("My instruments are going crazy.");
+                break;
 
-        if (this.searchedCount == 1) {
-            output.writeToTerminal("This forest is full of snow, you move some snow and find many vegetables.");
-        }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
+            case 2:
+                output.writeToTerminal("It’s getting really cold down here, I can’t wear mittens!");
+                break;
+
+            default:
+                output.writeToTerminal('Nothing more to add.');
         }
     }
+
+    build(output: Output) { }
 }

@@ -14,14 +14,21 @@ export class Tundra implements Biome {
         this.searched = true;
         this.searchedCount++;
 
-        if (this.searchedCount == 1) {
-            output.writeToTerminal("This little plant is trapped in the frost.");
+        switch (this.searchedCount) {
+            case 1:
+                output.writeToTerminal('This little plant is trapped in the frost.');
+                break;
+
+            case 2:
+                output.writeToTerminal('The topographic analysis indicates a rich underground, it must be at least a million years old.');
+                break;
+
+            default:
+                output.writeToTerminal('Nothing more to add.');
         }
-        if (this.searchedCount == 2) {
-            output.writeToTerminal("More details");
-        }
-        if (this.searchedCount > 2) {
-            output.writeToTerminal("Full details");
-        }
+    }
+
+    build(output: Output) {
+                output.writeToTerminal('Pipeline network is finished. Should we talk about this last remaining bolt?..');
     }
 }
