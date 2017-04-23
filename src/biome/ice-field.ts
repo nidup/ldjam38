@@ -17,7 +17,28 @@ export class IceField implements Biome {
         if (this.forestDestroyed) {
             output.writeToTerminal("You recently destoyed forest, the ground " +
                 "is just full of dirt. Next time, think before " +
-                "cutting all the trees.")
+                "cutting all the trees.");
+            setTimeout(function(){
+                output.writeToTerminal('Uploading one photo (99): 7% ...');
+                output.displayToMonitor('scenes/ice-field', 0.10);
+            }, 1000*1);
+            setTimeout(function(){
+                output.writeToTerminal('Uploading one photo (99): 28% ...');
+                output.displayToMonitor('scenes/ice-field', 0.25);
+            }, 1000*2);
+            setTimeout(function(){
+                output.writeToTerminal('Uploading one photo (99): 59% ...');
+                output.displayToMonitor('scenes/ice-field', 0.53);
+            }, 1000*3);
+            setTimeout(function(){
+                output.writeToTerminal('Uploading one photo (99): 81% ...');
+                output.displayToMonitor('scenes/ice-field', 0.78);
+            }, 1000*4);
+            setTimeout(function(){
+                output.writeToTerminal('Uploading one photo (99): 100% ...');
+                output.displayToMonitor('scenes/ice-field', 1);
+                output.writeToTerminal('Done.');
+            }, 1000*5);
         }
 
         if (this.searchedCount == 1) {

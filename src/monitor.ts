@@ -16,6 +16,10 @@ export default class Monitor {
         state.load.image('scenes/rain-forest', 'assets/images/scenes/rain-forest.png');
         state.load.image('scenes/rocky-mountain', 'assets/images/scenes/rocky-mountain.png');
         state.load.image('scenes/grassland', 'assets/images/scenes/grassland.png');
+        state.load.image('scenes/sand-desert', 'assets/images/scenes/sand-desert.png');
+        state.load.image('scenes/ice-field', 'assets/images/scenes/ice-field.png');
+        state.load.image('scenes/sea-shore', 'assets/images/scenes/sea-shore.png');
+        state.load.image('scenes/toundra', 'assets/images/scenes/toundra.png');
 	}
 
 	showImage (name: string, opacity: number) {
