@@ -135,7 +135,7 @@ export default class Play extends Phaser.State {
         setTimeout(function(){ output.writeToTerminal(
             'Well received the confirmation of station health check, everything is ok. '+
             'We started the extraction, your job is done here. ' +
-            'BTW, engineers messed up again, they don\'t manage to remotely update your rover\'s firmware, ' +
+            'BTW, engineers messed up again, they didn\'t manage to remotely update your rover\'s firmware, ' +
             'it seems the patch is not applicable. ' +
             'Anyway, let it there, you\'ll receive a new rover on LD 39, your new mission starts now' +
             '.')}, timeout * 4);
