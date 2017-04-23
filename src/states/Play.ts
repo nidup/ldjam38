@@ -27,7 +27,8 @@ export default class Play extends Phaser.State {
     isRoverLanded: boolean = false;
     isPlayingFinishScene: boolean = false;
     gatheredData: GatheredData[] = [];
-    alienArtifactFound: boolean = false;
+    alienModuleFound: boolean = false;
+    alienModuleInstalled: boolean = false;
 
     private debug: boolean = false;
 
@@ -131,55 +132,95 @@ export default class Play extends Phaser.State {
 
         let timeout = 1000;
         let output = this.output;
-        setTimeout(function(){ output.writeToTerminal('Subject: LD39 ASAP!'); }, timeout * 2);
-        setTimeout(function(){ output.writeToTerminal('From: Bernard McLindon')}, timeout * 3);
-        setTimeout(function(){ output.writeToTerminal(
-            'Well received the confirmation of station health check, everything is ok. '+
-            'We started the extraction, your job is done here. ' +
-            'BTW, engineers messed up again, they didn\'t manage to remotely update your rover\'s firmware, ' +
-            'it seems the patch is not applicable. ' +
-            'Anyway, let it there, you\'ll receive a new rover on LD39, your new mission starts now' +
-            '.')}, timeout * 4);
-        setTimeout(function(){ output.writeToTerminal('...'); }, timeout*5);
-        setTimeout(function(){ output.writeToTerminal('What are you doing? Don\'t let me alone!', false, true); }, timeout * 12);
-        setTimeout(() => { output.writeToTerminal('Connection lost.'); }, timeout * 14);
-        setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 16);
-        setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 20);
 
-        setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 1, 1);
-        }, 0);
-        setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 1, 1);
-        }, timeout*12);
-        setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 1, 1.5);
-        }, timeout*13);
-        setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 1, 1.75);
-        }, timeout*14);
-        setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 0.9, 2);
-        }, timeout*15);
-        setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 0.9, 3);
-        }, timeout*16);
-        setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 0.8, 4);
-        }, timeout*17);
-        setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 0.7, 6);
-        }, timeout*18);
-        setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 0.6, 8);
-        }, timeout*19);
-        setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 0.1, 12);
-        }, timeout*20);
+        if (this.alienModuleInstalled) {
+            setTimeout(function(){ output.writeToTerminal('Subject: --'); }, timeout * 2);
+            setTimeout(function(){ output.writeToTerminal('From: --'); }, timeout * 3);
+            setTimeout(function(){ output.writeToTerminal(
+                'You not welcome on small planet. You must leave small planet.' +
+                'We start pod engine. We keep robot. You never come back.'
+            ); }, timeout * 4);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet2', 1, 1);
+            }, 0);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet2', 1, 1);
+            }, timeout*12);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet2', 1, 1.5);
+            }, timeout*13);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet2', 1, 1.75);
+            }, timeout*14);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet2', 0.9, 2);
+            }, timeout*15);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet2', 0.9, 3);
+            }, timeout*16);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet2', 0.8, 4);
+            }, timeout*17);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet2', 0.7, 6);
+            }, timeout*18);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet2', 0.6, 8);
+            }, timeout*19);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet2', 0.1, 12);
+            }, timeout*20);
+        } else {
+            setTimeout(function(){ output.writeToTerminal('Subject: LD39 ASAP!'); }, timeout * 2);
+            setTimeout(function(){ output.writeToTerminal('From: Bernard McLindon')}, timeout * 3);
+            setTimeout(function(){ output.writeToTerminal(
+                'Well received the confirmation of station health check, everything is ok. '+
+                'We started the extraction, your job is done here. ' +
+                'BTW, engineers messed up again, they didn\'t manage to remotely update your rover\'s firmware, ' +
+                'it seems the patch is not applicable. ' +
+                'Anyway, let it there, you\'ll receive a new rover on LD39, your new mission starts now' +
+                '.')}, timeout * 4);
+            setTimeout(function(){ output.writeToTerminal('...'); }, timeout*5);
+            setTimeout(function(){ output.writeToTerminal('What are you doing? Don\'t let me alone!', false, true); }, timeout * 12);
+            setTimeout(() => { output.writeToTerminal('Connection lost.'); }, timeout * 14);
+            setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 16);
+            setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 20);
+
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet1', 1, 1);
+            }, 0);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet1', 1, 1);
+            }, timeout*12);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet1', 1, 1.5);
+            }, timeout*13);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet1', 1, 1.75);
+            }, timeout*14);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet1', 0.9, 2);
+            }, timeout*15);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet1', 0.9, 3);
+            }, timeout*16);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet1', 0.8, 4);
+            }, timeout*17);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet1', 0.7, 6);
+            }, timeout*18);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet1', 0.6, 8);
+            }, timeout*19);
+            setTimeout(function(){
+                output.displayToMonitor('scenes/planet1', 0.1, 12);
+            }, timeout*20);
+        }
     }
 
     private finish() {
-        if (this.isPlayingFinishScene == false && this.installedModules.length == 4) {
+        if (this.isPlayingFinishScene == false && (this.installedModules.length == 4 || this.alienModuleInstalled)) {
             this.isPlayingFinishScene = true;
             this.game.camera.onFadeComplete.add(this.resetFade, this);
             this.fade();

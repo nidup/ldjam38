@@ -13,6 +13,9 @@ class Inventory implements Action {
         return new Promise((resolve) => {
             let timeout = 200;
             const modules: string[] = ['communication', 'energy', 'refinery', 'extractor'];
+            if (state.alienModuleFound) {
+                modules.push('unknown');
+            }
             let indModule = 0;
             let installedModule = null;
             for (let module of modules) {
