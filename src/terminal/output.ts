@@ -18,8 +18,10 @@ export class Output {
         this.terminalElement.scrollTop = this.terminalElement.scrollHeight;
     }
 
-    playToSpeaker(data: string) {
-        this.speaker.playSound(data);
+    playToSpeaker(data: string, volume: number = 1, loop: boolean = false) {
+        const sound = this.speaker.playSound(data, volume, loop);
+
+        return () => sound.destroy();
     }
 
     displayToMonitor(data: string, opacity: number) {

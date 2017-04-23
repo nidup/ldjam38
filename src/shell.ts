@@ -66,15 +66,24 @@ export default class Shell {
                 this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
                 this.shellInput.setAttribute('disabled', true);
 
+                const stopSound = this.output.playToSpeaker('hdd/load');
                 try {
-                this.terminal
-                    .getAction(this.shellInput.value)
-                    .execute(this.state, this.output)
-                    .then(() => {
-                        this.shellInput.removeAttribute('disabled');
-                        this.shellInput.focus();
-                    }, this.printError);
+                    this.terminal
+                        .getAction(this.shellInput.value)
+                        .execute(this.state, this.output)
+                        .then(
+                            () => {
+                                stopSound();
+                                this.shellInput.removeAttribute('disabled');
+                                this.shellInput.focus();
+                            },
+                            (error) => {
+                                stopSound();
+                                this.printError(error);
+                            }
+                        );
                 } catch (e) {
+                    stopSound();
                     this.printError(e);
                 }
                 this.shellInput.value = "";

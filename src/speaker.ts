@@ -16,10 +16,11 @@ export default class Speaker {
         state.load.audio('notifications/error', 'assets/sounds/notifications/01.wav');
         state.load.audio('notifications/01', 'assets/sounds/notifications/01.wav');
         state.load.audio('notifications/success', 'assets/sounds/notifications/success.wav');
+        state.load.audio('hdd/load', 'assets/sounds/hdd_load.wav');
 	}
 
-	playSound(name: string) {
-		this.state.sound.play(name);
+	playSound(name: string, volume: number = 1, loop: boolean = false) {
+		return this.state.sound.play(name, volume, loop);
 	}
 
 	setOutput (output: Output) {
