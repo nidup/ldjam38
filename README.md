@@ -2,7 +2,7 @@
 
 # Demo
 
-You can access to the demo here ...
+You can access to the demo here https://nidup.github.io/ldjam38/
 
 The demo is deployed on the `gh-pages` branch versionning the `build/bundles.js` file (npm run build to update).
 
