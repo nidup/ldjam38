@@ -22,6 +22,7 @@ export default class Play extends Phaser.State {
     currentLocation: Biome;
     locations: Biome[] = [];
     installedModules: InstalledModule[] = [];
+    isRoverLanded: boolean = false;
 
     private debug: boolean = false;
     private briefingText : Phaser.BitmapText;

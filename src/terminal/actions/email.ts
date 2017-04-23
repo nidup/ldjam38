@@ -9,7 +9,7 @@ class Email implements Action {
     execute(state: Play, output: Output) {
         output.writeToTerminal('Subject: Get the job done');
         output.writeToTerminal('From: Bernard McLindon');
-        output.writeToTerminal('No surprise, investors are pushing us for exo-planet LD38. You know the drill land the rover on the surface, deploy solar arrays, settle the communication network, install the stock depot and the ore extractor. Be quick, be efficient, don’t lose your time around this rock. And don’t listen to the rover, the new firmware made him… a little poetic. You’ll see.');
+        output.writeToTerminal('No surprise, investors are pushing us for exo-planet LD38. You know the drill: land the rover on the surface, deploy solar arrays, settle the communication network, install the stock depot and the ore extractor. Be quick, be efficient, don’t lose your time around this rock. And don’t listen to the rover, the new firmware made him… a little poetic. You’ll see.');
     }
 }
 
