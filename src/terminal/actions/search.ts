@@ -1,6 +1,7 @@
 import { Action } from '../action';
 import { Output } from '../output';
 import Play from '../../states/Play';
+import { GatheredData } from '../../gathered-data';
 
 export class Search implements Action {
     name: string = 'search';
@@ -17,7 +18,10 @@ export class Search implements Action {
                 throw 'Move me first...';
             }
 
-            location.search(output);
+            const data = location.search(output);
+            if (data) {
+                state.gatheredData.push(data);
+            }
             resolve();
         });
     }

@@ -1,6 +1,6 @@
-
 import { Biome } from './biome';
 import { Output } from '../terminal/output';
+import { ImageFile } from '../gathered-data';
 
 export class RainForest implements Biome {
     public name: string = 'rain-forest';
@@ -41,7 +41,7 @@ export class RainForest implements Biome {
                     output.displayToMonitor('scenes/rain-forest', 1);
                     output.writeToTerminal('Done.');
                 }, 1000*5);
-                break;
+                return new ImageFile('rain-forest.jpg', 'scenes/rain-forest');
 
             case 3:
                 output.writeToTerminal('Like a feeling of being observed by some beasts. Did you hear that ?');

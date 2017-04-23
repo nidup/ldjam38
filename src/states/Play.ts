@@ -18,6 +18,7 @@ import KeyboardSound from '../sounds/keyboard';
 import ComputerSound from '../sounds/computer';
 import {Output} from "../terminal/output";
 import { InstalledModule } from '../installed-module';
+import { GatheredData } from '../gathered-data';
 
 export default class Play extends Phaser.State {
     currentLocation: Biome;
@@ -25,6 +26,7 @@ export default class Play extends Phaser.State {
     installedModules: InstalledModule[] = [];
     isRoverLanded: boolean = false;
     isPlayingFinishScene: boolean = false;
+    gatheredData: GatheredData[] = [];
 
     private debug: boolean = false;
 
@@ -33,7 +35,7 @@ export default class Play extends Phaser.State {
     public middleground: Phaser.Group;
     public foreground: Phaser.Group;
 
-    private output : Output;
+    private output: Output;
     private dashboard: Dashboard;
     private keyboardSound: KeyboardSound;
     private computerSound: ComputerSound;

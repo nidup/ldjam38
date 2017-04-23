@@ -1,6 +1,6 @@
-
 import { Biome } from './biome';
 import { Output } from '../terminal/output';
+import { ImageFile } from '../gathered-data';
 
 export class Grassland implements Biome {
     public name: string = 'grassland';
@@ -39,7 +39,7 @@ export class Grassland implements Biome {
                     output.displayToMonitor('scenes/grassland', 1);
                     output.writeToTerminal('Done.');
                 }, 1000*5);
-                break;
+                return new ImageFile('grassland.jpg', 'scenes/grassland');
 
             case 2:
                 output.writeToTerminal('I have just seen a weird ball of fur jumping around.');
