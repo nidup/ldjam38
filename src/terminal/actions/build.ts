@@ -28,6 +28,9 @@ class Build implements Action {
 
                     let type = 'smelter';
                     return this.build(output, type, () => {
+                        output.playToSpeaker('notifications/success');
+                        output.turnOnLed(3);
+
                         state.installedModules.push({
                             name: this.module,
                             location: state.currentLocation,
@@ -46,6 +49,9 @@ class Build implements Action {
 
                     let type = 'satellite dish';
                     return this.build(output, type, () => {
+                        output.playToSpeaker('notifications/success');
+                        output.turnOnLed(2);
+
                         state.installedModules.push({
                             name: this.module,
                             location: state.currentLocation,
@@ -64,6 +70,9 @@ class Build implements Action {
 
                     let type = 'autonomous processor';
                     return this.build(output, type, () => {
+                        output.playToSpeaker('notifications/success');
+                        output.turnOnLed(4);
+
                         state.installedModules.push({
                             name: this.module,
                             location: state.currentLocation,
@@ -90,6 +99,9 @@ class Build implements Action {
                     }
 
                     return this.build(output, type, () => {
+                        output.playToSpeaker('notifications/success');
+                        output.turnOnLed(1);
+
                         state.installedModules.push({
                             name: this.module,
                             location: state.currentLocation,
