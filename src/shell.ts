@@ -54,8 +54,6 @@ export default class Shell {
                 }
                 this.shellText.value = this.shellText.value + this.shellInput.value + '\n';
 
-                this.shellText.scrollTop = this.shellText.scrollHeight;
-
                 try {
                     this.terminal.getAction(this.shellInput.value).execute(this.state, this.output);
                 } catch (e) {
@@ -78,7 +76,7 @@ export default class Shell {
         setTimeout(function(){ output.writeToTerminal('Ping ...'); }, timeout*5);
         setTimeout(function(){ output.writeToTerminal('Ping ...'); }, timeout*7);
         setTimeout(function(){ output.writeToTerminal('Connection established.'); }, timeout*8);
-        setTimeout(function(){ output.writeToTerminal('Hello operator, i\'m Herb-LB38, your recon rover.'); }, timeout*9);
+        setTimeout(function(){ output.writeToTerminal('Hello operator, i\'m VJ-Net38, your recon rover.'); }, timeout*9);
         setTimeout(function(){
             output.writeToTerminal('Please let me know what to do.');
             callback();

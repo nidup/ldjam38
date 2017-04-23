@@ -1,18 +1,25 @@
 import { Action } from '../action';
 import { Output } from '../output';
 import Play from '../../states/Play';
-import { Biome } from '../../biome/biome';
 
 class Whereami implements Action {
     name: string = 'whereami';
 
     execute(state: Play, output: Output) {
-        const location = state.currentLocation;
-        if (location) {
-            output.writeToTerminal(location.description);
+        const currentLocation = state.currentLocation;
+
+        if (currentLocation == null) {
+            output.writeToTerminal('[x] Docked in the pod');
             return;
         }
-        output.writeToTerminal('I\'m nowhere...');
+
+        for (let location of state.locations) {
+           if (currentLocation.type == location.type) {
+                output.writeToTerminal('[x]' + location.type);
+            } else {
+                output.writeToTerminal('[ ] ' + location.type);
+            }
+        }
     }
 }
 

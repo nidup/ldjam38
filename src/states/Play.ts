@@ -16,10 +16,12 @@ import Dashboard from '../dashboard';
 import KeyboardSound from '../sounds/keyboard';
 import ComputerSound from '../sounds/computer';
 import {Output} from "../terminal/output";
+import { InstalledModule } from '../installed-module';
 
 export default class Play extends Phaser.State {
     currentLocation: Biome;
     locations: Biome[] = [];
+    installedModules: InstalledModule[] = [];
 
     private debug: boolean = false;
     private briefingText : Phaser.BitmapText;
@@ -58,13 +60,13 @@ export default class Play extends Phaser.State {
         this.keyboardSound.register();
 
         // INIT LOCATIONS
-        this.locations.push(new Grassland(this.dashboard));
-        this.locations.push(new Ocean(this.dashboard));
-        this.locations.push(new RainForest(this.dashboard));
-        this.locations.push(new RockyMountain(this.dashboard));
-        this.locations.push(new SandDesert(this.dashboard));
-        this.locations.push(new SnowyForest(this.dashboard));
-        this.locations.push(new Tundra(this.dashboard));
+        this.locations.push(new Grassland());
+        this.locations.push(new Ocean());
+        this.locations.push(new RainForest());
+        this.locations.push(new RockyMountain());
+        this.locations.push(new SandDesert());
+        this.locations.push(new SnowyForest());
+        this.locations.push(new Tundra());
 
         this.background = this.game.add.group();
         this.background.create(0, 0, 'board');
