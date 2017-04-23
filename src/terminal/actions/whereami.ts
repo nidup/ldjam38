@@ -9,7 +9,7 @@ class Whereami implements Action {
         const currentLocation = state.currentLocation;
 
         if (!state.isRoverLanded) {
-            output.writeToTerminal('[x] Docked in the pod');
+            output.writeToTerminal('Docked in the pod');
             return;
         }
 
