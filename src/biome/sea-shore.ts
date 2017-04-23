@@ -2,9 +2,9 @@
 import { Biome } from './biome';
 import { Output } from '../terminal/output';
 
-export class Ocean implements Biome {
-    public name: string = 'ocean';
-    public type: string = 'Ocean';
+export class SeaShore implements Biome {
+    public name: string = 'sea-shore';
+    public type: string = 'Sea Shore';
     public description: string = 'Well I can’t swim. Do you ?';
 
     private searched: boolean = false;
