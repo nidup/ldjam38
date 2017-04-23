@@ -16,7 +16,7 @@ class Help implements Action {
             setTimeout(function(){ output.writeToTerminal('build [module]     -- build a module'); }, timeout*2);
             setTimeout(function(){ output.writeToTerminal('goto [location]    -- move to location'); }, timeout*1);
             setTimeout(function(){ output.writeToTerminal('inbox              -- check your inbox'); }, timeout*3);
-            setTimeout(function(){ output.writeToTerminal('inventory          -- check inventory'); }, timeout*2);
+            setTimeout(function(){ output.writeToTerminal('inventory          -- check rover inventory'); }, timeout*2);
             setTimeout(function(){ output.writeToTerminal('undock             -- undock recon from pod'); }, timeout*4);
             setTimeout(function(){ output.writeToTerminal('whereami           -- current/known locations'); }, timeout*5);
             setTimeout(function(){ output.writeToTerminal('search             -- analysis of current location'); resolve(); }, timeout*6);
