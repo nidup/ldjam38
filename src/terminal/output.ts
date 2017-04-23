@@ -17,7 +17,7 @@ export class Output {
         if (errored) {
             this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ERROR: ' + data;
         } else if (fromRover) {
-            this.terminalElement.value = this.terminalElement.value + lineStart + 'VJ-Net38: "' + data + '"';
+            this.terminalElement.value = this.terminalElement.value + lineStart + 'VJ-Net42: "' + data + '"';
         } else {
             this.terminalElement.value = this.terminalElement.value + lineStart + '>>> ' + data;
         }

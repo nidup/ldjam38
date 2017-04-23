@@ -12,10 +12,8 @@ export default class Menu extends Phaser.State {
         let spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         spaceKey.onDown.add(this.startGame, this);
 
-        // this.titleText = this.game.add.bitmapText(40, 100, 'carrier-command','Our New Game', 27);
-        // this.subtitleText = this.game.add.bitmapText(40, 140, 'carrier-command','LDJAM 38', 10);
-
-        // this.startText = this.game.add.bitmapText(240, 300, 'carrier-command','Press space to start', 10);
+        this.subtitleText = this.game.add.bitmapText(300, 450, 'carrier-command','Audio headset heavily recommended', 12);
+        this.startText = this.game.add.bitmapText(390, 500, 'carrier-command','- Press space to start -', 10);
     }
 
     public startGame ()
@@ -25,7 +23,7 @@ export default class Menu extends Phaser.State {
 
     public shutdown ()
     {
-        this.titleText.destroy();
+        this.game.input.keyboard.removeKey(Phaser.Keyboard.SPACEBAR);
         this.subtitleText.destroy();
         this.startText.destroy();
     }
