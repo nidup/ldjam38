@@ -14,6 +14,7 @@ class Help implements Action {
         let timeout = 200;
         setTimeout(function(){ output.writeToTerminal('goto [location]    -- move to location'); }, timeout*1);
         setTimeout(function(){ output.writeToTerminal('build [module]     -- build a module'); }, timeout*2);
+        setTimeout(function(){ output.writeToTerminal('inventory          -- check inventory'); }, timeout*2);
         setTimeout(function(){ output.writeToTerminal('email              -- open your inbox'); }, timeout*3);
         setTimeout(function(){ output.writeToTerminal('undock             -- undock module from pod'); }, timeout*4);
         setTimeout(function(){ output.writeToTerminal('whereami           -- locations'); }, timeout*5);

@@ -112,7 +112,7 @@ class Build implements Action {
             setTimeout(() => output.writeToTerminal(j*10 + '%'), j*100);
         }
         setTimeout(() => {
-            output.writeToTerminal(this.module.charAt(0).toUpperCase() + this.module.slice(1) + ' installed successfully!');
+            output.writeToTerminal(this.module.charAt(0).toUpperCase() + this.module.slice(1) + '[' + type + '] installed successfully!');
             callback();
         }, 1001);
     }

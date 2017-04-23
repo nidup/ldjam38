@@ -9,6 +9,7 @@ import { UndockActionFactory } from './terminal/actions/undock';
 import {Output} from "./terminal/output";
 import {BuildActionFactory} from "./terminal/actions/build";
 import Play from "./states/Play";
+import {InventoryActionFactory} from "./terminal/actions/inventory";
 
 export default class Shell {
     private output: Output;
@@ -42,6 +43,7 @@ export default class Shell {
         this.terminal.addActionFactory('email', EmailActionFactory);
         this.terminal.addActionFactory('build', BuildActionFactory);
         this.terminal.addActionFactory('undock', UndockActionFactory);
+        this.terminal.addActionFactory('inventory', InventoryActionFactory);
     }
 
     public setOutput(output: Output) {
