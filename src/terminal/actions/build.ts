@@ -4,6 +4,7 @@ import Play from '../../states/Play';
 import { Biome } from '../../biome/biome';
 import { Tundra } from '../../biome/tundra';
 import { SandDesert } from '../../biome/sand-desert';
+import {RockyMountain} from "../../biome/rocky-mountain";
 
 class Build implements Action {
     name: string = 'build';
@@ -17,6 +18,22 @@ class Build implements Action {
         switch (this.module) {
             case 'extractor':
                 if (state.currentLocation instanceof Tundra || state.currentLocation instanceof SandDesert) {
+                    const installedModule = state.installedModules.find((installed) => installed.name === this.module);
+                    if (undefined !== installedModule) {
+                        throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
+                    }
+
+                    return this.build(output, () => {
+                        state.installedModules.push({
+                            name: this.module,
+                            location: state.currentLocation
+                        });
+                    });
+                }
+                throw 'Cannot install module "' + this.module + '" in "' + state.currentLocation.type + '".';
+
+            case 'communication':
+                if (state.currentLocation instanceof RockyMountain) {
                     const installedModule = state.installedModules.find((installed) => installed.name === this.module);
                     if (undefined !== installedModule) {
                         throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
