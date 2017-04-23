@@ -38,8 +38,8 @@ export class Output {
         this.speaker.stopCapture();
     }
 
-    displayToMonitor(data: string, opacity: number) {
-        this.monitor.showImage(data, opacity);
+    displayToMonitor(data: string, opacity: number, ratio: number = 1) {
+        this.monitor.showImage(data, opacity, ratio);
     }
 
     turnOnLed(position: number) {
