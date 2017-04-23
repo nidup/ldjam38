@@ -9,9 +9,11 @@ export class Output {
     public speaker: Speaker;
     public leds: Leds;
 
-    writeToTerminal(data: string, errored: boolean = false) {
+    writeToTerminal(data: string, errored: boolean = false, fromRover: boolean = false) {
         if (errored) {
             this.terminalElement.value = this.terminalElement.value + '>>> ERROR: ' + data + '\n';
+        } else if (fromRover) {
+            this.terminalElement.value = this.terminalElement.value + 'VJ-Net38: "' + data + '"\n';
         } else {
             this.terminalElement.value = this.terminalElement.value + '>>> ' + data + '\n';
         }
