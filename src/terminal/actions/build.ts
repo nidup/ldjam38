@@ -5,6 +5,9 @@ import { Biome } from '../../biome/biome';
 import { Tundra } from '../../biome/tundra';
 import { SandDesert } from '../../biome/sand-desert';
 import {RockyMountain} from "../../biome/rocky-mountain";
+import {Grassland} from "../../biome/grassland";
+import {Ocean} from "../../biome/ocean";
+import {RainForest} from "../../biome/rain-forest";
 
 class Build implements Action {
     name: string = 'build';
@@ -23,10 +26,12 @@ class Build implements Action {
                         throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
                     }
 
-                    return this.build(output, () => {
+                    let type = 'smelter';
+                    return this.build(output, type, () => {
                         state.installedModules.push({
                             name: this.module,
-                            location: state.currentLocation
+                            location: state.currentLocation,
+                            type: type
                         });
                     });
                 }
@@ -39,22 +44,69 @@ class Build implements Action {
                         throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
                     }
 
-                    return this.build(output, () => {
+                    let type = 'satellite dish';
+                    return this.build(output, type, () => {
                         state.installedModules.push({
                             name: this.module,
-                            location: state.currentLocation
+                            location: state.currentLocation,
+                            type: type
                         });
                     });
                 }
                 throw 'Cannot install module "' + this.module + '" in "' + state.currentLocation.type + '".';
+
+            case 'refinery':
+                if (state.currentLocation instanceof Grassland || state.currentLocation instanceof SandDesert) {
+                    const installedModule = state.installedModules.find((installed) => installed.name === this.module);
+                    if (undefined !== installedModule) {
+                        throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
+                    }
+
+                    let type = 'autonomous processor';
+                    return this.build(output, type, () => {
+                        state.installedModules.push({
+                            name: this.module,
+                            location: state.currentLocation,
+                            type: type
+                        });
+                    });
+                }
+                throw 'Cannot install module "' + this.module + '" in "' + state.currentLocation.type + '".';
+
+            case 'energy':
+                if (state.currentLocation instanceof Ocean || state.currentLocation instanceof SandDesert || state.currentLocation instanceof RainForest) {
+                    const installedModule = state.installedModules.find((installed) => installed.name === this.module);
+                    if (undefined !== installedModule) {
+                        throw 'Module "' + installedModule.name + '" already installed in "' + installedModule.location.type + '".';
+                    }
+
+                    let type = '';
+                    if (state.currentLocation instanceof Ocean) {
+                        type = 'wind turbines';
+                    } else if (state.currentLocation instanceof Ocean) {
+                        type = "solar panels";
+                    } else {
+                        type = "biomass processor";
+                    }
+
+                    return this.build(output, type, () => {
+                        state.installedModules.push({
+                            name: this.module,
+                            location: state.currentLocation,
+                            type: type
+                        });
+                    });
+                }
+                throw 'Cannot install module "' + this.module + '" in "' + state.currentLocation.type + '".';
+
 
             default:
                 throw 'Unknown module "' + this.module + '".';
         }
     }
 
-    private build(output: Output, callback) {
-        output.writeToTerminal('Setting up the ' + this.module + '...');
+    private build(output: Output, type, callback) {
+        output.writeToTerminal('Setting up the ' + this.module + '[' + type + ']...');
         for (var i = 0; i <= 10; i++) {
             const j = i;
             setTimeout(() => output.writeToTerminal(j*10 + '%'), j*100);
