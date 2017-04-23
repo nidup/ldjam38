@@ -1,6 +1,6 @@
 import { Biome } from './biome';
 import { Output } from '../terminal/output';
-import { ImageFile } from '../gathered-data';
+import {ImageFile, SoundFile} from '../gathered-data';
 
 export class Grassland implements Biome {
     public name: string = 'grassland';
@@ -60,7 +60,7 @@ export class Grassland implements Biome {
                 output.playCapture('capture/grassland');
 
                 output.writeToTerminal('It is a perfect place to build a little house, in this giant prairie. I’ll send you the blueprints.', false, true);
-                break;
+                return new SoundFile('grassland.pcm', 'capture/grassland');
 
             case 3:
                 output.writeToTerminal('I have just seen a weird ball of fur jumping around.', false, true);
