@@ -36,7 +36,11 @@ class Build implements Action {
                     let type = 'smelter';
                     return that.build(output, type, () => {
                         output.playToSpeaker('notifications/success');
-                        output.turnOnLed(3);
+
+                        setTimeout(() => {
+                            output.playToSpeaker('notifications/bip');
+                            output.turnOnLed(3);
+                        }, 500);
 
                         state.installedModules.push({
                             name: that.module,
@@ -58,7 +62,11 @@ class Build implements Action {
                     let type = 'satellite dish';
                     return that.build(output, type, () => {
                         output.playToSpeaker('notifications/success');
-                        output.turnOnLed(2);
+
+                        setTimeout(() => {
+                            output.playToSpeaker('notifications/bip');
+                            output.turnOnLed(2);
+                        }, 500);
 
                         state.installedModules.push({
                             name: that.module,
@@ -80,7 +88,11 @@ class Build implements Action {
                     let type = 'autonomous processor';
                     return that.build(output, type, () => {
                         output.playToSpeaker('notifications/success');
-                        output.turnOnLed(4);
+
+                        setTimeout(() => {
+                            output.playToSpeaker('notifications/bip');
+                            output.turnOnLed(4);
+                        }, 500);
 
                         state.installedModules.push({
                             name: that.module,
@@ -110,7 +122,11 @@ class Build implements Action {
 
                     return that.build(output, type, () => {
                         output.playToSpeaker('notifications/success');
-                        output.turnOnLed(1);
+
+                        setTimeout(() => {
+                            output.playToSpeaker('notifications/bip');
+                            output.turnOnLed(1);
+                        }, 500);
 
                         state.installedModules.push({
                             name: that.module,
