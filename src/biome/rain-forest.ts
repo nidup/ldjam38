@@ -19,23 +19,23 @@ export class RainForest implements Biome {
             output.writeToTerminal("Uploading one photo...");
             setTimeout(function(){
                 output.writeToTerminal('Uploading one photo (102): 5% ...');
-                output.displayToMonitor('scenes/river', 0.10);
+                output.displayToMonitor('scenes/rain-forest', 0.10);
             }, 1000*1);
             setTimeout(function(){
                 output.writeToTerminal('Uploading one photo (102): 25% ...');
-                output.displayToMonitor('scenes/river', 0.25);
+                output.displayToMonitor('scenes/rain-forest', 0.25);
             }, 1000*2);
             setTimeout(function(){
                 output.writeToTerminal('Uploading one photo (102): 53% ...');
-                output.displayToMonitor('scenes/river', 0.53);
+                output.displayToMonitor('scenes/rain-forest', 0.53);
             }, 1000*3);
             setTimeout(function(){
                 output.writeToTerminal('Uploading one photo (102): 78% ...');
-                output.displayToMonitor('scenes/river', 0.78);
+                output.displayToMonitor('scenes/rain-forest', 0.78);
             }, 1000*4);
             setTimeout(function(){
                 output.writeToTerminal('Uploading one photo (102): 100% ...');
-                output.displayToMonitor('scenes/river', 1);
+                output.displayToMonitor('scenes/rain-forest', 1);
                 output.writeToTerminal('Done.');
             }, 1000*5);
         }

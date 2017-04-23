@@ -13,8 +13,7 @@ export default class Monitor {
 	}
 
 	static loadAssets (state: Preload) {
-        state.load.image('scenes/01', 'assets/images/scenes/01.png');
-        state.load.image('scenes/river', 'assets/images/scenes/river.png');
+        state.load.image('scenes/rain-forest', 'assets/images/scenes/rain-forest.png');
 	}
 
 	showImage (name: string, opacity: number) {
