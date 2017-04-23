@@ -22,13 +22,13 @@ export default class Monitor {
         state.load.image('scenes/toundra', 'assets/images/scenes/toundra.png');
 	}
 
-	showImage (name: string, opacity: number) {
+	showImage (name: string, opacity: number, ratio: number = 1) {
 		if (this.currentImage) {
 			this.currentImage.kill();
 		}
 		this.currentImage = this.state.middleground.create(490 * 1.5, 135 * 1.5, name);
-		this.currentImage.width = 100 * 1.5;
-		this.currentImage.height = 73 * 1.5;
+		this.currentImage.width = 100 * 1.5 / ratio;
+		this.currentImage.height = 73 * 1.5 / ratio;
 		this.currentImage.alpha = opacity;
 	}
 

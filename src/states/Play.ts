@@ -137,7 +137,7 @@ export default class Play extends Phaser.State {
             'We started the extraction, your job is done here. ' +
             'BTW, engineers messed up again, they didn\'t manage to remotely update your rover\'s firmware, ' +
             'it seems the patch is not applicable. ' +
-            'Anyway, let it there, you\'ll receive a new rover on LD 39, your new mission starts now' +
+            'Anyway, let it there, you\'ll receive a new rover on LD39, your new mission starts now' +
             '.')}, timeout * 4);
         setTimeout(function(){ output.writeToTerminal('...'); }, timeout*5);
         setTimeout(function(){ output.writeToTerminal('What are you doing? Don\'t let me alone!', false, true); }, timeout * 12);
@@ -146,20 +146,35 @@ export default class Play extends Phaser.State {
         setTimeout(() => { output.writeToTerminal('Ping...'); }, timeout * 20);
 
         setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 0.10);
-        }, 1000*12);
+            output.displayToMonitor('scenes/planet1', 1, 1);
+        }, timeout);
         setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 0.25);
-        }, 1000*13);
+            output.displayToMonitor('scenes/planet1', 1, 1);
+        }, timeout*12);
         setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 0.53);
-        }, 1000*14);
+            output.displayToMonitor('scenes/planet1', 1, 1.5);
+        }, timeout*13);
         setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 0.78);
-        }, 1000*16);
+            output.displayToMonitor('scenes/planet1', 1, 1.75);
+        }, timeout*14);
         setTimeout(function(){
-            output.displayToMonitor('scenes/planet1', 1);
-        }, 1000*18);
+            output.displayToMonitor('scenes/planet1', 0.9, 2);
+        }, timeout*15);
+        setTimeout(function(){
+            output.displayToMonitor('scenes/planet1', 0.9, 3);
+        }, timeout*16);
+        setTimeout(function(){
+            output.displayToMonitor('scenes/planet1', 0.8, 4);
+        }, timeout*17);
+        setTimeout(function(){
+            output.displayToMonitor('scenes/planet1', 0.7, 6);
+        }, timeout*18);
+        setTimeout(function(){
+            output.displayToMonitor('scenes/planet1', 0.6, 8);
+        }, timeout*19);
+        setTimeout(function(){
+            output.displayToMonitor('scenes/planet1', 0.1, 12);
+        }, timeout*20);
     }
 
     private finish() {
