@@ -114,7 +114,9 @@ export default class Play extends Phaser.State {
         this.output.terminalElement.value = '';
         let shellPrompt = <HTMLInputElement> document.getElementById("shellPrompt");
         shellPrompt.value = "";
-        // TODO: disable focus
+
+        let shellInput = <HTMLInputElement> document.getElementById("shellInput");
+        shellInput.setAttribute('disabled', 'true');
     }
 
     private resetFade() {
