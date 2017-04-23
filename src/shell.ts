@@ -119,13 +119,15 @@ export default class Shell {
             output.writeToTerminal("\\_|  \\___/ \\__,_|\\_____/ \\___/  \\___/  \\___/ ");
         }, timeout*3);
         setTimeout(function(){ output.writeToTerminal(':: Loading kernel...'); }, timeout*5);
-        setTimeout(function(){ output.writeToTerminal(':: Loading external modules...'); }, timeout*8);
-        setTimeout(function(){ output.writeToTerminal(':: Checking system integrity...'); }, timeout*13);
-        setTimeout(function(){ output.writeToTerminal(':: Warming up RAM module...'); }, timeout*17);
+        setTimeout(function(){ output.writeToTerminal(':: Loading external modules...'); }, timeout*7);
+        setTimeout(function(){ output.writeToTerminal(':: Checking system integrity...'); }, timeout*10);
+        setTimeout(function(){ output.writeToTerminal(':: Warming up RAM module...'); }, timeout*13);
+        setTimeout(function(){ output.writeToTerminal(':: Mount disks...'); }, timeout*16);
+        setTimeout(function(){ output.writeToTerminal(':: Mount extra devices...'); }, timeout*19);
         setTimeout(function(){
             output.writeToTerminal('Welcome again agent XD6001.');
             output.writeToTerminal('You\'ve got a new message! (type `inbox`)');
             callback();
-          }, timeout*18);
+          }, timeout*21);
     }
 }
