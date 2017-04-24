@@ -6,7 +6,7 @@ import {ImageFile, SoundFile} from "../gathered-data";
 export class SeaShore implements Biome {
     public name: string = 'sea-shore';
     public type: string = 'Sea Shore';
-    public description: string = 'Well, I can’t swim. Can you ?';
+    public description: string = 'Well, I can’t swim. Can you?';
 
     private searched: boolean = false;
     private searchedCount: number = 0;
