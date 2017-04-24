@@ -62,7 +62,7 @@ export class RainForest implements Biome {
                 return new ImageFile('rain-forest.jpg', 'scenes/rain-forest');
 
             case 3:
-                output.writeToTerminal('Like a feeling of being observed by some beasts. Did you hear that ?', false, true);
+                output.writeToTerminal('Like a feeling of being observed by some beasts. Did you hear that?', false, true);
                 break;
 
             default:
@@ -71,6 +71,6 @@ export class RainForest implements Biome {
     }
 
     build(output: Output) {
-        output.writeToTerminal('I had to cut down all the trees... the place is sadly silent now. All I can hear is my engine.', false, true);
+        output.writeToTerminal('I had to cut down all the trees... The place is sadly silent now. All I can hear is my engine.', false, true);
     }
 }
