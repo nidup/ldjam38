@@ -232,14 +232,14 @@ class RainForest {
                 }, 1000 * 5);
                 return new gathered_data_1.ImageFile('rain-forest.jpg', 'scenes/rain-forest');
             case 3:
-                output.writeToTerminal('Like a feeling of being observed by some beasts. Did you hear that ?', false, true);
+                output.writeToTerminal('Like a feeling of being observed by some beasts. Did you hear that?', false, true);
                 break;
             default:
                 output.writeToTerminal('Nothing more to add.', false, true);
         }
     }
     build(output) {
-        output.writeToTerminal('I had to cut down all the trees... the place is sadly silent now. All I can hear is my engine.', false, true);
+        output.writeToTerminal('I had to cut down all the trees... The place is sadly silent now. All I can hear is my engine.', false, true);
     }
 }
 exports.RainForest = RainForest;
@@ -414,7 +414,7 @@ class SeaShore {
     constructor() {
         this.name = 'sea-shore';
         this.type = 'Sea Shore';
-        this.description = 'Well, I can’t swim. Can you ?';
+        this.description = 'Well, I can’t swim. Can you?';
         this.searched = false;
         this.searchedCount = 0;
     }
