@@ -668,7 +668,7 @@ class ComputerSound {
         this.playBoot();
         setTimeout(() => {
             this.playVentiloLoop();
-        }, 18000);
+        }, 18559);
     }
     playBoot() {
         this.state.sound.play('computer/boot', 1, false);
