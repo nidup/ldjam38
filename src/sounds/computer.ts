@@ -21,7 +21,7 @@ export default class ComputerSound {
 
         setTimeout(() => {
             this.playVentiloLoop();
-        }, 18000);
+        }, 18559);
     }
 
     playBoot() {
