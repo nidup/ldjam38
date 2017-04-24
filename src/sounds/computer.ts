@@ -5,7 +5,6 @@ export default class ComputerSound {
     private state: Play;
 
     public static bootPath = 'assets/sounds/ot_computer_start.mp3';
-    public static ventiloPath = 'assets/sounds/fade_in_computer_ventilo.mp3';
     public static ventiloLoopPath = 'assets/sounds/loop_computer_ventilo.mp3';
 
     constructor(state: Play) {
@@ -14,7 +13,6 @@ export default class ComputerSound {
 
     static loadAssets (state: Preload) {
         state.load.audio('computer/boot', ComputerSound.bootPath);
-        state.load.audio('computer/ventilo', ComputerSound.ventiloPath);
         state.load.audio('computer/ventiloLoop', ComputerSound.ventiloLoopPath);
     }
 
@@ -22,20 +20,12 @@ export default class ComputerSound {
         this.playBoot();
 
         setTimeout(() => {
-            this.playVentilo();
-
-            setTimeout(() => {
-                this.playVentiloLoop();
-            }, 35000)
+            this.playVentiloLoop();
         }, 18000);
     }
 
     playBoot() {
         this.state.sound.play('computer/boot', 1, false);
-    }
-
-    playVentilo() {
-        this.state.sound.play('computer/ventilo', 1, false);
     }
 
     playVentiloLoop() {
