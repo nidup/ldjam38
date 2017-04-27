@@ -55,7 +55,7 @@ export class IceField implements Biome {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
                 }, 200*5);
-                output.playCapture('capture/ice-field');
+                output.playCapture('capture/ice-field', 1.3);
 
                 output.writeToTerminal("My instruments are going crazy.", false, true);
                 return new SoundFile('ice-field.pcm', 'capture/ice-field');

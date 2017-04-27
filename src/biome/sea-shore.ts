@@ -57,7 +57,7 @@ export class SeaShore implements Biome {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
                 }, 200*5);
-                output.playCapture('capture/sea-shore');
+                output.playCapture('capture/sea-shore', 1.3);
 
                 output.writeToTerminal('There is powerful wind on this wide white sand beach, I\'m struggling to stand on my wheels.', false, true);
                 return new SoundFile('sea-shore.pcm', 'capture/sea-shore');
