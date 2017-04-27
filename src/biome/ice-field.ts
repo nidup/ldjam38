@@ -54,10 +54,11 @@ export class IceField implements Biome {
                 setTimeout(function(){
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
+                    output.writeToTerminal("");
+                    output.writeToTerminal("My instruments are going crazy.", false, true);
                 }, 200*5);
                 output.playCapture('capture/ice-field', 1.3);
 
-                output.writeToTerminal("My instruments are going crazy.", false, true);
                 return new SoundFile('ice-field.pcm', 'capture/ice-field');
 
             case 3:

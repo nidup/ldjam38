@@ -56,10 +56,11 @@ export class RockyMountain implements Biome {
                 setTimeout(function(){
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
+                    output.writeToTerminal("");
+                    output.writeToTerminal('The wind is strong, but the view is clear. Really I wish you would be there with me.', false, true);
                 }, 200*5);
                 output.playCapture('capture/rocky-mountain', 1.3);
 
-                output.writeToTerminal('The wind is strong, but the view is clear. Really I wish you would be there with me.', false, true);
                 return new SoundFile('rocky-mountain.pcm', 'capture/rocky-mountain');
 
             case 3:
