@@ -9,7 +9,7 @@ export class Explore implements Action {
     execute(state: Play, output: Output) {
         return new Promise((resolve) => {
             if (state.isRoverLanded == false) {
-                output.writeToTerminal('I can\'t explore. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
+                output.writeToTerminal('I can\'t explore. I\'m docked. I feel lonely for years now, parked here, I would discover the world.', false, true);
                 resolve();
                 return;
             }
@@ -20,8 +20,8 @@ export class Explore implements Action {
 
             if (state.gatheredData.length === 10 && !state.alienModuleFound) {
                 state.alienModuleFound = true;
-                output.writeToTerminal('I have found something strange. I can\'t analyze it, it just look like a cube with a button on the top.');
-                output.writeToTerminal('I have put it in my module inventory, feel free to build it... whenever you want...');
+                output.writeToTerminal('I have found something strange. I can\'t analyze it, it just look like a cube with a button on the top.', false, true);
+                output.writeToTerminal('I have put it in my module inventory, feel free to build it... whenever you want...', false, true);
 
                 return resolve();
             }
