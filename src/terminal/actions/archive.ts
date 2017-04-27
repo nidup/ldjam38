@@ -61,7 +61,7 @@ class Archive implements Action {
 
             if (archive instanceof SoundFile) {
                 output.writeToTerminal('Playing "' + archive.name + '" on speaker...');
-                output.playCapture(archive.path);
+                output.playCapture(archive.path, 1.3);
             }
 
             resolve();
