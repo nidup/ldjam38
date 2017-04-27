@@ -149,9 +149,10 @@ class Grassland {
                 setTimeout(function () {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
+                    output.writeToTerminal("");
+                    output.writeToTerminal('It is a perfect place to build a little house, in this giant prairie. I’ll send you the blueprints.', false, true);
                 }, 200 * 5);
-                output.playCapture('capture/grassland');
-                output.writeToTerminal('It is a perfect place to build a little house, in this giant prairie. I’ll send you the blueprints.', false, true);
+                output.playCapture('capture/grassland', 1.3);
                 return new gathered_data_1.SoundFile('grassland.pcm', 'capture/grassland');
             case 3:
                 output.writeToTerminal('I have just seen a weird ball of fur jumping around.', false, true);
@@ -203,9 +204,10 @@ class RainForest {
                 setTimeout(function () {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
+                    output.writeToTerminal("");
+                    output.writeToTerminal('What a packed forest, maybe I could find a clearing to send you a picture.', false, true);
                 }, 200 * 5);
-                output.playCapture('capture/rain-forest');
-                output.writeToTerminal('What a packed forest, maybe I could find a clearing to send you a picture.', false, true);
+                output.playCapture('capture/rain-forest', 1.3);
                 return new gathered_data_1.SoundFile('rain-forest.pcm', 'capture/rain-forest');
             case 2:
                 output.writeToTerminal('Uploading one photo...');
@@ -304,9 +306,10 @@ class RockyMountain {
                 setTimeout(function () {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
+                    output.writeToTerminal("");
+                    output.writeToTerminal('The wind is strong, but the view is clear. Really I wish you would be there with me.', false, true);
                 }, 200 * 5);
-                output.playCapture('capture/rocky-mountain');
-                output.writeToTerminal('The wind is strong, but the view is clear. Really I wish you would be there with me.', false, true);
+                output.playCapture('capture/rocky-mountain', 1.3);
                 return new gathered_data_1.SoundFile('rocky-mountain.pcm', 'capture/rocky-mountain');
             case 3:
                 output.writeToTerminal('I feel I’m closer to you. What a beautiful world.', false, true);
@@ -384,9 +387,10 @@ class SandDesert {
                 setTimeout(function () {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
+                    output.writeToTerminal("");
+                    output.writeToTerminal("This shape in the horizon is unusual in the desert relief.", false, true);
                 }, 200 * 5);
-                output.playCapture('capture/sand-desert');
-                output.writeToTerminal("This shape in the horizon is unusual in the desert relief.", false, true);
+                output.playCapture('capture/sand-desert', 1.3);
                 return new gathered_data_1.SoundFile('sand-desert.pcm', 'capture/sand-desert');
             case 3:
                 output.writeToTerminal('The more I follow this shape, the further it looks..', false, true);
@@ -462,9 +466,10 @@ class SeaShore {
                 setTimeout(function () {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
+                    output.writeToTerminal("");
+                    output.writeToTerminal('There is powerful wind on this wide white sand beach, I\'m struggling to stand on my wheels.', false, true);
                 }, 200 * 5);
-                output.playCapture('capture/sea-shore');
-                output.writeToTerminal('There is powerful wind on this wide white sand beach, I\'m struggling to stand on my wheels.', false, true);
+                output.playCapture('capture/sea-shore', 1.3);
                 return new gathered_data_1.SoundFile('sea-shore.pcm', 'capture/sea-shore');
             case 3:
                 output.writeToTerminal('Don’t count on me to dip a wheel in the water.', false, true);
@@ -542,9 +547,10 @@ class Tundra {
                 setTimeout(function () {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
+                    output.writeToTerminal("");
+                    output.writeToTerminal("A little plant is trapped in the frost.", false, true);
                 }, 200 * 5);
-                output.playCapture('capture/tundra');
-                output.writeToTerminal("A little plant is trapped in the frost.", false, true);
+                output.playCapture('capture/tundra', 1.3);
                 return new gathered_data_1.SoundFile('tundra.pcm', 'capture/tundra');
             case 3:
                 output.writeToTerminal('The topographic analysis indicates a rich underground, it must be at least a million years old.', false, true);
@@ -1024,6 +1030,14 @@ class Play extends Phaser.State {
             setTimeout(function () {
                 output.displayToMonitor('scenes/planet2', 0.1, 12);
             }, timeout * 20);
+            setTimeout(() => {
+                let enterKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+                enterKey.onDown.add(() => {
+                    window.location.reload();
+                }, this);
+                output.writeToTerminal('');
+                output.writeToTerminal('You finished Pod2000. Or did you?.. Press [SPACEBAR] to quit.');
+            }, timeout * 25);
         }
         else {
             setTimeout(function () { output.writeToTerminal('Subject: LD39 ASAP!'); }, timeout * 2);
@@ -1071,6 +1085,14 @@ class Play extends Phaser.State {
             setTimeout(function () {
                 output.displayToMonitor('scenes/planet1', 0.1, 12);
             }, timeout * 20);
+            setTimeout(() => {
+                let enterKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+                enterKey.onDown.add(() => {
+                    window.location.reload();
+                }, this);
+                output.writeToTerminal('');
+                output.writeToTerminal('You finished Pod2000. Or did you?.. Press [SPACEBAR] to quit.');
+            }, timeout * 25);
         }
     }
     finish() {
@@ -1209,9 +1231,10 @@ class IceField {
                 setTimeout(function () {
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
+                    output.writeToTerminal("");
+                    output.writeToTerminal("My instruments are going crazy.", false, true);
                 }, 200 * 5);
-                output.playCapture('capture/ice-field');
-                output.writeToTerminal("My instruments are going crazy.", false, true);
+                output.playCapture('capture/ice-field', 1.3);
                 return new gathered_data_1.SoundFile('ice-field.pcm', 'capture/ice-field');
             case 3:
                 output.writeToTerminal("It’s getting really cold down here, I can’t wear mittens!", false, true);
@@ -1479,7 +1502,7 @@ class Archive {
             }
             if (archive instanceof gathered_data_1.SoundFile) {
                 output.writeToTerminal('Playing "' + archive.name + '" on speaker...');
-                output.playCapture(archive.path);
+                output.playCapture(archive.path, 1.3);
             }
             resolve();
         });
@@ -1676,7 +1699,7 @@ class Explore {
     execute(state, output) {
         return new Promise((resolve) => {
             if (state.isRoverLanded == false) {
-                output.writeToTerminal('I can\'t explore. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
+                output.writeToTerminal('I can\'t explore. I\'m docked. I feel lonely for years now, parked here, I would discover the world.', false, true);
                 resolve();
                 return;
             }
@@ -1686,8 +1709,8 @@ class Explore {
             }
             if (state.gatheredData.length === 10 && !state.alienModuleFound) {
                 state.alienModuleFound = true;
-                output.writeToTerminal('I have found something strange. I can\'t analyze it, it just look like a cube with a button on the top.');
-                output.writeToTerminal('I have put it in my module inventory, feel free to build it... whenever you want...');
+                output.writeToTerminal('I have found something strange. I can\'t analyze it, it just look like a cube with a button on the top.', false, true);
+                output.writeToTerminal('I have put it in my module inventory, feel free to build it... whenever you want...', false, true);
                 return resolve();
             }
             const data = location.search(output);
@@ -1720,7 +1743,7 @@ class Goto {
     execute(state, output) {
         return new Promise((resolve) => {
             if (state.isRoverLanded == false) {
-                output.writeToTerminal('I can\'t move. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
+                output.writeToTerminal('I can\'t move. I\'m docked. I feel lonely for years now, parked here, I would discover the world.', false, true);
                 resolve();
                 return;
             }
@@ -1729,11 +1752,11 @@ class Goto {
                 state.currentLocation = destination[0];
                 output.stopCapture();
                 output.writeToTerminal('Moved to ' + state.currentLocation.type + '.');
-                output.writeToTerminal(state.currentLocation.description);
+                output.writeToTerminal(state.currentLocation.description, false, true);
                 resolve();
                 return;
             }
-            output.writeToTerminal('I don\'t know this place...');
+            output.writeToTerminal('I don\'t know this place...', false, true);
             resolve();
         });
     }
@@ -1799,7 +1822,7 @@ class Inbox {
                 'land the rover on the surface, deploy solar arrays, settle the communication ' +
                 'network, install the ore extractor and refinery. Be quick, be efficient, don’t ' +
                 'lose your time around this small rock. And don’t listen to the rover, the new firmware' +
-                ' made him… a little poetic. You’ll see.' +
+                ' made it… a little poetic. You’ll see.' +
                 '\nPS: In case you forget it, you’ll have to `undock` your rover.');
             resolve();
         });
