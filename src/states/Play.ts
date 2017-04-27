@@ -170,6 +170,16 @@ export default class Play extends Phaser.State {
             setTimeout(function(){
                 output.displayToMonitor('scenes/planet2', 0.1, 12);
             }, timeout*20);
+
+            setTimeout(() => {
+                let enterKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+                enterKey.onDown.add(() => {
+                    window.location.reload();
+                }, this);
+
+                output.writeToTerminal('');
+                output.writeToTerminal('You finished Pod2000. Or did you?.. Press [SPACEBAR] to quit.');
+            }, timeout * 25);
         } else {
             setTimeout(function(){ output.writeToTerminal('Subject: LD39 ASAP!'); }, timeout * 2);
             setTimeout(function(){ output.writeToTerminal('From: Bernard McLindon')}, timeout * 3);
@@ -216,6 +226,16 @@ export default class Play extends Phaser.State {
             setTimeout(function(){
                 output.displayToMonitor('scenes/planet1', 0.1, 12);
             }, timeout*20);
+
+            setTimeout(() => {
+                let enterKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+                enterKey.onDown.add(() => {
+                    window.location.reload();
+                }, this);
+
+                output.writeToTerminal('');
+                output.writeToTerminal('You finished Pod2000. Or did you?.. Press [SPACEBAR] to quit.');
+            }, timeout * 25);
         }
     }
 

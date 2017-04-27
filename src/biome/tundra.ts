@@ -55,10 +55,11 @@ export class Tundra implements Biome {
                 setTimeout(function(){
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
+                    output.writeToTerminal("");
+                    output.writeToTerminal("A little plant is trapped in the frost.", false, true);
                 }, 200*5);
-                output.playCapture('capture/tundra');
+                output.playCapture('capture/tundra', 1.3);
 
-                output.writeToTerminal("A little plant is trapped in the frost.", false, true);
                 return new SoundFile('tundra.pcm', 'capture/tundra');
             case 3:
                 output.writeToTerminal('The topographic analysis indicates a rich underground, it must be at least a million years old.', false, true);
