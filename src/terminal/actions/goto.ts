@@ -14,7 +14,7 @@ class Goto implements Action {
     execute(state: Play, output: Output) {
         return new Promise((resolve) => {
             if (state.isRoverLanded == false) {
-                output.writeToTerminal('I can\'t move. I\'m docked. I feel lonely for years now, parked here, I would discover the world.');
+                output.writeToTerminal('I can\'t move. I\'m docked. I feel lonely for years now, parked here, I would discover the world.', false, true);
                 resolve();
                 return;
             }
@@ -24,11 +24,11 @@ class Goto implements Action {
                 state.currentLocation = destination[0];
                 output.stopCapture();
                 output.writeToTerminal('Moved to ' + state.currentLocation.type + '.');
-                output.writeToTerminal(state.currentLocation.description);
+                output.writeToTerminal(state.currentLocation.description, false, true);
                 resolve();
                 return;
             }
-            output.writeToTerminal('I don\'t know this place...');
+            output.writeToTerminal('I don\'t know this place...', false, true);
             resolve();
         });
     }

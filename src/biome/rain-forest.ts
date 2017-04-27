@@ -31,10 +31,11 @@ export class RainForest implements Biome {
                 setTimeout(function(){
                     output.writeToTerminal('Loading audio capture: 100% ...');
                     output.writeToTerminal("Begin audio capture streaming...");
+                    output.writeToTerminal("");
+                    output.writeToTerminal('What a packed forest, maybe I could find a clearing to send you a picture.', false, true);
                 }, 200*5);
-                output.playCapture('capture/rain-forest');
+                output.playCapture('capture/rain-forest', 1.3);
 
-                output.writeToTerminal('What a packed forest, maybe I could find a clearing to send you a picture.', false, true);
                 return new SoundFile('rain-forest.pcm', 'capture/rain-forest');
             case 2:
                 output.writeToTerminal('Uploading one photo...');

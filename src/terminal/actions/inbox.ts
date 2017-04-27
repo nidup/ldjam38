@@ -14,7 +14,7 @@ class Inbox implements Action {
                 'land the rover on the surface, deploy solar arrays, settle the communication ' +
                 'network, install the ore extractor and refinery. Be quick, be efficient, don’t ' +
                 'lose your time around this small rock. And don’t listen to the rover, the new firmware' +
-                ' made him… a little poetic. You’ll see.' +
+                ' made it… a little poetic. You’ll see.' +
                 '\nPS: In case you forget it, you’ll have to `undock` your rover.');
                 resolve();
         });

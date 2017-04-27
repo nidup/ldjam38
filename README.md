@@ -1,4 +1,8 @@
-# LDJAM 38
+# Pod2000
+
+Exploration game built as a team, from scratch (graphics, audio and game design) for the LudumDare 38 \o/
+
+[Here is the LDJAM submission](https://ldjam.com/events/ludum-dare/38/$23220)
 
 # Demo
 
@@ -8,7 +12,12 @@ The demo is deployed on the `gh-pages` branch versionning the `build/bundles.js`
 
 # Screenshots
 
-...
+![Image of GameJam](doc/demo1.png)
+
+![Image of GameJam](doc/demo2.png)
+
+![Image of GameJam](doc/intro.png)
+
 
 # Getting Started
 
@@ -39,6 +48,6 @@ npm run build
 npm run dev
 ```
 
-# Artwork and special thanks
+# Special thanks
 
 Thx @wlk for the following boilerplate https://github.com/wlk/phaser-typescript-boilerplate
