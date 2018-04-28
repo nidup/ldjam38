@@ -6,7 +6,7 @@ Exploration game built as a team, from scratch (graphics, audio and game design)
 
 # Demo
 
-You can access to the demo here https://nidup.github.io/ldjam38/
+You can [play to the demo here](https://grena.itch.io/pod2000)
 
 The demo is deployed on the `gh-pages` branch versionning the `build/bundles.js` file (npm run build to update).
 
